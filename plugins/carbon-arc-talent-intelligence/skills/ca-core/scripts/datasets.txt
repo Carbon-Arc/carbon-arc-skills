@@ -1,0 +1,28 @@
+# Carbon Arc dataset names a report's source chip may start with, for verify_build.py.
+# Taken from data_library (catalog overview) on 2026-09-23. Matched case-insensitively as a
+# prefix of the chip text, with dashes and commas normalized, so "Credit Card" covers every
+# Credit Card panel. Tearsheets named after a single company are left out on purpose: they
+# would ship a real company name. Pass --dataset="Name" for a one-off, or add a line here
+# when data_library adds a family.
+Credit Card
+POS
+Receipt
+Clickstream
+Foot Traffic
+Digital Advertising
+Mobile App
+App Intelligence
+Music Streaming
+Music Artist & Content Data
+Music Data
+OTT Entertainment Streaming
+Movie Box Office
+Concert Box Office
+Secondary Market Ticket Sales
+Job Openings
+Job Movements
+Census
+Cohort Attributes
+Company Reported Actuals
+Brand Reviews
+Commodity Metrics

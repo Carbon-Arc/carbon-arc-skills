@@ -1,0 +1,10 @@
+/* Carbon Arc report type: open-license (SIL OFL 1.1) faces, bundled so reports render offline.
+   Safe to ship and to embed in client reports; each face's license is in fonts/OFL-<Face>.txt.
+   Never bundle the licensed brand binaries with a report (SKILL.md, "Fonts").
+     Hanken Grotesk  primary sans: headlines, body, figures (one variable file, weights 300-700)
+     DM Mono         eyebrows, labels, legends, table heads (500 only: there is no bold)
+     Doto            optional dot-matrix display word (the brand display face's stand-in)
+   Latin subsets from Google Fonts: English and Western European text, dashes, the minus sign. */
+@font-face { font-family: "Hanken Grotesk"; src: url("fonts/HankenGrotesk-Variable-latin.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Medium-latin.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Doto"; src: url("fonts/Doto-Variable-latin.woff2") format("woff2"); font-weight: 500 700; font-display: swap; }

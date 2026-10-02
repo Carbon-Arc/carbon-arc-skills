@@ -1,0 +1,32 @@
+{
+  "name": "carbon-arc",
+  "owner": {
+    "name": "Carbon Arc",
+    "url": "https://carbonarc.co"
+  },
+  "description": "Carbon Arc plugins for competitive, consumer and audience intelligence.",
+  "plugins": [
+    {
+      "name": "carbon-arc-company-intelligence",
+      "displayName": "Carbon Arc Company Intelligence",
+      "source": "./plugins/carbon-arc-company-intelligence",
+      "description": "Two reports on a company. An insights report for its own strategy or analytics team: where else its customers spend, whether a move is the company or the category, which customers it is losing, what an event did, and who is winning and why. And a pre-print earnings preview of a listed consumer company's quarter, validated by a backtest against its reported history.",
+      "skills": "./skills",
+      "author": {
+        "name": "Carbon Arc"
+      },
+      "repository": "https://github.com/Carbon-Arc/carbon-arc-skills"
+    },
+    {
+      "name": "carbon-arc-talent-intelligence",
+      "displayName": "Carbon Arc Talent Intelligence",
+      "source": "./plugins/carbon-arc-talent-intelligence",
+      "description": "Audience intelligence for talent management, agencies and labels: who an artist really competes with, whether their audience is growing against those peers, who the audience is, which brand partnerships are distinctively theirs, resale demand, and for actors the work itself.",
+      "skills": "./skills",
+      "author": {
+        "name": "Carbon Arc"
+      },
+      "repository": "https://github.com/Carbon-Arc/carbon-arc-skills"
+    }
+  ]
+}
