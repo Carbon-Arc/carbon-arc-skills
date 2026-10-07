@@ -3,8 +3,7 @@ name: talent-live-demand
 description: "Use this skill when someone wants to know about a touring musician's live demand: what fans pay on the resale market, which markets have a fan base big enough to play, and how their live draw compares with their peers, even if they only ask where to tour. It uses resale prices and volumes where the data is deep enough, and says plainly that no available data shows how many tickets a show sold. For a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Validated on an arena-scale pilot. On a mid-tier pilot the panels were too thin and the tab was correctly cut."
+  version: '0.2.1'
 ---
 
 # Live demand: what will the market pay, and where?

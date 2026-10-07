@@ -3,8 +3,7 @@ name: equity-quarter
 description: "Use this skill when someone wants to know what drove a listed consumer company's quarter, on its own fiscal calendar: the week-by-week shape of demand, whether growth came from more transactions or higher tickets, and channel, age-group and regional splits where the data resolves them. For the company against named competitors outside a fiscal-quarter frame, use ca-benchmark; for a full pre-print preview, use this package's earnings preview."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Method validated across six earnings-preview pilots (Aug 2026)."
+  version: '0.2.1'
 ---
 
 # The quarter: what happened, and what drove it?

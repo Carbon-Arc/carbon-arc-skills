@@ -1,7 +1,7 @@
 {
   "name": "carbon-arc-company-intelligence",
-  "version": "0.2.0",
-  "description": "Two reports on a company, using Carbon Arc data. An insights report for the company's own strategy or analytics team: where else its customers spend, whether a move is the company or the category, which customers it is losing, what an event did, and who is winning and why. And a pre-print earnings preview of a listed consumer company's quarter for an analyst: a panel read validated against the company's reported history, plus traffic versus ticket, peers and cross-dataset agreement.",
+  "version": "0.2.1",
+  "description": "Three reports, using Carbon Arc data. An insights report for a company's strategy team: where its customers also spend, whether a move is the company or the category, which customers it is losing, what an event did, and who is winning. A pre-print earnings preview of a listed consumer company's quarter, validated against its reported history. And a category and market report for a small or regional business.",
   "author": {
     "name": "Carbon Arc"
   },

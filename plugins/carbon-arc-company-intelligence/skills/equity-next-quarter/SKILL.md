@@ -3,8 +3,7 @@ name: equity-next-quarter
 description: "Use this skill when someone asks how a listed consumer company's next fiscal quarter is starting: whether a trend is continuing or was a one-off, how the first weeks compare with peers, what management might guide, and what to ask on the call. It reads direction and shape only and never produces a second estimate. It needs at least two full weeks of data from the new quarter. For a full pre-print preview, use this package's earnings preview."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Validated on earnings-preview pilots (Aug 2026). Runs only with at least two settled weeks of the next fiscal quarter."
+  version: '0.2.1'
 ---
 
 # Into the next quarter: is the trend a one-off?

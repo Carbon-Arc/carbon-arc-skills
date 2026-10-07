@@ -3,8 +3,7 @@ name: ca-competitive-set
 description: "Use this skill when someone wants to know who a company really competes with for its customers: where else its customers shop or eat, which brands share its customer base (including ones it isn't tracking), and whether a named rival actually shares a customer. It ranks the brands its customers also spend at. For how the company's demand moves against those rivals, use ca-benchmark; for a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Card route validated on the restaurant and luxury pilots. Browsing route validated on a consumer-appliance pilot 2026-09-21 — the earlier unavailable verdict was a bad filter literal, not a dead lens."
+  version: '0.2.1'
 ---
 
 # Competitive set — where else do our customers spend?

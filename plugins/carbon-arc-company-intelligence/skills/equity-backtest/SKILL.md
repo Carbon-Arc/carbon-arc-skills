@@ -3,8 +3,7 @@ name: equity-backtest
 description: "Use this skill when someone asks whether Carbon Arc's card data can be trusted on one listed consumer company, or wants only the panel's estimate for the current quarter. It scores card spend against the company's own reported history, decides whether the panel tracks it, and where it does, estimates the quarter with the error its track record earned. For a full pre-print preview (estimate plus drivers, peers and cross-checks), use this package's earnings preview instead."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Method validated across six earnings-preview pilots (Aug 2026). The arithmetic is in scripts/backtest.py, tested by scripts/test_backtest.py."
+  version: '0.2.1'
 ---
 
 # Backtest and estimate: can we trust the panel, and what is the quarter tracking at?

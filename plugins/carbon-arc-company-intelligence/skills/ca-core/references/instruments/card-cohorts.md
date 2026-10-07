@@ -7,6 +7,14 @@ weigh; it is a precondition for the chart existing.
 Applies to every cohort cut: **generation (116195-116198)** and **income (355-358)**, in the mix chart,
 the change chart, the summary tile, and anything quoted in prose.
 
+**Income is history only.** The income cuts (355-358, and 66-68 per user and per transaction) sit on
+**Credit Card – US Detailed Panel**, a different panel from the generation cuts, marked Historic with
+history 01/2019 to 8/2025 (`data_library` on insight 355, verified 2026-10-03). Use them only as dated
+history: put the end date on every income chart and never describe an income read as current. The same
+adjustment applies, with the denominator pulled from the same insight on entity 96. To overturn this:
+`search_insights` for card spend by income, then `data_library` on each hit; a topic whose tearsheet is not
+Historic and whose history runs to the current month is a live income cut, and replaces these.
+
 ## The recipe
 
 1. **Pull the brand**, per cohort, for the period: insight **116195** (Credit Card Spend, topic

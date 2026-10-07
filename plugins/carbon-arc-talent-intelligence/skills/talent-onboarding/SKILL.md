@@ -3,8 +3,7 @@ name: talent-onboarding
 description: "Use this skill when someone who works with a musician or actor (a manager, agent or label) is new to Carbon Arc and wants to understand it or get started: 'get started', 'what can this do', 'show me around', or their first session, even if they only say they just signed up. It explains what the data sees about an artist's audience and what it cannot, and starts their first brief. Runs no queries. Not for a company or brand."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Conversational orientation only; no data pulls. Hands off to talent-starter-report."
+  version: '0.2.1'
 ---
 
 # Onboarding

@@ -3,8 +3,7 @@ name: ca-cross-signal
 description: "Use this skill when someone asks whether other data backs up what card spend shows for a company: whether foot traffic, web and app use, advertising or hiring confirm a trend, and where they disagree. It reads each dataset on the company and a peer and reports every disagreement instead of smoothing it over. For a full report or preview, use this package's report skills."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Method validated across six earnings-preview pilots (Aug 2026). The subject is a brand, so setup-brand applies."
+  version: '0.2.1'
 ---
 
 # Cross-signal: do the other datasets agree?

@@ -3,8 +3,7 @@ name: ca-events
 description: "Use this skill when someone asks what a dated event actually did to demand: a price change, launch, promotion, loyalty relaunch or partnership; a competitor's incident; a celebrity endorsement or talent partnership, measured on the partner brand; a calendar effect; or a shift in the economy. It measures the effect against a control group, says whether it was positive, negative or absent, and says plainly when it is too small to detect. Use it even when they only ask whether something worked."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Validated on a rival's food-safety outbreak (Jul-Sep 2026). A single-item menu launch fell below the detection floor on the same panel."
+  version: '0.2.1'
 ---
 
 # Events — what did this event actually do?

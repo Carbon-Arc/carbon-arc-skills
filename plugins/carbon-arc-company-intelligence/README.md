@@ -1,14 +1,16 @@
 # Carbon Arc Company Intelligence
 
-Two reports on a company, each one you can send on: **where it stands against its competitors**, for the
-company's own strategy or analytics team, and **what a listed company's quarter is tracking at before it
-reports**, for an analyst covering it. Each run builds one of them.
+Three reports, each one you can send on: **where a company stands against its competitors**, for the
+company's own strategy or analytics team; **what a listed company's quarter is tracking at before it
+reports**, for an analyst covering it; and **how the category and markets around a small or regional
+business are doing**, for that business's leadership. Each run builds one of them.
 
 | | Skill | The question |
 |---|---|---|
 | | `company-onboarding` | Start here. What this is, which report you want, and how to begin. |
 | | `company-insights-report` | Where does the company stand? One report covering the five workflows below. |
 | | `company-earnings-preview` | What is the quarter tracking at? The full pre-print preview for one ticker. |
+| | `smb-category-report` | How are my category and my markets doing? One report for a small or regional business. |
 
 **In the insights report**
 
@@ -31,6 +33,16 @@ reports**, for an analyst covering it. Each run builds one of them.
 | 5 | `ca-cross-signal` | Do the other datasets agree? |
 | 6 | `equity-next-quarter` | Is the trend a one-off? (with two or more settled weeks of the next quarter) |
 | | `ca-events` | What did a dated event actually do? |
+
+**In the SMB category report**
+
+| | Skill | The question |
+|---|---|---|
+| 1 | `ca-category` | Is it everyone, or just me? How are businesses like mine doing, and is it fewer purchases or smaller ones? |
+| 2 | `ca-macro` | Is the shopper behind the category getting stronger or weaker, and are big-ticket purchases being put off? |
+| 3 | `ca-markets` | How is the market around me doing, and which nearby markets are coming back first? |
+| 4 | `ca-local-costs` | Is my cost pressure local, or everywhere? |
+| 5 | `ca-events` | What did a dated event or promotion actually do? |
 
 `ca-core` sits underneath all of them and is not run directly. It holds the run setup checklist, the
 evidence gates, the client-facing voice and the per-instrument method.
@@ -96,20 +108,21 @@ skills/
 
 This plugin is assembled from Carbon Arc's shared skill library. `carbonarc-mcp`, `carbon-arc-report-v2`,
 `ca-core` and the workflows are shared with other Carbon Arc packages. Each report reads one reader file:
-`readers/corporate.md` for the insights report, `readers/investor.md` for the earnings preview.
+`readers/corporate.md` for the insights report, `readers/investor.md` for the earnings preview,
+`readers/smb-owner.md` for the SMB category report.
 
-## Status
+## What each report covers
 
-**v1 covers own-merchant brands** — companies whose customers pay them directly. Brands sold mainly
-through other people's stores are detected on the first pull and routed to a human, because card sees the
-retailer rather than the product.
+**Insights report:** companies whose customers pay them directly. A brand sold mainly through other
+companies' stores is recognized on the first pull and the run stops there, because card spend shows the
+store, not the product.
 
-Piloted end to end on a restaurant. Beauty, CPG and retailer-mediated categories are designed for and
-not yet validated.
+**Earnings preview:** listed consumer companies whose demand shows up in card spend, one ticker per run.
+Franchisors, wholesale consumer goods and B2B companies are recognized at the first step and the preview
+stops there.
 
-**Earnings preview:** Method validated across six end-to-end previews (restaurants, mass and off-price retail, e-commerce, home
-furnishings), Aug 2026. Works on consumer companies whose demand is visible in card spend; franchisors,
-wholesale consumer goods and B2B names are scoped out at the first step. Not yet run inside this package.
+**SMB category report:** a small or regional business that does not appear in the data by name, or a
+franchisee of a brand that does. A business the data can see gets the insights report instead.
 
 ## Disclaimer
 

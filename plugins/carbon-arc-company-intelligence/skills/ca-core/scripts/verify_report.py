@@ -82,8 +82,17 @@ def main(path, quiet=False):
 
     for m in re.finditer(r"\u2014", text):                       # em dash: never
         hits.append(("PUNCTUATION", f'em dash  ...{text[max(0,m.start()-45):m.end()+45].strip()}...'))
-    for m in re.finditer(r"\s\u2013\s", text):                    # en dash: only when SPACED, i.e. used as a dash
-        hits.append(("PUNCTUATION", f'en dash used as punctuation  ...{text[max(0,m.start()-45):m.end()+45].strip()}...'))
+    # A Carbon Arc catalog name such as "Credit Card \u2013 US Complete Panel" carries a spaced en dash, and
+    # verify_build.py requires that exact name on every source chip. Exempt the dash that follows a
+    # dataset prefix from datasets.txt, so the two gates stop contradicting each other (Oct 2026).
+    dtext = text
+    dsf = pathlib.Path(__file__).with_name("datasets.txt")
+    if dsf.exists():
+        for name in (l.strip() for l in dsf.read_text().splitlines()):
+            if name and not name.startswith("#"):
+                dtext = re.sub(re.escape(name) + r"\s\u2013\s", name + " - ", dtext, flags=re.I)
+    for m in re.finditer(r"\s\u2013\s", dtext):                   # en dash: only when SPACED, i.e. used as a dash
+        hits.append(("PUNCTUATION", f'en dash used as punctuation  ...{dtext[max(0,m.start()-45):m.end()+45].strip()}...'))
 
     for bad, good in BRITISH.items():
         for m in re.finditer(r"\b" + bad + r"\b", text, re.I):

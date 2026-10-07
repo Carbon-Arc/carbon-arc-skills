@@ -3,8 +3,7 @@ name: talent-audience
 description: "Use this skill when someone wants to know who a musician's or actor's audience is: the age, gender and ethnicity mix of a musician's followers, or which generations an actor's titles pull, set beside their peers, even if they only ask how old the fans are. Not for a company's or brand's customers. For which brands that audience favors, use talent-commercial; for a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Musician snapshot validated on two pilots. Actor title-level cohort index validated on one; only the Generation cut survived there."
+  version: '0.2.1'
 ---
 
 # Audience: who is my audience?

@@ -26,3 +26,4 @@ Cohort Attributes
 Company Reported Actuals
 Brand Reviews
 Commodity Metrics
+Vehicle Registration

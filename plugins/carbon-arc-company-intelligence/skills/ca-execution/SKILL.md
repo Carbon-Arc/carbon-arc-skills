@@ -3,8 +3,7 @@ name: ca-execution
 description: "Use this skill when someone wants to know what is behind a winner's growth, whether the winner is the company itself or a competitor: its attention, advertising and distribution against the rest of the set, whether it is outspending or being outspent, and whether its lead is holding. It reads whoever leads the benchmark. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Validated on the restaurant pilot's fast-growing rival (attention and media). Distribution leg unproven — store count and job openings both failed on the restaurant pilot."
+  version: '0.2.1'
 ---
 
 # Execution — who is winning, and what is behind it?

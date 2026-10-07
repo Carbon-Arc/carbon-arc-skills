@@ -10,7 +10,7 @@
       "name": "carbon-arc-company-intelligence",
       "displayName": "Carbon Arc Company Intelligence",
       "source": "./plugins/carbon-arc-company-intelligence",
-      "description": "Two reports on a company. An insights report for its own strategy or analytics team: where else its customers spend, whether a move is the company or the category, which customers it is losing, what an event did, and who is winning and why. And a pre-print earnings preview of a listed consumer company's quarter, validated by a backtest against its reported history.",
+      "description": "Three reports, using Carbon Arc data. An insights report for a company's strategy team: where its customers also spend, whether a move is the company or the category, which customers it is losing, what an event did, and who is winning. A pre-print earnings preview of a listed consumer company's quarter, validated against its reported history. And a category and market report for a small or regional business.",
       "skills": "./skills",
       "author": {
         "name": "Carbon Arc"

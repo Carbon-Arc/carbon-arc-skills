@@ -1,10 +1,9 @@
 ---
 name: company-insights-report
-description: "Use this skill when someone wants to know where a company stands against its competitors: who is winning share, where its customers also spend, which customers it is losing, what an event did, and who is winning and why. It builds one report covering all five, for the company's own strategy or analytics team. Use it for 'build a report', 'starter report' or 'what does the data say about us' on a company, even if they don't mention competitors, and when handed over from company-onboarding. Not for what a listed company's quarter is tracking at or will report: that is company-earnings-preview."
+description: "Use this skill when someone wants to know where a company stands against its competitors: who is winning share, where its customers also spend, which customers it is losing, what an event did, and who is winning and why. It builds one report covering all five, for the company's own strategy or analytics team, including a private or regional company that appears in the data by name. Use it for 'build a report', 'starter report' or 'what does the data say about us' on a company, even if they don't mention competitors, and when handed over from company-onboarding. Not for what a listed company's quarter is tracking at or will report: that is company-earnings-preview. Not for how the category and local markets around a small or regional business are doing: that is smb-category-report."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Piloted end to end on a restaurant brand (own-merchant), Sep 2026."
+  version: '0.2.1'
 ---
 
 # Starter report
@@ -30,21 +29,41 @@ before anything is billed.
 
 ## Before Phase 0: is this the right report?
 
-This package builds two reports on a company, for two different readers, and the choice fixes the reader
-for the whole run. **This report** reads where the company stands against its competitors, for the company's own strategy or analytics team. **`company-earnings-preview`** reads what a listed company's quarter is tracking at before it reports, for an analyst covering it.
+**Route before you invoke `ca-core` or any other skill.** The routing needs the request and, for a named
+business that is not listed, the visibility check below. Visibility separates this report from
+`smb-category-report` only; **a listed company is always visible, so it never settles this report against
+`company-earnings-preview`**: for a listed company the request decides, and "build a report" alone gets
+the question below.
+
+This package builds three reports, for three different readers, and the choice fixes the reader
+for the whole run. **This report** reads where the company stands against its competitors, for the company's own strategy or analytics team. **`company-earnings-preview`** reads what a listed company's quarter is tracking at before it reports, for an analyst covering it. **`smb-category-report`** reads how the category and markets around a small or regional business are doing, for that business's leadership.
 
 - The request is about competitive position: share, shared customers, which customers are leaving, what an event did, who is winning → continue to Phase 0.
 - The request is about a quarter: what it is tracking at, what the company will report, the print, an estimate or guidance → hand off to **`company-earnings-preview`** with the company and the question verbatim. Run
   nothing here first.
-- It could be either (a listed company and "build a report", and nothing more) → ask once, before any
-  call:
+- No business is named and the asker runs a local or regional business ("I own a furniture store"), or
+  the asker is a franchisee, licensee or dealer of a brand → hand off to **`smb-category-report`** with
+  the business and the question verbatim. Run nothing here first.
+- A business that is not listed is named → run the visibility check. It resolves as the business itself →
+  continue to Phase 0, including when the question is about its category or markets. It does not resolve
+  → hand off to **`smb-category-report`** with the business and the question verbatim.
+- A listed company (a ticker, or a company you know is public) and "build a report", "starter report" or
+  "what does the data say", and nothing more → ask once, before any call or skill:
 
   > Do you want to see **where [company] stands against its competitors**, or **what its current quarter
   > is tracking at before it reports**?
 
-  Route on the answer. Ask nothing else to decide it, and do not ask who they are.
+  Ask it as written, with no recommendation between the options. Route on the answer. Ask nothing else to decide it, and do not ask who they are.
 
-Once the report is chosen it is not revisited in the run. A user who wants both gets two runs.
+**The visibility check.** One free `search_entities` lookup on the business's name (`carbonarc-mcp`
+Part A), and nothing else: no other call, no `ca-core`, no reader file. It is the only call routing may
+make. The business that counts is **the one asking**: a franchisee, licensee or dealer of a brand is not
+that brand, so it skips the check and gets `smb-category-report`, with the brand as a comparable.
+
+A question about the company's local markets or its local costs is outside this report's five tabs: say so
+once, in the Gate 1 scope line, and keep the rest of the run.
+
+Once the report is chosen it is not revisited in the run. A user who wants two reports gets two runs.
 
 ---
 
@@ -60,6 +79,9 @@ This is where the run can end, so do it before promising anything.
    This is the **feasibility probe**, and it is the one billed call `carbonarc-mcp` permits before Gate 1
    — named there as the exception, not a violation of it. One call, in the fixed shape its probe rule
    gives, binary outcome.
+   These verdict labels (own-merchant, retailer-mediated, coverage gap, demand route) go in the setup
+   record only, never in a message to the reader: say what they mean ("card spend sees your sales
+   directly").
    - Rows → **own-merchant**. The brand is where the card is swiped. Proceed.
    - No rows, and the brand sells through other companies' stores → **retailer-mediated**. Stop the
      standard report. Say it in client voice: *"Card sees the store, not your product in the basket, so
@@ -67,7 +89,9 @@ This is where the run can end, so do it before promising anything.
      narrower read and hand to a human.
    - No rows, but the brand is where the card is swiped → a **coverage gap**. Probe other live card
      panels only, then proceed on one that returns rows or stop: no live panel, no report
-     (`setup-brand.md`, demand route).
+     (`setup-brand.md`, demand route). If the business is **not listed**, end that stop with one question
+     offering a read of its category and the markets around it (`smb-category-report`) as a new run; the
+     reader changes with the report, so it is never continued in this one.
 
    Running this first is the point. The alternative is a company several tabs in before hearing what
    card cannot see.
@@ -96,7 +120,11 @@ reader. Prefer the set they think of as competitors over the categorical one —
 surfaces something material, add it.
 
 Then **Gate 1**, once, for the whole report (`carbonarc-mcp`): entities, coverage, grain, peers and the
-candidate events. No pull list yet; that comes from the modules.
+candidate events. No pull list yet; that comes from the modules. **When the request asked about the
+business's local markets or local costs** (often a hand-off from `smb-category-report`), Gate 1 ends its
+scope line with one plain sentence saying this report does not read those, in words, never a report or
+skill name: *"This report reads you against your competitors and the category nationally; it does not
+rank your local markets or your local costs."*
 
 ## Phase 3 — run the modules
 
@@ -111,8 +139,7 @@ In dependency order, each contributing **one tab**:
 | 5 | `ca-execution` | What is behind *[the winner]*'s growth? (The winner may be the subject: then *What is behind our lead?*) |
 
 Competitive-set runs first so surfaced peers can join the benchmark. Execution runs last because it needs
-a winner. **`ca-macro` is planned and not yet written**, so there is nothing to offer for it; do not
-mention it to the reader until it ships.
+a winner. There is no macro tab in this report; do not offer one.
 
 ### The loop: each module writes its own rows
 

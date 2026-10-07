@@ -1,6 +1,6 @@
 {
   "name": "carbon-arc-talent-intelligence",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Pre-built workflows for talent management, agencies and labels, using Carbon Arc data: who an artist really competes with, whether their audience is growing against those peers, who the audience is, which brand partnerships are distinctively theirs, what the resale market pays to see them, and for actors, which titles carry them. Produces a shareable brief.",
   "author": {
     "name": "Carbon Arc"

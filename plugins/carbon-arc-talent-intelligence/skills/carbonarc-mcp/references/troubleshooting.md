@@ -50,6 +50,16 @@ so it does not isolate the variable.
 - **A column is not a filter.** The columns an insight returns and the keys it filters on are different
   lists. Take the filter keys from `get_filter_options`, never from the tearsheet's data dictionary, and
   bound a window in code after retrieval when no date filter is offered.
+- **The cut you need may be the entity, not a filter.** When a read crosses two dimensions (an industry
+  in one place, a category in one market) and the insight offers no filter for one of them, swap them:
+  make that dimension the entity and filter on the other. Test each orientation with
+  `get_filter_options` (free) before any billed call: a framework that builds lists its filter keys, one
+  that does not returns *"Could not build framework"*. **`get_entities_from_insight` is not the test**:
+  its listing is incomplete, and an entity missing from it can still build. *(Oct 2026, on a payroll wage
+  read for a small business:)* with the metro as the entity, the same-worker wage insight offered no
+  industry filter; with the industry's category as the entity, it took a metro or state filter and
+  returned clean rows, though that category never appeared in the insight's entity listing. Some
+  categories of the same family still would not build, so test each one you need.
 - **Where `ontology` says coverage exists and the framework disagrees, the call is the suspect first.**
 - **Match the claim to the evidence.** *"This call shape was rejected"* is what you know. *"This asset has
   no data"* is a much larger statement, and ⧗ (real data, wrong access path → SQL) versus ⛔ (no such data)

@@ -51,11 +51,10 @@ already have in Claude, and every query is billed to the account you sign in wit
 
 Installing, updating and everything else: [docs.carbonarc.ai/tutorials/carbon-arc-skills](https://docs.carbonarc.ai/tutorials/carbon-arc-skills).
 
-## Status
+## What the brief covers
 
-**Musicians**: piloted end to end on a mid-tier and an arena-scale artist. **Actors**: piloted on one
-actor; treat the actor workflows as lightly validated. Live demand is resale only: no reachable data
-measures whether a show sold, and every brief says so.
+Musicians and actors. Live demand is read from resale only: no reachable data measures whether a show
+sold, and every brief says so.
 
 This plugin is assembled from Carbon Arc's shared skill library. `carbonarc-mcp`, `carbon-arc-report-v2`,
 `ca-core` and `ca-events` are shared with other Carbon Arc packages; `ca-core/references/readers/agency.md` is what

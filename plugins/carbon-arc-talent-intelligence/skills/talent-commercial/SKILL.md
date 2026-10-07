@@ -3,8 +3,7 @@ name: talent-commercial
 description: "Use this skill when someone wants to know which brand partnerships a musician can actually win: the brands their audience favors more than their peers' audiences do, rather than the list every artist in their lane shares, even if they only ask which brands fit them or what their commercial value is. For an actor, it measures existing partner brands instead. To measure whether one dated partnership moved a brand, use ca-events. For a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Musician differential validated on two pilots. Actor route runs through ca-events on the partner brand, validated on one pilot."
+  version: '0.2.1'
 ---
 
 # Commercial value: which partnerships can I actually win?

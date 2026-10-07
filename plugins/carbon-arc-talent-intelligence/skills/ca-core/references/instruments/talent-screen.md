@@ -1,7 +1,7 @@
 # Instruments: actors and titles
 
-Working call shapes for film and TV. Verified on one actor pilot, Sep 2026, so treat every verdict here
-as lightly validated and re-survey live with `get_insights_from_entity` at `limit=250`.
+Working call shapes for film and TV. Treat them as starting points and re-survey live with
+`get_insights_from_entity` at `limit=250`.
 
 ## Resolve the titles, not just the person
 

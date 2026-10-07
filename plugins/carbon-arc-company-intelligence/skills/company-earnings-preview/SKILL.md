@@ -1,10 +1,9 @@
 ---
 name: company-earnings-preview
-description: "Use this skill when someone wants to know what a listed consumer company's current quarter is tracking at before it reports: an earnings preview, a pre-print read, what they will report, or a quarter-to-date read on a named ticker, even if they only ask how the quarter is going. It builds the full preview: an estimate of the reported metric, checked against the company's own reported history, plus what drove the quarter, peers, shared customers and whether other datasets agree. Not for a company's competitive position with no quarter in view: that is company-insights-report."
+description: "Use this skill when someone wants to know what a listed consumer company's current quarter is tracking at before it reports: an earnings preview, a pre-print read, what they will report, or a quarter-to-date read on a named ticker, even if they only ask how the quarter is going. It builds the full preview: an estimate of the reported metric, checked against the company's own reported history, plus what drove the quarter, peers, shared customers and whether other datasets agree. Not for a company's competitive position with no quarter in view: that is company-insights-report. Not for how the category and local markets around a small or regional business are doing: that is smb-category-report."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Assembled from an earnings-preview skill validated end to end across six consumer names (Aug 2026). One ticker per run; dashboard format only."
+  version: '0.2.1'
 ---
 
 # Earnings preview
@@ -30,12 +29,14 @@ each missing their module's method.)*
 
 ## Before Phase 0: is this the right report?
 
-This package builds two reports on a company, for two different readers, and the choice fixes the reader
-for the whole run. **This report** reads what a listed company's quarter is tracking at before it reports, for an analyst covering it. **`company-insights-report`** reads where a company stands against its competitors, for the company's own strategy or analytics team.
+This package builds three reports, for three different readers, and the choice fixes the reader
+for the whole run. **This report** reads what a listed company's quarter is tracking at before it reports, for an analyst covering it. **`company-insights-report`** reads where a company stands against its competitors, for the company's own strategy or analytics team. **`smb-category-report`** reads how the category and markets around a small or regional business are doing.
 
 - The request is about a quarter: what it is tracking at, what the company will report, the print, an estimate or guidance → continue to Phase 0.
 - The request is about competitive position with no quarter in view: share, shared customers, which customers are leaving, who is winning → hand off to **`company-insights-report`** with the company and the question verbatim. Run
   nothing here first.
+- The request is about the category or local markets around a small or regional business → hand off to
+  **`smb-category-report`**. Run nothing here first.
 - It could be either (a listed company and "build a report", and nothing more) → ask once, before any
   call:
 
@@ -63,7 +64,7 @@ calendar, reporting date or how well the panel fits it. Those come from Phase 1a
 here, they come from memory. *(Observed Sep 2026 in evals: all six runs of this turn stated the
 company's operating model and reporting cadence without a single search.)*
 
-The deliverable is a dashboard. Then anchor the print per `setup-equity.md`: fiscal dates, earnings date,
+The deliverable is a dashboard, one ticker per run; for several tickers, run the preview once for each. Then anchor the print per `setup-equity.md`: fiscal dates, earnings date,
 not already reported, KPI definitions, guidance verbatim.
 
 ## Phase 0.5: scope check and what the panel can see

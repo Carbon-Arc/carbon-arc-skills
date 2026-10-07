@@ -1,10 +1,9 @@
 ---
 name: company-onboarding
-description: "Use this skill when someone is new to Carbon Arc and wants to understand it or get started on a company: 'get started', 'what can this do', 'show me around', or their first session, even if they only say they just signed up. It explains what the data covers and cannot see, works out whether they want a company's competitive position or a listed company's quarter, and starts the right report. Runs no queries. Not for a musician or actor."
+description: "Use this skill when someone is new to Carbon Arc and wants to understand it or get started on a company: 'get started', 'what can this do', 'show me around', or their first session, even if they only say they just signed up. It explains what the data covers and cannot see, works out whether they want a company's competitive position, a listed company's quarter, or how the category and markets around a small or regional business are doing, and starts the right report. Runs no queries. Not for a musician or actor."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Conversational orientation only; no data pulls. Hands off to company-insights-report or company-earnings-preview."
+  version: '0.2.1'
 ---
 
 # Onboarding
@@ -13,11 +12,11 @@ A short, friendly orientation. **Run no queries in this skill.** Nothing here sh
 work: the goal is that someone understands what they have and starts their first report in the same
 sitting.
 
-Keep the whole thing to a few exchanges. If they want to skip ahead, let them: go straight to §6.
+Keep the whole thing to a few exchanges. If they want to skip ahead, let them: go straight to §7.
 
-This package builds two reports on a company, written for different readers. Work out which one this
-person wants first (§2), then say only that report's part (§4 or §5). **Never walk someone through
-both.** The other report's framing is not theirs, and it sets the wrong expectations.
+This package builds three reports, written for different readers. Work out which one this
+person wants first (§2), then say only that report's part (§4, §5 or §6). **Never walk someone through
+more than one.** The other report's framing is not theirs, and it sets the wrong expectations.
 
 ---
 
@@ -44,9 +43,18 @@ first, then come back to this.
 |---|---|---|
 | Their competitive position: who is winning share, where customers also spend, which customers they are losing, what an event did | **`company-insights-report`** | §4 |
 | A listed company's quarter: what it is tracking at, what it will report, how the quarter is shaping up before the print | **`company-earnings-preview`** | §5 |
+| How their category and the markets around them are doing, for a small or regional business (a store, dealer, contractor or local chain) that does not appear in the data by name | **`smb-category-report`** | §6 |
 
-Most answers to §1 settle it. If it could be either (a listed company, and a question that is about
-neither a quarter nor competitors), ask once:
+Most answers to §1 settle it. **For a business that is not listed, whether it appears in the data
+decides between the first and third rows**, and the report you hand off to checks that, not this skill
+(it runs no queries). So do not ask which of the two they want. A local or regional business (an owner,
+a store, a dealer, a franchisee) goes to **`smb-category-report`**; a named company's own team goes to
+**`company-insights-report`**. Either report's routing step looks the business up and passes it to the
+other if needed. For a local business, say so in one line: *"If your business shows up in the data by
+name, I'll read it directly against its competitors instead."* That sentence is the only mention of the
+other report: then say §6, and never describe the two side by side or ask which they want.
+
+If a listed company could want either its position or its quarter, ask:
 
 > Do you want to see **where [company] stands against its competitors**, or **what its current quarter is
 > tracking at before it reports**?
@@ -56,7 +64,8 @@ Ask nothing else to decide it, and do not ask who they are: the question decides
 **What they volunteer about themselves counts, though.** Someone who says they work on the company's own
 strategy, insights or analytics team wants its position: treat it as the insights report, say §4, and do
 not offer the quarter, not even as one of two options. An investor relations team is the one role that
-does not settle it; there, the question still decides.
+does not settle it; there, the question still decides. Someone who runs a local or regional business
+(an owner, a store or dealer manager, a franchisee) gets §6, and never the quarter.
 
 ---
 
@@ -160,7 +169,39 @@ Do not bury this and do not belabor it:
 
 ---
 
-## 6. Start them
+## 6. For a read on the category and markets (`smb-category-report`)
+
+**The framing that matters most, said out loud:**
+
+> You know your own sales, customers and costs better than any panel ever will. Nothing here competes
+> with that. What this adds is everything outside your doors: businesses like yours across the country,
+> your category, the market around you, and what the same months did where you are not.
+
+### What the report answers
+
+> 1. **Is it everyone, or just me?** How businesses like yours are doing nationally, whether it is fewer
+>    customers or smaller tickets, and whether it is getting better or worse.
+> 2. **Is the customer behind my category getting stronger or weaker?** By age group, and whether bigger
+>    purchases are being put off.
+> 3. **How is the market around me doing?** What people living in your area spend in your category, and
+>    which nearby markets are coming back first.
+> 4. **Is my cost pressure local, or everywhere?** What businesses in your industry pay in your metro
+>    area against the state and the country, and how your main input prices are moving.
+> 5. **What did a promotion or event do?** Measured against comparable demand that was not affected, with
+>    an honest statement of what is too small to detect.
+
+### What the data is, and what it cannot see, said once
+
+> These are large samples of real activity, not a census, and I will never present them as anyone's
+> sales, including yours. **Most businesses your size don't appear in the data by name**; if yours
+> doesn't, the report reads businesses like yours, your category and your markets, which is what an "is
+> it just me?" question needs first. And **not every sale touches a card**: where yours are paid another
+> way, I'll use the data that does see them, and say where nothing does. I check all of this before
+> promising anything.
+
+---
+
+## 7. Start them
 
 One clear next step, not a menu. It carries one question: how they want the run to go.
 
@@ -168,16 +209,19 @@ One clear next step, not a menu. It carries one question: how they want the run 
   company. It takes one run, and it shows you which of them are worth coming back to. Heads up: a full
   report takes about 30–40 minutes to build."*
 - **Quarter:** *"Next step is the preview for [ticker]."*
+- **Category:** *"The best place to start is one report on your category and the markets around you. Heads
+  up: it takes about 30 to 40 minutes to build."*
 
-Then, for either:
+Then, for any of them:
 
 > **Do you want to approve each step, or should I run it straight through?** If you approve, I pause four
 > times for your OK: the companies and data I've picked, the list of data I'll pull, which signals hold
 > up, and the findings before I write them up. If I run straight through, I make those calls myself, show
 > each one as I go, and list them in the report's method section. You can stop me at any point.
 
-Their answer starts the run. Hand off to **`company-insights-report`** (position) or
-**`company-earnings-preview`** (quarter) with the company or ticker, their verbatim question, and
+Their answer starts the run. Hand off to **`company-insights-report`** (position),
+**`company-earnings-preview`** (quarter) or **`smb-category-report`** (category) with the company, ticker
+or business and the markets it operates in, their verbatim question, and
 `gates: on` (approve each step) or `gates: waived` (straight through). A yes that picks neither is
 `gates: on`, the default.
 
@@ -191,7 +235,11 @@ report first, because a new user rarely knows which piece they want.
 - **Run no queries.** No entity lookups, no probes, no framework calls. If a question needs data, that
   is a report's job, and saying so is a fine answer.
 - **No internal vocabulary.** No insight numbers, no entity ids, no dataset codenames, no module labels,
-  no rule names. Carbon Arc data names only.
+  no skill or report file names (`smb-category-report`, `company-insights-report` and the like), no rule
+  names. Carbon Arc data names only. Describe a report by the question it answers.
+- **One report per person.** For a local or regional business, say §6 and nothing of §4 or §5 beyond the
+  one-line note that a business the data can see is read against its competitors instead. Never set the
+  reports side by side as options.
 - **Do not promise a specific finding.** You have not looked at their data yet.
 - **Never enumerate the data catalog.** It grows continuously. Examples plus a count, never a list.
 - **Never say "top line", "revenue" or "sales" of a panel figure.** The panel measures a sample of
@@ -201,10 +249,10 @@ report first, because a new user rarely knows which piece they want.
 - **Do not promise an estimate.** Whether one ships depends on the backtest.
 - **Never mention a recommendation, target or trade**, even in passing.
 - **Let them skip.** Someone who says "just run it" should be in the right report within one exchange;
-  if it is not clear which, ask the §2 question and nothing else. "Just run it" also answers the §6
+  if it is not clear which, ask the §2 question and nothing else. "Just run it" also answers the §7
   question: it is `gates: waived`. Say so in one line ("I'll run it straight through; stop me any time
   to check in instead") rather than asking.
 - **Say how long the full report takes before it starts**: about 30–40 minutes. One line, said even when
   they skip ahead, so nobody starts a run expecting an answer in a minute.
-- **Ask the §6 question before every hand-off**, unless they have already answered it. Ask it once; do
+- **Ask the §7 question before every hand-off**, unless they have already answered it. Ask it once; do
   not re-ask inside the run.

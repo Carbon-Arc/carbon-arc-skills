@@ -3,8 +3,7 @@ name: talent-peer-set
 description: "Use this skill when someone wants to know who a musician or actor really competes with for the same audience: their real peers or comps, who shares their fans, and who they should be benchmarked against, even if they only ask who is 'like' them. It builds the peer group from shared playlists, or for an actor from who watches the same titles, and shows it before anything is measured against it. Other talent reads run after it. For a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Musician method validated on a mid-tier and an arena-scale pilot. Actor band is analyst-constructed and validated on one pilot."
+  version: '0.2.1'
 ---
 
 # Peer set: who am I actually competing with for the same audience?

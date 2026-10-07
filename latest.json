@@ -1,10 +1,10 @@
 {
   "carbon-arc-company-intelligence": {
-    "version": "0.2.0",
+    "version": "0.2.1",
     "zip": "https://github.com/Carbon-Arc/carbon-arc-skills/releases/latest/download/carbon-arc-company-intelligence.zip"
   },
   "carbon-arc-talent-intelligence": {
-    "version": "0.2.0",
+    "version": "0.2.1",
     "zip": "https://github.com/Carbon-Arc/carbon-arc-skills/releases/latest/download/carbon-arc-talent-intelligence.zip"
   }
 }

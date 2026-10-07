@@ -277,6 +277,7 @@ search_entities  {"query": "<category name>", "entity_representation": "category
 - **Representations vary.** Competitors do not all resolve as `company` — many brands exist as `service`, `brand` or `retailer`. If a filtered search misses or scores poorly, **re-run without the `entity_representation` filter** and take the best-scoring result.
 - **Sub-brands are first-class entities.** A banner is not its parent. Resolve the entity the analysis is actually about — signals frequently attach to the banner, not the corporate parent, and a parent-level read of a multi-banner company can be structurally meaningless.
 - **Walk the graph.** From the core insights, `get_entities_from_insight` surfaces related entities nobody thought to search for. One hop is usually enough.
+- **A cross of two dimensions can run either way round.** If an insight has no filter for the cut you need (an industry in a metro, a category in a state), make that cut the entity and filter on the geography instead. Check each orientation with `get_filter_options` (free); an entity missing from `get_entities_from_insight` can still build (`references/troubleshooting.md`, "Before declaring an asset unavailable").
 
 ## Discovery protocol
 

@@ -3,8 +3,7 @@ name: ca-core
 description: "Use this skill only when another skill in this package says to invoke it. It holds the rules every Carbon Arc run shares: the run setup checklist, the reader, the evidence gates, the client-facing voice and the subject setups. Never start a user's request with it: for a report or a single read, use this package's onboarding, a report skill or the matching module."
 metadata:
   author: Carbon Arc
-  version: '0.2.0'
-  status: "DRAFT. Brand setup written from the restaurant pilot 2026-09-17 (own-merchant only). Talent setup written from two musician pilots and one actor pilot, Sep 2026."
+  version: '0.2.1'
 ---
 
 # ca-core
@@ -49,7 +48,7 @@ the conversation so every later module can use them.
 
 **Version notice, once per conversation; it never blocks the run.** Fetch
 `https://raw.githubusercontent.com/Carbon-Arc/carbon-arc-skills/main/latest.json`. If
-`latest.json["carbon-arc-talent-intelligence"].version` is newer than 0.2.0, the installed version, tell the user
+`latest.json["carbon-arc-talent-intelligence"].version` is newer than 0.2.1, the installed version, tell the user
 in one line: "Carbon Arc Talent Intelligence vX.Y.Z is available: <zip url>. Installed from the marketplace? It updates
 on its own." If the fetch fails or the version is not newer, say nothing and continue.
 
@@ -60,7 +59,8 @@ Never fill a report from web research or memory instead.
 
 **First, read the setup file for the subject in front of you (§7)**: `references/setup-brand.md` for a
 company or brand, `references/setup-talent.md` for a musician or actor, `references/setup-equity.md` for a
-listed company being previewed against its reported figures. It adds the subject-specific
+listed company being previewed against its reported figures, `references/setup-category.md` for a
+consumer category and the markets it sells in. It adds the subject-specific
 items to the list below and says what Phase 1a collects. A run can touch more than one: a talent brief that
 measures a partner brand reads the brand file for that part; an earnings preview reads the equity file and
 the brand file.
@@ -218,6 +218,12 @@ Rules below; the recipes that compute them are in `references/gating.md`. Six ga
     external anchor (a contradiction with audited figures, a second panel, or a named mechanism). Render
     the tier beside every break claim, count your own break claims (more than two is a fact about the
     analyst), and withdraw a retracted suspicion in the place it was made.
+13. **A local claim needs its parent beside it, on matching windows.** "This market (or segment, or
+    cohort) is different" is a finding only when the geography or group that contains it is not
+    different in the same way. Show the parent's same ratio, from the same pull family and the same
+    months, beside every local one, and compare like windows only (the same months in every period, never
+    a full year against a year to date). *(Oct 2026, on a category pilot: a "this city leans EV" claim
+    compared full-year counts with a partial year; on matching months the state's ratio was the same.)*
 
 ---
 
@@ -246,7 +252,12 @@ as-of date still ships. Every number appears once on a screen, in one sign conve
 **Write in the reader's vocabulary, never this library's.** Words these skills use to instruct you
 (*event register*, *predicted observable*, *pull manifest*, *observability bridge*, *walk-forward*,
 *same-basis*, *Tier 2*) read as a leaked internal document. Translate them ("what could have explained
-the quarter", "if true, we would see", "each quarter estimated using only the quarters before it"). Never
+the quarter", "if true, we would see", "each quarter estimated using only the quarters before it").
+**Never name a skill, module, reader or setup file, or an entity id, in anything the reader sees**
+(saying in plain words who the work is for, as §1 requires, is not naming a file: "I'm writing this for
+you as the store's owner"):
+`ca-category`, `ca-macro`, `smb-category-report`, `company-insights-report`, "retailer 48157". Say what the
+tab or report answers ("is it everyone, or just you?"); an entity is its name. Never
 narrate the method as a virtue. One lede per section, and it contains a fact. Headings are questions or
 claims, never tables of contents. Do not put the page on trial: "What could move this number", not "What
 would make this wrong".
@@ -380,12 +391,14 @@ What differs by subject lives in one file per subject type, in `references/`:
 | A company or brand | `setup-brand.md` | the demand-route gate, peers in tiers with unit growth, fiscal calendar, card and browsing instrument notes |
 | A musician or actor | `setup-talent.md` | the musician / actor branch, the representation to prefer, the peer band, the thickness test, the talent instrument map |
 | A listed company, previewed against its reported figures | `setup-equity.md` (with `setup-brand.md`) | the scope check, what the panel can and cannot see, the ticker roll-up, fiscal-quarter grain, the reported-figures source and the end-date join |
+| A consumer category and its markets | `setup-category.md` (with `setup-brand.md`) | resolving the category neighborhood, how visible the merchant is, channels card under-sees, resident-demand geography, the category instrument map |
 
 Read the one for your subject during §2. Modules that assume a subject type say so in their first lines.
 
 **Each package ships only the setups it covers.** If the file for your subject is not in `references/`,
 this package does not cover that subject type: tell the user so, in client voice, and say which Carbon
-Arc package does (brands and companies, including earnings previews on listed companies: Carbon Arc
+Arc package does (brands and companies, including earnings previews on listed companies and category and market
+reports for small or regional businesses: Carbon Arc
 Company Intelligence; musicians and actors: Carbon Arc Talent Intelligence). Do not improvise a method
 for it.
 
