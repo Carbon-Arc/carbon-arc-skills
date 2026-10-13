@@ -3,7 +3,7 @@ name: talent-starter-report
 description: "Use this skill when someone wants a broad read on a musician or actor: how they are doing against their peers, what the data says about them, or a first brief, even if they only name the artist. It builds one brief covering every talent read the data supports for them: peer set, momentum, audience, brand partnerships, resale demand and, for actors, their titles. Use it for 'build a brief' or 'build a report' on an artist. For a single read, such as only the peer set, use the matching skill. Not for a company or brand."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Talent starter report
@@ -31,15 +31,19 @@ produced tabs that rendered, passed the build checks, and were each missing thei
    over `entertainer`. Watch near-name collisions.
 2. **Survey live.** `get_insights_from_entity` at `limit=250` on each node.
 3. **Branch on what is attached**, not on what the person is famous for: musician, actor, or both.
-4. **Enumerate the assets** (`ca-core` gate 6) for the domains the brief will touch: streaming, social,
+4. **Feasibility probe** (`carbonarc-mcp`, the probe rule): streaming plays on one platform for the
+   subject, at the standard shape (US, month, three months back to today). It is the only billed call
+   before Gate 1.
+5. **Enumerate the assets** (`ca-core` gate 6) for the domains the brief will touch: streaming, social,
    secondary ticket, box office, brand affinity.
-5. **Record the setup** per `ca-core` §2 and `setup-talent.md`, in the conversation.
-6. **Confirm the output format with the reader** (a published brief by default).
+6. **Record the setup** per `ca-core` §2 and `setup-talent.md`, in the conversation.
+7. **Confirm the output format with the reader** (a published brief by default).
 
 ## Phase 1a: research, before any pull
 
 Per `setup-talent.md`: career stage, release history or filmography, touring pattern and venue scale,
-existing partnerships, and candidate events as names and rough dates. Web-verified with source URLs;
+the published US tour dates for a musician who tours, existing partnerships, and candidate events as
+names and rough dates. Web-verified with source URLs;
 nothing from training data, including for household names.
 
 **Public research is woven in, never appended.** Each retrieved event becomes a short ◆ callout inside
@@ -57,9 +61,11 @@ now.
 
 ## Phase 3: the thickness gate
 
-Mark each candidate tab ✅ / ⚠️ / ⛔ and run the thickness test in `setup-talent.md`. Show this as its
-own checkpoint: which tabs the data supports, which it does not, and why, in client voice. Only the
-survivors are built.
+Mark each candidate tab ✅ / ⚠️ / ⛔ from what is attached and from Phase 1a (touring scale, tour dates),
+and show this as its own checkpoint: which tabs the data supports, which it does not, and why, in client
+voice. The thickness test in `setup-talent.md` needs billed volume, so its checks become the **first rows
+of the Gate 2 list** (the series probes); a ⚠️ tab is confirmed or cut at Gate 3. Only the survivors are
+built.
 
 ## Phase 4: run the modules
 
@@ -72,7 +78,7 @@ In this order, each contributing **one tab**:
 | 3 | | `talent-the-work` | Which of my titles carry me, and which hold? |
 | 4 | `talent-audience` | `talent-audience` | Who is my audience? |
 | 5 | `talent-commercial` | `talent-commercial` (routes to `ca-events`) | Which partnerships can I actually win? |
-| 6 | `talent-live-demand` | | What will the resale market pay, and where? |
+| 6 | `talent-live-demand` | | What will the resale market pay, and which shows and markets drive it? |
 | 7 | `ca-events` (optional) | `ca-events` (optional) | What did *[the partnership or release]* actually do? |
 
 For a talent with both careers, run the musician column and add `talent-the-work`.

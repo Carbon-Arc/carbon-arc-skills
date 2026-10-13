@@ -7,7 +7,7 @@ business are doing**, for that business's leadership. Each run builds one of the
 
 | | Skill | The question |
 |---|---|---|
-| | `company-onboarding` | Start here. What this is, which report you want, and how to begin. |
+| | `carbon-arc-onboarding` | Start here. What this is, which plugin and report you want, and how to begin. |
 | | `company-insights-report` | Where does the company stand? One report covering the five workflows below. |
 | | `company-earnings-preview` | What is the quarter tracking at? The full pre-print preview for one ticker. |
 | | `smb-category-report` | How are my category and my markets doing? One report for a small or regional business. |
@@ -96,7 +96,7 @@ skills/
   ca-core/                     setup checklist · gates · voice · instrument method
     references/                readers/ (corporate, investor) · subject setups · gating · defect detection · build notes · instruments/
     scripts/                   verify_report.py · verify_build.py
-  company-onboarding/          orientation, no queries; picks the report
+  carbon-arc-onboarding/       orientation, no queries; picks the plugin and report
   company-insights-report/     orchestrator: the company's position (reader: corporate)
   company-earnings-preview/    orchestrator: the quarter (reader: investor)
   ca-competitive-set/ ca-benchmark/ ca-audience/ ca-events/ ca-execution/ ca-cross-signal/

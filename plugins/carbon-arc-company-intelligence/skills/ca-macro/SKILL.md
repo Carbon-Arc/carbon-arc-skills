@@ -3,7 +3,7 @@ name: ca-macro
 description: "Use this skill when a small or regional business wants to know whether the consumer behind its category is getting stronger or weaker, and for whom: how category spend is moving by income group and age group, whether big-ticket purchases are being put off or traded down, whether the category is losing ground to essentials, and what a dated shift in the economy (a rate move, a tariff, tax refunds arriving late, a fuel price spike) did across categories. It reads the category against the national consumer, adjusted for the panel's mix. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Macro: is the shopper behind the category getting stronger or weaker?

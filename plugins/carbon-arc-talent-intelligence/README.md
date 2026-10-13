@@ -5,13 +5,13 @@ you can send on.
 
 | | Skill | The question |
 |---|---|---|
-| | `talent-onboarding` | Start here. What this is and how to begin. |
+| | `carbon-arc-onboarding` | Start here. What this is, which plugin and report you want, and how to begin. |
 | | `talent-starter-report` | One brief covering every workflow the data supports for your artist. |
 | 1 | `talent-peer-set` | Who am I actually competing with for the same audience? |
 | 2 | `talent-momentum` | Is my audience growing, and is anyone in my lane pulling away? |
 | 3 | `talent-audience` | Who is my audience? |
 | 4 | `talent-commercial` | Which brand partnerships can I actually win? |
-| 5 | `talent-live-demand` | What will the resale market pay to see me, and where? |
+| 5 | `talent-live-demand` | What will the resale market pay to see me, and which shows and markets drive it? |
 | 6 | `talent-the-work` | Which of my titles carry me, and which hold? (actors) |
 | | `ca-events` | What did a partnership, release or event actually do? |
 

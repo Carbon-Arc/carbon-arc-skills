@@ -3,7 +3,7 @@ name: talent-momentum
 description: "Use this skill when someone wants to know whether a musician's or actor's audience is growing or fading, and whether anyone in their lane is pulling away: streams and followers on at least two platforms, read against their peers rather than on their own, and whether a release moved the needle. For a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Momentum: is my audience growing, and is anyone pulling away?
@@ -30,8 +30,8 @@ to the band.
 
 1. **Level-break check**: plot every band member's streaming series on one chart per platform. A
    simultaneous step across everyone is panel expansion; cut the window to after it.
-2. **Streaming plays (292)** for the subject and band, quarterly, `us`, one call per platform, on the
-   constant window. Label the axis as average weekly plays.
+2. **Monthly listeners (292)** for the subject and band, quarterly, `us`, one call per platform, on
+   the constant window. Label the axis as average monthly listeners.
 3. **Social following (256)** for the same set, same window, as a second reach measure.
 4. **Actor**: streaming views (310) on the person for the arc, and on the titles for composition
    (`talent-the-work` carries the per-title reading).
@@ -53,7 +53,7 @@ the chart must show or must not claim still holds.
 
 ## What this module will not say
 
-That plays are listeners. That a one-platform rise is audience growth. That a release-quarter spike is
+That listeners on two platforms add up to one audience. That a one-platform rise is audience growth. That a release-quarter spike is
 momentum. That reach is income.
 
 ## If this module is run on its own

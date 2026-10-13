@@ -3,7 +3,7 @@ name: ca-local-costs
 description: "Use this skill when a small or regional business wants to know whether its cost pressure is local or happening everywhere: what businesses in its industry pay in its metro area against the state and the country, whether wage growth is speeding up or easing, and how the prices of its main inputs are moving. It reads payroll-based wages located at the employer, plus input-price series. It does not see the business's own payroll or costs. For a full report, use this package's SMB category report."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Local costs: is my cost pressure local, or everywhere?

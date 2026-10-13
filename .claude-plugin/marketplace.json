@@ -4,7 +4,7 @@
     "name": "Carbon Arc",
     "url": "https://carbonarc.co"
   },
-  "description": "Carbon Arc plugins for competitive, consumer and audience intelligence.",
+  "description": "Carbon Arc plugins for competitive, consumer, audience and place intelligence.",
   "plugins": [
     {
       "name": "carbon-arc-company-intelligence",
@@ -22,6 +22,17 @@
       "displayName": "Carbon Arc Talent Intelligence",
       "source": "./plugins/carbon-arc-talent-intelligence",
       "description": "Audience intelligence for talent management, agencies and labels: who an artist really competes with, whether their audience is growing against those peers, who the audience is, which brand partnerships are distinctively theirs, resale demand, and for actors the work itself.",
+      "skills": "./skills",
+      "author": {
+        "name": "Carbon Arc"
+      },
+      "repository": "https://github.com/Carbon-Arc/carbon-arc-skills"
+    },
+    {
+      "name": "carbon-arc-location-intelligence",
+      "displayName": "Carbon Arc Location Intelligence",
+      "source": "./plugins/carbon-arc-location-intelligence",
+      "description": "Two reports, using Carbon Arc data. A place report: how a metro area's economy is doing against comparable metro areas, or what a dated shock such as a storm or a plant closure did to it, read from two sides: what the people who live there spend and on what, and what happens at its locations. And a venue report: how an arena, stadium or theater's ticket market is doing against comparable venues, which shows and games drive it, and what its events do to the blocks around it.",
       "skills": "./skills",
       "author": {
         "name": "Carbon Arc"

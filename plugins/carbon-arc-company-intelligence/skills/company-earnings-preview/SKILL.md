@@ -3,7 +3,7 @@ name: company-earnings-preview
 description: "Use this skill when someone wants to know what a listed consumer company's current quarter is tracking at before it reports: an earnings preview, a pre-print read, what they will report, or a quarter-to-date read on a named ticker, even if they only ask how the quarter is going. It builds the full preview: an estimate of the reported metric, checked against the company's own reported history, plus what drove the quarter, peers, shared customers and whether other datasets agree. Not for a company's competitive position with no quarter in view: that is company-insights-report. Not for how the category and local markets around a small or regional business are doing: that is smb-category-report."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Earnings preview

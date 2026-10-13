@@ -3,7 +3,7 @@ name: ca-core
 description: "Use this skill only when another skill in this package says to invoke it. It holds the rules every Carbon Arc run shares: the run setup checklist, the reader, the evidence gates, the client-facing voice and the subject setups. Never start a user's request with it: for a report or a single read, use this package's onboarding, a report skill or the matching module."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # ca-core
@@ -48,7 +48,7 @@ the conversation so every later module can use them.
 
 **Version notice, once per conversation; it never blocks the run.** Fetch
 `https://raw.githubusercontent.com/Carbon-Arc/carbon-arc-skills/main/latest.json`. If
-`latest.json["carbon-arc-company-intelligence"].version` is newer than 0.2.1, the installed version, tell the user
+`latest.json["carbon-arc-company-intelligence"].version` is newer than 0.3.0, the installed version, tell the user
 in one line: "Carbon Arc Company Intelligence vX.Y.Z is available: <zip url>. Installed from the marketplace? It updates
 on its own." If the fetch fails or the version is not newer, say nothing and continue.
 
@@ -60,7 +60,9 @@ Never fill a report from web research or memory instead.
 **First, read the setup file for the subject in front of you (§7)**: `references/setup-brand.md` for a
 company or brand, `references/setup-talent.md` for a musician or actor, `references/setup-equity.md` for a
 listed company being previewed against its reported figures, `references/setup-category.md` for a
-consumer category and the markets it sells in. It adds the subject-specific
+consumer category and the markets it sells in, `references/setup-location.md` for a place (a metro area
+and its economy), `references/setup-venue.md` for a venue (an arena, stadium, theater or convention
+center). It adds the subject-specific
 items to the list below and says what Phase 1a collects. A run can touch more than one: a talent brief that
 measures a partner brand reads the brand file for that part; an earnings preview reads the equity file and
 the brand file.
@@ -392,6 +394,8 @@ What differs by subject lives in one file per subject type, in `references/`:
 | A musician or actor | `setup-talent.md` | the musician / actor branch, the representation to prefer, the peer band, the thickness test, the talent instrument map |
 | A listed company, previewed against its reported figures | `setup-equity.md` (with `setup-brand.md`) | the scope check, what the panel can and cannot see, the ticker roll-up, fiscal-quarter grain, the reported-figures source and the end-date join |
 | A consumer category and its markets | `setup-category.md` (with `setup-brand.md`) | resolving the category neighborhood, how visible the merchant is, channels card under-sees, resident-demand geography, the category instrument map |
+| A place: a metro area and its economy | `setup-location.md` | resolving the place, the kind of run, choosing comparable metro areas from public records, the gap and its normal range, the external level check, category breaks and the brand basket, the metro instrument map |
+| A venue: an arena, stadium, theater or convention center | `setup-venue.md` | resolving the venue, its ZIP and its tenants, two comparison groups and the ring, the ticket floor, the venue instrument map |
 
 Read the one for your subject during §2. Modules that assume a subject type say so in their first lines.
 
@@ -399,7 +403,8 @@ Read the one for your subject during §2. Modules that assume a subject type say
 this package does not cover that subject type: tell the user so, in client voice, and say which Carbon
 Arc package does (brands and companies, including earnings previews on listed companies and category and market
 reports for small or regional businesses: Carbon Arc
-Company Intelligence; musicians and actors: Carbon Arc Talent Intelligence). Do not improvise a method
+Company Intelligence; musicians and actors: Carbon Arc Talent Intelligence; places such as metro areas, and venues: Carbon Arc Location
+Intelligence). Do not improvise a method
 for it.
 
 ---

@@ -3,7 +3,7 @@ name: talent-the-work
 description: "Use this skill when someone wants to know which of an actor's titles, or a musician's albums, carry them and which hold up: box office per title, how streaming holds over time, whether a new project or re-release revived the back catalog, which audiences each title draws, and what else the same viewers watch, even if they only ask which films worked. For a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # The work: which titles carry me, and which hold?

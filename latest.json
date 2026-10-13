@@ -1,10 +1,14 @@
 {
   "carbon-arc-company-intelligence": {
-    "version": "0.2.1",
+    "version": "0.3.0",
     "zip": "https://github.com/Carbon-Arc/carbon-arc-skills/releases/latest/download/carbon-arc-company-intelligence.zip"
   },
+  "carbon-arc-location-intelligence": {
+    "version": "0.3.0",
+    "zip": "https://github.com/Carbon-Arc/carbon-arc-skills/releases/latest/download/carbon-arc-location-intelligence.zip"
+  },
   "carbon-arc-talent-intelligence": {
-    "version": "0.2.1",
+    "version": "0.3.0",
     "zip": "https://github.com/Carbon-Arc/carbon-arc-skills/releases/latest/download/carbon-arc-talent-intelligence.zip"
   }
 }

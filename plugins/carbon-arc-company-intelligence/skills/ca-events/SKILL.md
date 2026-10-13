@@ -3,7 +3,7 @@ name: ca-events
 description: "Use this skill when someone asks what a dated event actually did to demand: a price change, launch, promotion, loyalty relaunch or partnership; a competitor's incident; a celebrity endorsement or talent partnership, measured on the partner brand; a calendar effect; or a shift in the economy. It measures the effect against a control group, says whether it was positive, negative or absent, and says plainly when it is too small to detect. Use it even when they only ask whether something worked."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Events — what did this event actually do?
@@ -16,9 +16,11 @@ The subject is a brand, so the setup is **`references/setup-brand.md`**, even in
 **Every event date is web-verified and carries its source URL**, including for famous brands and famous
 incidents. Show the date to the reader and ask them to confirm before it becomes a chart marker.
 
-The **Carbon Arc event ontology is discoverable but was not executable** on the pilot: the event resolved
-and `get_insights_from_event` returned a listing insight, but every framework pull against it failed. Use
-the ontology to know an event family exists; get the dates from Phase 1a.
+**The Carbon Arc event ontology never dates an event for this module.** Get every date from Phase 1a.
+*(On the restaurant pilot an event resolved and listed an insight, but every framework pull against it
+failed. Event-as-entity ticket pulls did run on the arena pilot (`carbonarc-mcp` Part A, the one
+exception); they measure ticket sales per show, not an event's effect, and do not change where dates
+come from.)*
 
 ## The five families — this is the framework, do not invent a sixth
 

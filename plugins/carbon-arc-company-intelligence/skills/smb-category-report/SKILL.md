@@ -3,7 +3,7 @@ name: smb-category-report
 description: "Use this skill when a small or regional business (a store, dealer, contractor or local chain) wants to know how its category and the markets around it are doing: whether its softness is category-wide or lost share, whether the shopper behind the category is getting stronger or weaker, how the market around it is doing, whether its cost pressure is local, and what a dated event or promotion did. It builds one report for the business's own leadership, for a business that does not appear in the data by name; one the data can see gets company-insights-report. Not for where a named company stands against its competitors: that is company-insights-report. Not for what a listed company's quarter is tracking at: that is company-earnings-preview."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # SMB category and market report

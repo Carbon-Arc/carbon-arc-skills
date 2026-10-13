@@ -22,6 +22,9 @@ Web-searched and cited, never from training data, including for household names:
 - **release history** (albums, singles, features) or **filmography**, with dates
 - **touring pattern and typical venue scale**, which predicts whether the ticket panels will be thick
   enough to use at all
+- **for a musician, the published US tour dates** (date, city, venue) for every tour window the live tab
+  will read, from the artist's or promoter's list or another public record; every show row is matched to
+  them (`talent-live-demand`)
 - **existing brand partnerships**, which both validate an affinity read and rule brands out as taken
 
 Candidate events at low resolution across five families adapted for talent: **release**, **live**,
@@ -34,7 +37,7 @@ algorithmic placement.
 
 | | Musician (`artist`) | Actor (`actor`) |
 |---|---|---|
-| Reach | streaming plays (292), social following (256) | streaming views (310) |
+| Reach | monthly listeners (292), social following (256) | streaming views (310) |
 | Revenue-proximate | resale tickets only (see the live-music limit) | box office (263 / 264 / 26 / 25) |
 | Audience | follower demographics (141), a snapshot | title-level cohort index (72855 / 72856) |
 | Peer instrument | playlist co-occurrence (142 / 143 / 144) | **none on the person**; cross-viewing (192715 / 192716) on their titles |
@@ -92,7 +95,8 @@ ones.
 
 | Tab | Check first | Floor |
 |---|---|---|
-| Any ticket tab: **volume** | resale tickets per period | kill it if periods are single or low-double digits *(the mid-tier pilot had about 139 resale tickets across five years; the price series was noise)* |
+| Any ticket tab: **volume** | resale tickets per period, on the live by-artist series | kill it if periods are single or low-double digits *(the mid-tier pilot had about 139 resale tickets across five years; the price series was noise)* |
+| Show-level live read | event rows for the artist's published dates (`carbonarc-mcp` `references/event-rows.md`) | state "N of M published shows"; at zero, the live tab reads tours and markets from the by-artist series |
 | Any ticket tab: **continuity** | which periods return rows at all | ticket panels only see touring periods, so an arena act can clear volume with two populated windows in five years; that is a **tour comparison**, never a trend line |
 | Peer set | shared playlist count | top ~200 by shared count, then affinity |
 | Brand affinity | how many band members have data on each brand | print `n` per brand |
@@ -112,15 +116,25 @@ brief can say what the resale market paid and where; it cannot say a market was 
 absolute terms, and resale volume must never stand in for demand. Name the census as a known gap in
 Sources & method.
 
+## The concert event cut (named here, so the exception applies)
+
+For a musician, `talent-live-demand` reads the resale panel **show by show** through the event-as-entity
+insights (`carbonarc-mcp` Part A, "One exception"): the **concert** category, Entity Events, either on the
+`artist` node or with no entity and the artist's own parent event ids. Call shapes in `talent-music.md`;
+finding parent events, reading rows, the schedule match and the nesting check in `carbonarc-mcp`
+`references/event-rows.md`. The same insights on **venue** nodes give the other concerts at a venue, used
+only as a benchmark. Actors have no show rows; this cut is for musicians only.
+
 ## Panel quirks every talent module inherits
 
-- **Insight 292 is mislabeled**: it returns streaming *plays*, not listeners. Never write "listeners".
-  Only `mean` aggregates, so a quarterly figure is average weekly plays; say so on the axis.
+- **Insight 292 is Monthly Listeners**: use the insight's own name in every label, whatever the
+  response's column is called. Only `mean` aggregates, so a quarterly figure is average monthly
+  listeners; say so on the axis. Listeners on two platforms are not one audience; never add them.
 - **Streaming history starts in 2024.**
 - **A simultaneous step across every artist is panel expansion, not audience.** One platform stepped up
   about 4–6x between 2025Q1 and 2025Q2 for every artist at once; the constant basis for that platform
   starts 2025Q2. Plot the whole band on one chart before trending anything.
-- **The two resale panels date differently**: the thick one on the *sale*, the thin one on the *event*.
-  Never align them on time without accounting for it.
+- **The resale families date differently**: the dynamic-price family on the *sale*, the live by-artist
+  series and the show rows on the *event*. Never align them on time without accounting for it.
 - **Cohort-type insights (140–144) fail with an opaque configuration error if `date_resolution` is
   passed at all.** Omit it.

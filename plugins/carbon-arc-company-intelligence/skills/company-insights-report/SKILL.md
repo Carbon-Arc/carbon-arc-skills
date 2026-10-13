@@ -1,9 +1,9 @@
 ---
 name: company-insights-report
-description: "Use this skill when someone wants to know where a company stands against its competitors: who is winning share, where its customers also spend, which customers it is losing, what an event did, and who is winning and why. It builds one report covering all five, for the company's own strategy or analytics team, including a private or regional company that appears in the data by name. Use it for 'build a report', 'starter report' or 'what does the data say about us' on a company, even if they don't mention competitors, and when handed over from company-onboarding. Not for what a listed company's quarter is tracking at or will report: that is company-earnings-preview. Not for how the category and local markets around a small or regional business are doing: that is smb-category-report."
+description: "Use this skill when someone wants to know where a company stands against its competitors: who is winning share, where its customers also spend, which customers it is losing, what an event did, and who is winning and why. It builds one report covering all five, for the company's own strategy or analytics team, including a private or regional company that appears in the data by name. Use it for 'build a report', 'starter report' or 'what does the data say about us' on a company, even if they don't mention competitors, and when handed over from carbon-arc-onboarding. Not for what a listed company's quarter is tracking at or will report: that is company-earnings-preview. Not for how the category and local markets around a small or regional business are doing: that is smb-category-report."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Starter report

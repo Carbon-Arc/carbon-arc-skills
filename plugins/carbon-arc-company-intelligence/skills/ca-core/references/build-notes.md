@@ -67,7 +67,7 @@ function stackBarFillLabels(id) {
 |---|---|---|
 | `refLabel` | Collides with a series end label when a series happens to end near the reference line. Passes on five charts, fails on the sixth | **Do not pass `refLabel`** on any chart with end labels. The line still draws |
 | `dy` end-label nudge | Tuned to the FINAL values. Two series that swapped order when the window was extended went from separated to overlapping | Re-check every nudge whenever the window moves or the series changes |
-| `hbars` label spill | A bar just over the 54px `inside` threshold draws its label right-aligned inside and it spills left over the row name | Keep `disp` to a bare number on short bars. Units go in the subcaption |
+| `hbars` label spill | Fixed Oct 2026: `hbars` now puts a label inside a bar only when the label fits (about 7.4px a character plus padding). A label that falls outside can still run past the card on a long bar in a narrow card | Keep `disp` short (a number, plus a count in brackets at most); units and definitions go in the subcaption |
 | `hbars` gutter | Fixed 132px. Row names past ~18 characters clip | Shorten brand names |
 | Peer tiers | The 4th series color is also the loss color, so a 4th tier reads as "falling" | Cap at three tiers |
 

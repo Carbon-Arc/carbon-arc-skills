@@ -3,7 +3,7 @@ name: talent-audience
 description: "Use this skill when someone wants to know who a musician's or actor's audience is: the age, gender and ethnicity mix of a musician's followers, or which generations an actor's titles pull, set beside their peers, even if they only ask how old the fans are. Not for a company's or brand's customers. For which brands that audience favors, use talent-commercial; for a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Audience: who is my audience?
@@ -27,8 +27,10 @@ national denominator; say what the mix is instead.
 
 ## Run order
 
-1. **Musician**: follower demographics (141), `ww`, for the subject and every band member with data.
-   Print `n` of band members with data.
+1. **Musician**: follower demographics (141), `ww`, one demographic value per call
+   (`talent-music.md`, "Follower demographics"), for the subject and every band member with data. Print
+   `n` of band members with data. Run the defect sweep there before any chart; a cut that fails it is
+   dropped, and the tab may shrink to a line in another tab.
 2. **Actor**: cohort index on each title, one representation at a time, starting with Generation. Drop
    thin cohorts (those born before 1928) before charting.
 3. **Look for the cross-check with the commercial tab.** When an unusual skew here explains an affinity

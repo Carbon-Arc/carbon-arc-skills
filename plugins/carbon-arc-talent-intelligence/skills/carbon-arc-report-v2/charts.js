@@ -154,7 +154,7 @@
     });
     svg.appendChild(E("line", { x1: x0, x2: x0, y1: mT + 4, y2: H - mB - 4, stroke: T.hair2, "stroke-width": 1.5, "stroke-dasharray": "2 4" }));
     rows.forEach((r, i) => {
-      const cy = mT + i * rh, h = rh - 18, bw = Math.abs(x(r.value) - x0), bx = r.value < 0 ? x(r.value) : x0, inside = bw > 54;
+      const cy = mT + i * rh, h = rh - 18, bw = Math.abs(x(r.value) - x0), bx = r.value < 0 ? x(r.value) : x0, lab = r.disp || fmtPct(r.value), inside = bw > String(lab).length * 7.4 + 16;
       const fill = r.cls ? col(r.cls) : (r.value < 0 ? T.loss : T.gain);
       const bar = E("rect", { x: bx, y: cy + 9, width: Math.max(bw, 2), height: h, rx: 5, fill });
       bar.style.transformOrigin = (r.value < 0 ? x0 : x0) + "px center";
@@ -164,7 +164,7 @@
       svg.appendChild(E("text", {
         x: inside ? bx + bw - 10 : bx + bw + 9, y: cy + rh / 2 + 2, "text-anchor": inside ? "end" : "start",
         "font-family": mono, "font-size": "12px", "font-weight": 600, fill: inside ? "#151515" : T.ink
-      }, r.disp || fmtPct(r.value)));
+      }, lab));
     });
     mountSvg(mount, svg);
   }

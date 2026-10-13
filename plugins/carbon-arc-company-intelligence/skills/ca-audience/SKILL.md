@@ -3,7 +3,7 @@ name: ca-audience
 description: "Use this skill when someone wants to know which customers a brand is winning or losing by age: how its spend splits across generations, how that mix is moving, and how it compares with a competitor's, even if they only ask about Gen Z or younger customers. It reads card spend by generation, adjusted for the panel's age skew, and income or gender where the data covers them. Not for a musician's or actor's fans. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Audience — which customers are we losing?

@@ -3,7 +3,7 @@ name: ca-markets
 description: "Use this skill when a small or regional business wants to know which markets are recovering first in its category, how its own markets compare with the rest of the country, or where demand is strong relative to the stores already serving it. It ranks states and metro areas on the category's demand, its recovery and the signals that tend to lead it, such as vehicle registrations or local wages, and shows where demand outruns supply. It does not choose a site or forecast a store's sales, and it is not for a yes-or-no decision such as whether to open another location: it ranks markets, the business decides. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Markets: which markets are coming back first, and where is there room?

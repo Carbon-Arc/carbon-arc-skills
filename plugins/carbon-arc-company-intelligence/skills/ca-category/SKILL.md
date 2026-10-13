@@ -3,7 +3,7 @@ name: ca-category
 description: "Use this skill when a small or regional business wants to know whether what it is feeling is happening to everyone in its line of business: how comparable businesses and the category are trending, whether a decline is fewer purchases or smaller ones, and which nearby categories are winning the same customers, including when the business does not appear in the data by name. When a named company that appears in the data asks whether its own move is the company or the category, use ca-benchmark instead. For a full report, use this package's SMB category report."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Category: is it everyone, or just me?

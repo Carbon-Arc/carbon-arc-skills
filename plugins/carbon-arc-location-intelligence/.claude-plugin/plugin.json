@@ -1,0 +1,10 @@
+{
+  "name": "carbon-arc-location-intelligence",
+  "version": "0.3.0",
+  "description": "Two reports, using Carbon Arc data. A place report: how a metro area's economy is doing against comparable metro areas, or what a dated shock such as a storm or a plant closure did to it, read from two sides: what the people who live there spend and on what, and what happens at its locations. And a venue report: how an arena, stadium or theater's ticket market is doing against comparable venues, which shows and games drive it, and what its events do to the blocks around it.",
+  "author": {
+    "name": "Carbon Arc"
+  },
+  "homepage": "https://docs.carbonarc.ai/tutorials/carbon-arc-skills",
+  "repository": "https://github.com/Carbon-Arc/carbon-arc-skills"
+}

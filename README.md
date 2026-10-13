@@ -8,6 +8,7 @@ numbers must pass before they are shown, and how to build a report you can send 
 |---|---|---|
 | **Carbon Arc Company Intelligence** (`carbon-arc-company-intelligence`) | A company's strategy or analytics team, and analysts covering listed consumer companies | An **insights report** on where a company stands against its competitors: where its customers also spend, whether a move is the company or the category, which customers it is losing, what an event did, and who is winning and why. And an **earnings preview** of a listed company's current quarter, scored against its own reported history. |
 | **Carbon Arc Talent Intelligence** (`carbon-arc-talent-intelligence`) | Managers, agents and labels | A **talent brief** on a musician or actor: who they really compete with, whether their audience is growing against those peers, who the audience is, which brand partnerships are distinctively theirs, resale demand and, for actors, which titles carry them. |
+| **Carbon Arc Location Intelligence** (`carbon-arc-location-intelligence`) | Venue operators, and economic development, tourism and market research teams | A **venue report** on an arena, stadium or theater: how its ticket market is doing against comparable venues, and what its events do to the blocks around it. And a **place report** on a metro area: how its economy is doing against comparable metro areas, or what a dated shock such as a storm or a plant closure did to it, read from what residents spend and what happens at its locations. |
 
 Full documentation: [docs.carbonarc.ai/tutorials/carbon-arc-skills](https://docs.carbonarc.ai/tutorials/carbon-arc-skills).
 
@@ -40,10 +41,11 @@ is released.
 /plugin marketplace add Carbon-Arc/carbon-arc-skills
 /plugin install carbon-arc-company-intelligence@carbon-arc
 /plugin install carbon-arc-talent-intelligence@carbon-arc
+/plugin install carbon-arc-location-intelligence@carbon-arc
 ```
 
-**Zip, if you can't add a marketplace:** download `carbon-arc-company-intelligence.zip` or
-`carbon-arc-talent-intelligence.zip` from the
+**Zip, if you can't add a marketplace:** download `carbon-arc-company-intelligence.zip`,
+`carbon-arc-talent-intelligence.zip` or `carbon-arc-location-intelligence.zip` from the
 [latest release](https://github.com/Carbon-Arc/carbon-arc-skills/releases/latest) and upload it as a
 plugin. A zip install does not update itself; the skills tell you in one line when a newer version is
 available.
@@ -58,6 +60,7 @@ Start a new conversation and say what you want in plain language. You don't need
 - **A company's position:** "Build a report on *<company>* against its competitors."
 - **A quarter before it reports:** "What is *<ticker>*'s current quarter tracking at?"
 - **An artist:** "Build a brief on *<artist>*."
+- **A venue or a place:** "Build a report on *<arena>*." or "How is *<city>*'s economy doing?"
 - **One question only:** "Did *<company>*'s price change work?" or "Who is *<artist>*'s audience?" runs
   just that workflow.
 
@@ -68,7 +71,7 @@ tokens, charged to the account you signed in with.
 ## What's in this repo
 
 ```
-.claude-plugin/marketplace.json   the marketplace: lists both plugins
+.claude-plugin/marketplace.json   the marketplace: lists the plugins
 plugins/<plugin>/                 each plugin: its manifest, README and skills/
 latest.json                       the current version of each plugin, read by zip installs
 ```

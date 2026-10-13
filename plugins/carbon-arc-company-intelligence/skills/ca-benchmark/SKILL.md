@@ -3,7 +3,7 @@ name: ca-benchmark
 description: "Use this skill when someone wants to know whether a consumer brand's move is its own or the whole category's: who is winning or losing share, how it compares with named rivals, and whether it is selling less or selling cheaper, even if they only ask why their numbers are down. It reads the brand's demand against named competitors, split into transactions and average ticket. For what drove one fiscal quarter of a listed company, use equity-quarter. When the category itself is the subject, or the business does not appear in the data by name, use ca-category. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.2.1'
+  version: '0.3.0'
 ---
 
 # Benchmark — is this us or the category?
