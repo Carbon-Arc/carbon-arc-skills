@@ -3,7 +3,7 @@ name: talent-momentum
 description: "Use this skill when someone wants to know whether a musician's or actor's audience is growing or fading, and whether anyone in their lane is pulling away: streams and followers on at least two platforms, read against their peers rather than on their own, and whether a release moved the needle. For a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Momentum: is my audience growing, and is anyone pulling away?

@@ -8,7 +8,7 @@ business are doing**, for that business's leadership. Each run builds one of the
 | | Skill | The question |
 |---|---|---|
 | | `carbon-arc-onboarding` | Start here. What this is, which plugin and report you want, and how to begin. |
-| | `company-insights-report` | Where does the company stand? One report covering the five workflows below. |
+| | `company-insights-report` | Where does the company stand? One report covering the six workflows below. |
 | | `company-earnings-preview` | What is the quarter tracking at? The full pre-print preview for one ticker. |
 | | `smb-category-report` | How are my category and my markets doing? One report for a small or regional business. |
 
@@ -19,8 +19,9 @@ business are doing**, for that business's leadership. Each run builds one of the
 | 1 | `ca-competitive-set` | Where else do our customers spend? |
 | 2 | `ca-benchmark` | Is this us or the category? |
 | 3 | `ca-audience` | Which customers are we losing? |
-| 4 | `ca-events` | What did an event actually do? |
-| 5 | `ca-execution` | Who is winning, and what is behind it? |
+| 4 | `ca-retention` | Are we keeping the customers we win? |
+| 5 | `ca-events` | What did an event actually do? |
+| 6 | `ca-execution` | Who is winning, and what is behind it? |
 
 **In the earnings preview**
 
@@ -99,7 +100,7 @@ skills/
   carbon-arc-onboarding/       orientation, no queries; picks the plugin and report
   company-insights-report/     orchestrator: the company's position (reader: corporate)
   company-earnings-preview/    orchestrator: the quarter (reader: investor)
-  ca-competitive-set/ ca-benchmark/ ca-audience/ ca-events/ ca-execution/ ca-cross-signal/
+  ca-competitive-set/ ca-benchmark/ ca-audience/ ca-retention/ ca-events/ ca-execution/ ca-cross-signal/
   equity-backtest/ equity-quarter/ equity-next-quarter/
   carbonarc-mcp/               the four gates, playbook, non-negotiables
     references/                pull sizing · response handling · troubleshooting · data state

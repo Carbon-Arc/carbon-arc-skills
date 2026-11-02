@@ -74,7 +74,7 @@ and it must be **sized**, not caveated.
 | **Works well** | specialty and apparel retail, company-operated restaurants, e-commerce and direct-to-consumer, travel and booking, consumer subscriptions, fitness, grocery and convenience banners, consumer fintech | Proceed |
 | **Works with a named adjustment** | mixed franchise and company-operated; international-heavy; marketplace or GMV names; heavy gift-card or deferred-revenue seasonality | Anchor on the observable segment (company-operated sales, the US or Americas segment, systemwide sales); say what is out of reach |
 | **Pure franchisor** | royalty-based revenue | Preview systemwide sales or same-store sales if reported, labeled as such; never consolidated revenue |
-| **Wholesale consumer-goods brand** | sold through other retailers | Stop: card sees the retailer, not the product. Say so in client voice; the demand route gate in `setup-brand.md` settles it |
+| **Wholesale consumer-goods brand** | sold through other retailers | Stop: card sees the retailer, not the product, and the preview reads card only. Say so in client voice; the competitive report can read the brand on the data attached to it (`setup-brand.md`, "The data map") |
 | **B2B or enterprise** | no consumer card leg | Stop and say so |
 | **No clean panel tag** | brand volume sits outside its own tag | Stop unless a validated alternative exists |
 

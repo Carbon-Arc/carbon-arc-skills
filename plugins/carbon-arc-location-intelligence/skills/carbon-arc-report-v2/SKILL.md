@@ -32,7 +32,7 @@ Never ship a report shell with a single nav item.
 |---|---|
 | `carbon-arc-report.md` | **The style spec. Read it fully before writing markup.** Grounds, type roles, radii, component recipes, motion, rigor conventions. |
 | `template.html` | Working skeleton — rail, routing, one summary and one content section. Start here; do not rebuild from scratch. |
-| `charts.js` | The default chart kit: `CA_CHARTS.lineChart / hbars / stackBar / spark`. Do not restyle these four; add other chart types beside them (see "Beyond the default kit"). |
+| `charts.js` | The default chart kit: `CA_CHARTS.lineChart / hbars / stackBar / spark / triangle`. Do not restyle these five; add other chart types beside them (see "Beyond the default kit"). |
 | `render.js` | Reference renderers from the example report: KPI tiles, rollup rows, tables. Rewrite the per-section functions; keep the tile/row/table builders. |
 | `data.example.js` | The example report's data, showing the expected shape. |
 | `brief/brief.example.html` | **Brief format**: a worked single-page example (a brand after a food-safety outbreak). Copy it and replace the content. |
@@ -93,7 +93,7 @@ Never ship a report shell with a single nav item.
 
 ## Beyond the default kit
 
-Pick the form that shows the finding best. The four charts in `charts.js` and
+Pick the form that shows the finding best. The five charts in `charts.js` and
 the chart lists in each module are proven defaults, not a menu. Where another
 form makes the point faster, use it: a scatter for two measures across many
 brands, a map or state tile grid for anything geographic, a slope chart for
@@ -167,6 +167,10 @@ alternative does not reintroduce the failure the default avoids.
 - Action titles on every chart; the answer sits at the top of the page.
 - No value label or annotation sits on a reference line, gridline, mark or another label. Move the label,
   never the line: a zero line struck through a figure reads as a different figure.
+- A turn the eye goes to on a time-series chart carries a marker at the dated event the run found in that
+  window, or none when the search found nothing (`ca-core` §4 rule 14). The label names the event and its
+  date, never a cause: the chart shows when, the reader infers why. A holiday that moved weeks is marked
+  as a two-week band on the pair it touches (`markers: [{ i, to, label }]`, rule 15).
 
 **Defaults:**
 - Index to 100 for cross-scale comparison.

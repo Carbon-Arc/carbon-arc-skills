@@ -3,7 +3,7 @@ name: location-report
 description: "Use this skill when someone wants a report on a place: how a metro area's economy is doing against comparable metro areas, or what a dated shock such as a hurricane, a plant closure or a major opening (a new arena, a factory) did to it, even when they name a city or town rather than the metro area. It reads the place from two sides: what the people who live there spend and on what, and what happens at its locations (visits to its hotels, restaurants and stores, and building and repair permits). Use it for economic development, tourism, chamber or market research questions about a metro area, even if they only ask how their city is doing. Not for a company or brand's own performance: that is Carbon Arc Company Intelligence. Not for a venue's own ticket market or the blocks right around it: that is venue-report."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Place report
@@ -20,7 +20,7 @@ on a metro area, for an analyst whose subject is the place.
 
 **Modules this report runs:** `loc-residents` · `loc-spending-mix` · `loc-places` · `loc-building`. Invoke no other module in this run, even one installed alongside: a module not on this list belongs to a different analysis type, and its method does not fit this report.
 
-**Tabs:** Summary · one tab per module that found something publishable · Sources & method. Three to five
+**Tabs:** Summary · one tab per module that found something publishable · Sources & method, plus any subject-angle tab Gate 1 approves (`ca-core` §9). Three to five
 charts per tab, eight the ceiling. **Three honest tabs beat five padded ones.**
 
 **The order of work.** This skill resolves the place, chooses the comparison metro areas, probes and runs
@@ -68,6 +68,9 @@ Only these, every one web-verified with a source URL, nothing from training data
 4. **Candidate events across the five families** (`ca-core` §3), each with a predicted observable: other
    shocks in the window (a second storm, a major closure) that would move the place or a comparison metro
    area.
+5. **an idea past the base case, only if one stands out** (`ca-core` §9): what this place has that its comparison metro areas do
+   not (one dominant employer or attraction, a visitor season, a border or port, for example), each tied
+   to an insight the survey found attached.
 
 **Phase 0 to Gate 1 is one stretch, with no stop in between** once the frame is in hand. "Approve each
 step" means `gates: on`: the four gates, and nothing more.
@@ -134,6 +137,10 @@ Check every row for:
 
 When a later step re-bases a figure (for example, permits indexed to a different baseline), the changed
 figure goes back to the reader before it ships, with what changed and why.
+
+**Subject angles approved at Gate 1** write their rows as their own group after the module groups
+(`ca-core` §9); one that deepens a module lands in that module's tab, one that asks a new question gets
+a tab after the module tabs. Each is cut on the same terms as a module.
 
 ## Phase 4: the Summary, written last
 

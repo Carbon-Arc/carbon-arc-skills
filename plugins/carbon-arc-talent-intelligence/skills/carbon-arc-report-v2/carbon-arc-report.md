@@ -115,12 +115,17 @@ limit. **No left-border accent bar** — that device is not in this brand.
 **Charts** (the default kit in `charts.js`; do not restyle these, and see SKILL.md "Beyond the default kit" for other forms)
 - Line: gradient area under series 1 only, 2.6px focus stroke vs 1.6px
   comparisons at 48–80% opacity, direct end-of-line labels, dashed reference at
-  index 100, event markers as an Orange 800 pill + dashed rule, crosshair
+  index 100, event markers as an Orange 800 pill + dashed rule (a shaded band
+  when the marker spans weeks), crosshair
   tooltip in a 24px-radius glass card.
 - Horizontal bars: 5px radius on a `#151515` track, value inside the bar in
   `#151515` when it fits, grow-in from the zero line.
 - Stacked bars: monochromatic orange ramp, share labels inside segments >34px.
 - Sparkline: 220×40, area gradient, end dot.
+- Triangle (retention): one row per starting period, one column per period since the start, a
+  count column on the left. One sequential scale per table, dark brown to Orange 500; dark text on the
+  brightest cells. A small mono tag under a value marks a calendar period (e.g. OCT-DEC). A dropped
+  latest period is a dashed "pending" cell; a row under the size floor shows "too few" in every cell.
 
 ## 5. Motion
 
@@ -128,7 +133,9 @@ Clarifying · Expansive · Modular, executed **Precise** — straight paths, lan
 exactly where intended, **no bounce, no spring, no overshoot**. Base duration
 **0.4s**, easing `cubic-bezier(.4, 0, .2, 1)` everywhere. Chart draw-ins
 600–1050ms staggered 60–80ms; line via `stroke-dashoffset`, bars via `scaleX`
-from the zero line. Respect `prefers-reduced-motion`.
+from the zero line. Respect `prefers-reduced-motion`: the template turns animations off, so nothing may
+start hidden and wait for one to reveal it. A new chart type checks `CA_CHARTS.RM` and draws its final
+state when it is true.
 
 ## 6. Rigor conventions
 

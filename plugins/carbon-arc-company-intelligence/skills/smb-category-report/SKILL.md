@@ -3,7 +3,7 @@ name: smb-category-report
 description: "Use this skill when a small or regional business (a store, dealer, contractor or local chain) wants to know how its category and the markets around it are doing: whether its softness is category-wide or lost share, whether the shopper behind the category is getting stronger or weaker, how the market around it is doing, whether its cost pressure is local, and what a dated event or promotion did. It builds one report for the business's own leadership, for a business that does not appear in the data by name; one the data can see gets company-insights-report. Not for where a named company stands against its competitors: that is company-insights-report. Not for what a listed company's quarter is tracking at: that is company-earnings-preview."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # SMB category and market report
@@ -30,7 +30,7 @@ skipped Gate 1 items the three files require.)*
 
 **Modules this report runs:** `ca-category` · `ca-macro` · `ca-markets` · `ca-local-costs` · `ca-events`. Invoke no other module in this run, even one installed alongside: a module not on this list belongs to a different analysis type, and its method does not fit this report.
 
-**Tabs:** Summary · one tab per module that found something publishable · Sources & method. Three to
+**Tabs:** Summary · one tab per module that found something publishable · Sources & method, plus any subject-angle tab Gate 1 approves (`ca-core` §9). Three to
 five charts per tab, eight the ceiling. **Four honest tabs beat six padded ones.**
 
 **The order of work.** This skill resolves, probes and runs Gate 1. It writes **no pull rows itself**:
@@ -122,6 +122,9 @@ Only these, every one web-verified with a source URL, nothing from training data
    (`ca-core` §3). Dates are retrieved; seasonality is measured, and is not a tab by default (the
    so-what test in `setup-category.md`).
 4. **The promotion, if one is to be read**: its dates, its terms in one line, and where it ran.
+5. **an idea past the base case, only if one stands out** (`ca-core` §9): what this business's category or markets have that
+   most do not (a financing or service line, a local employer the market leans on, a seasonal shape
+   measured from the panel, for example), each tied to an insight the survey found attached.
 
 **Phase 0 to Gate 1 is one stretch, with no stop in between** once the frame is in hand. "Approve each
 step" means `gates: on`: the four gates, and nothing more. It never adds a stop to present a plan, ask
@@ -182,6 +185,10 @@ any series. **At build, before each tab, re-read that module's "The evidence" se
 **A module that finds nothing publishable is cut, and the tab count drops.** So is a tab that fails the
 so-what test. Failed pulls are reported in conversation and never appear in the deliverable.
 
+**Subject angles approved at Gate 1** write their rows as their own group after the module groups
+(`ca-core` §9); one that deepens a module lands in that module's tab, one that asks a new question gets
+a tab after the module tabs. Each is cut on the same terms as a module.
+
 ### Phase 1b lands inside each module, after its findings, before its copy
 
 For each claim: name the one published figure it is exposed to (a listed comparable's reported comps, a
@@ -203,7 +210,7 @@ Check every row for four things:
 
 ## Phase 4: the Summary, written last
 
-One block per module: the claim, two sentences, one or two figures, and the single chart that proves it.
+One block per module, and one for each subject-angle tab that shipped: the claim, two sentences, one or two figures, and the single chart that proves it.
 The first block answers the owner's own question in their words. The Summary duplicates every tab's
 claim, so an edit to a tab is an edit in two places.
 

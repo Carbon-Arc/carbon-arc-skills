@@ -3,7 +3,7 @@ name: ca-audience
 description: "Use this skill when someone wants to know which customers a brand is winning or losing by age: how its spend splits across generations, how that mix is moving, and how it compares with a competitor's, even if they only ask about Gen Z or younger customers. It reads card spend by generation, adjusted for the panel's age skew, and income or gender where the data covers them. Not for a musician's or actor's fans. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Audience — which customers are we losing?
@@ -24,7 +24,9 @@ the national cohort before its YoY is taken**, never read plain.
 
 ## Before anything
 
-Entities resolved, demand route asserted, live re-survey, Phase 1a done. **Settle the debias denominator
+Entities resolved, data map built, live re-survey, Phase 1a done. Read the who-buys row: where card
+cohorts do not qualify for the set, the receipt panel below is the tab's source, not a second route.
+**Settle the debias denominator
 before the first cohort pull** — no cohort figure ships without it.
 
 ## Run order
@@ -75,8 +77,8 @@ as if it were the population. Anything about a cohort too thin to clear the floo
 
 It may be the first thing that has run, so it cannot assume the orchestrator's setup happened.
 
-- **Demand route unset** → run the gate here: a probe on **626** against the resolved entity, before
-  designing anything. Retailer-mediated ends the run with the client-facing scope line.
+- **No data map yet** → build it here first: the sales probe in `setup-brand.md`, "The data map", before
+  designing anything. Where the map cuts this tab's question, say so in one line and name what is read.
 - **Phase 1a not done** → **run it now, and only it**: fiscal calendar, unit count and unit growth for
   every peer, candidate events as names and rough dates. Nothing else — the disclosed figures come later,
   against a claim.

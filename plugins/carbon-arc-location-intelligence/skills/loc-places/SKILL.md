@@ -3,7 +3,7 @@ name: loc-places
 description: "Use this skill when someone wants to know whether people are coming to the places in a metro area: visits to its hotels, restaurants, stores and attractions against comparable metro areas, and how long a slump after a shock such as a storm lasted. It reads foot traffic as visits per location, which also sees visitors, and tests it against a published local figure such as lodging tax before it says anything about size. It does not read spending: for what residents spend, use loc-residents. For a full report on a metro area, use location-report; on a venue, venue-report."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Places: are people coming, and how long did a slump last?

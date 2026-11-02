@@ -9,10 +9,21 @@
   `insight_label` and `topic_label` are character-for-character identical, differing only in the panel behind
   them — a complete general-purpose panel, a historic-only panel, a panel skewed to younger cardholders, and a
   single-issuer private-label panel whose category mix suits financed purchases rather than everyday spend.
+  **Retention has a frozen look-alike too:** Churn Rate, Retained, Churned and New Loyal Customers (576–581,
+  by Loyal Shopper and by income) sit on the frozen US Detailed panel; the live retention insights are
+  124734 and 232620 on US Complete.
   Selecting on label alone is a one-in-four guess. Run `data_library` on the insight id and read
   `tearsheet_name`, `frequency` and `history` **before the first billed call**; `frequency: Historic`, or a
   `history` that ends at a fixed past date, means the panel is frozen and a report built on it will look
   current while being a year or more stale.
+- **A listed insight is not proof of rows.** `get_filter_options` and `get_insights_from_entity` can list an
+  insight for an entity that returns no rows when pulled. `ontology` (topics per entity) is the better free
+  check; a pull is the proof.
+- **The spend may sit on a sibling brand node.** A company often has several brand nodes, and the one with
+  the familiar product name can carry a sliver of the spend while a sibling (the company name, say) carries
+  the rest. Before choosing a node for any per-brand read, put every sibling in the one feasibility
+  probe (it already takes several entities) and take the node that carries the spend; name the others in
+  the setup record.
 - **Frozen panels.** Some panels are historic-only and stop at a fixed date. Label any read from them as historical, and prefer the live sibling for current work. A frozen panel that is larger than its live sibling can still serve as a **second asset through its end date**: compare totals and rank order with the live series (`ca-core` `gating.md` §9), never as the spine, and never past the date it stops.
 - **The complete US card panel's transaction-method split is not a business measure — use the sum.**
   **627 returns a `TRANSACTION METHOD` split that 626 does not**, at `us` and `state` resolution on

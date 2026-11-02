@@ -17,8 +17,9 @@ predicts. It cannot show that a customer switched, in either direction, at any w
 appearing at both may have added a visit.
 
 So the module answers *"who shares my customer"* and never *"who took my customer"*. The flow question
-needs a cohort measure; the retention family is parked as uninterpretable, so with MCP-only instruments
-the honest answer is that we cannot answer it. Put it in `gaps`.
+needs a measure that follows a customer from one brand to another, and none exists here. Retention
+(`card-retention.md`) shows that customers stopped buying from a brand, not where they went, so with
+MCP-only instruments the honest answer is that we cannot answer it. Put it in `gaps`.
 
 ## Card: insight 120277
 

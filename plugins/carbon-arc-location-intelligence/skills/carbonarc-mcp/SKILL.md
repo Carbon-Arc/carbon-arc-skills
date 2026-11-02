@@ -32,7 +32,7 @@ Gates are **default-on** for any new dataset, entity, geography or question type
 would have asked about, state that call in one line, and continue in the same turn. The user can read
 every gate in the conversation and interrupt, and the method page lists the call made at each one. A
 waiver still surfaces anything that fails the validation gate, and it **never covers a stop that ends or
-changes the run**: the scope check (Part B §5), a demand route the panel cannot see, and any stop a
+changes the run**: the scope check (Part B §5), a question the data map cuts or a sales basis other than the one asked for, and any stop a
 setup file names. Those stop and wait either way.
 
 At every gate that is not waived: **stop, present, and wait.** Do not proceed to the next phase in the same turn. Keep each gate to something the user can read in under a minute — a short table or a tight list, not an essay.
@@ -44,7 +44,8 @@ written by the entry skill.
 
 - **Gate 1 runs once, from the entry skill**, for the whole run: entities, coverage, grain, comparators.
 - **The Gate 2 pull list is written by the modules.** Invoke each module in the entry skill's order;
-  it reads its required files and adds its own rows. The entry skill adds no rows of its own.
+  it reads its required files and adds its own rows. The entry skill adds no rows of its own, except
+  the group for the subject angles approved at Gate 1 (`ca-core` §9), written after the module groups.
 - **Gates 3 and 4 run once**, over all the rows. A module that needs another's findings (a winner, a
   chosen event) writes its rows after them, as a short second pull list with its own Gate 2.
 
@@ -70,6 +71,7 @@ Present:
 | Proposed comparator set | peers, category, geography baselines |
 | Known quirks in play | from `data_library` bias/coverage fields |
 | What the question needs that is **absent** | the scope check firing, stated plainly |
+| Worth a look for this subject | **only when something stands out:** an idea past the modules' base case (`ca-core` §9), with the attached insight that makes it answerable, and whether it deepens a module's tab or needs its own. Leave the row out otherwise |
 
 **The geography row is a prior, not a fact.** `data_library` reports geographies per dataset, not per
 insight, and an insight given a geography it does not accept returns **an empty result, not an error**.
@@ -106,8 +108,10 @@ Include:
 - Any pull that exists only to make a comparison like-for-like (e.g. pulling a method-split version of a comparator so it matches the target's basis — see non-negotiable 12).
 - What you are deliberately **not** pulling, and why.
 
-**Never estimate, quote or total the dollar cost of a pull**, in the manifest, in chat or in the report.
-The MCP does not return a price for a call, so any figure would be invented. The cost-efficiency rules in
+**Never estimate, quote or total the dollar cost of a pull**, in the manifest, in chat or in the report,
+at any gate. That includes the `price` field a response carries: never repeat it, even for the one probe
+already made. Failed calls are not charged and the calls a run will make are not known when the manifest
+is written, so any figure would be an estimate presented as a fact. The cost-efficiency rules in
 `references/pull-sizing.md` still apply; they shape how you pull, not what you tell the user.
 
 Then ask: **approve, or add cuts?** Wait. Do not batch the pulls in the same turn as the manifest.
@@ -157,15 +161,17 @@ all? Use the same shape every time, so probes are comparable across runs: `date_
 `location_resolution: "us"`, from the first day of the month three months back to today (three complete
 months plus the current one to date, which also shows where the data ends), with the subject and its
 declared peers in the one call. *Observed Sep 2026 in evals:* without a fixed shape, probes ranged from
-5 to 33 months at three different grains. It decides whether there is a report, so it runs before the user is
-asked to approve a grain. The entry skill names it (for a brand, the demand-route probe in
+5 to 33 months at three different grains. It decides which data the report rests on, so it runs before the user is
+asked to approve a grain. The entry skill names it (for a brand, the data-map probe in
 `setup-brand.md`). **It is the only billed call permitted before Gate 1**, with one exception: when it
-returns no rows, you may probe **other live panels** for the same entity, one call each, to find one that
-does. Confirm each is live with `data_library` first (free; `references/data-state.md`). Never probe a
+returns no rows, you may probe **other live datasets that carry the subject's own sales or demand**, one
+call each, to find one that does: the other candidates the survey found attached, in the order the
+setup file's data map gives (another live card panel, marketplace sales, any series that counts the
+subject's own sales). Never choose them by type of company. Confirm each is live with `data_library` first (free; `references/data-state.md`). Never probe a
 frozen panel to decide feasibility.
 
-**No live panel, no report.** A report on current demand needs a panel that is still updating. If no live
-panel returns rows for the subject, stop the standard report and say so in client voice: which data is
+**No live dataset, no report.** A report on current demand needs a dataset that is still updating and
+names the subject. If none returns rows, stop the standard report and say so in client voice: which data is
 current, and that older history exists only as history. A frozen panel can be cited as history; it is
 never the spine of a report.
 
@@ -205,7 +211,7 @@ external-tool call '{"source_id": "carbonarc", "tool_name": "<tool>", "arguments
 | `search_insights` | Find insights by keyword across the catalog | free |
 | `get_entities_from_insight` | Walk the graph outward from an insight to entities you did not think to search for | free |
 | `get_filter_options` | Discover available filters, then their selectable values. `dependency_filters` scopes a child filter to a parent's values (for example platforms within a state) | free |
-| `framework_to_insight` | Pull structured analytics — YoY, cohort, geographic cuts. Its required `question` (the user's question plus context) is used to choose the columns returned, so pass the real question | billed |
+| `framework_to_insight` | Pull structured analytics — YoY, cohort, geographic cuts. Its required `question` (the user's question plus context) is used to choose the columns returned, so pass the real question and name every column you need: one left out is not returned | billed |
 | `text_to_insight` | Natural-language pulls, and answers grounded in SEC filings, earnings call transcripts, news and bull/bear theses. Slow; see below | billed |
 
 **Use `framework_to_insight`.** It is faster, deterministic, and bypasses named-entity recognition, so it fails loudly rather than silently returning the wrong entity's data. `text_to_insight` is too slow for routine pulls: use it only when no framework covers the shape you need. Its document answers can be a lead in research, but a figure that ships still comes from the primary filing or release, found by web research.

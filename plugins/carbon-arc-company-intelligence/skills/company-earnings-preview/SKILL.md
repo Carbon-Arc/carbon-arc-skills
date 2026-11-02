@@ -3,7 +3,7 @@ name: company-earnings-preview
 description: "Use this skill when someone wants to know what a listed consumer company's current quarter is tracking at before it reports: an earnings preview, a pre-print read, what they will report, or a quarter-to-date read on a named ticker, even if they only ask how the quarter is going. It builds the full preview: an estimate of the reported metric, checked against the company's own reported history, plus what drove the quarter, peers, shared customers and whether other datasets agree. Not for a company's competitive position with no quarter in view: that is company-insights-report. Not for how the category and local markets around a small or regional business are doing: that is smb-category-report."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Earnings preview
@@ -82,6 +82,10 @@ screen and will be measured. **Show them at the first gate with the coverage tab
 Gate 2 row name the candidate it tests. Retrieve dates; measure seasonality. When nothing clears the
 screen, say so at the gate; the preview does not need an event.
 
+Beside them, **an idea past the base case, only if one stands out** (`ca-core` §9): what this company has that its peers do not
+and that bears on the quarter or the next one (a segment, channel or membership the panel sees that the
+reported metric blends, for example), each tied to an insight the survey found attached.
+
 ## Phase 1: entities
 
 Resolve the ticker on its symbol and every brand in the anchor; validate the roll-up (sum and weights) and
@@ -140,6 +144,11 @@ time**: read the rate, never the raw count.
 A module that finds nothing publishable is cut. A panel that turned out frozen, thin or broken is a finding
 for tab 02, stated as scope.
 
+**Subject angles approved at Gate 1** write their rows as their own group after the modules (`ca-core` §9).
+One that deepens a module lands in that module's tab; one that asks a new question renders as a tab
+between 06 and Sources and method, which moves down. No angle feeds the estimate on tab 02: the estimate
+is the backtested series and nothing else.
+
 ## Phase 3: before any copy
 
 Run the break tests with tiers, the defect sweep and the external check (`ca-core` §4). For each claim,
@@ -170,7 +179,7 @@ more charts, not longer paragraphs.
    variation, lead with that. End with a link to tab 02 for how the number was built.
 3. **Four claim-headed sections**, one idea each, **two charts per section**: a cross-section and its trend.
    Where an event was measured, one of the four is about it: what it did to the quarter and how much of
-   the gap remains.
+   the gap remains. Where a subject-angle tab shipped, one of the four may be about it.
 4. **What could move this number**: three named, sized risks and the strongest contrary evidence.
 5. One closing line on what the preview does not address.
 

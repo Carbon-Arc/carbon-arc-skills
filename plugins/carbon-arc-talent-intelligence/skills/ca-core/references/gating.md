@@ -100,7 +100,8 @@ the pilot because that subset fills differently from the core panel.
 
 Also drop the **first and last weeks of any weekly pull** — they are partial (0.59m against a 2.6m
 run-rate) — and check the **holiday calendar** before reading a weekly year-over-year. Labor Day fell in
-different weeks across two years on the pilot and swung the series 12pp in a fortnight.
+different weeks across two years on the pilot and swung the series 12pp in a fortnight. Mark the shift on
+the chart (`ca-core` §4 rule 15).
 
 ---
 

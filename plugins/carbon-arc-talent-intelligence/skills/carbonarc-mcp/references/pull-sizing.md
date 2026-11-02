@@ -32,6 +32,13 @@ date resolution over a long window.
 - **If prose arrives where a table was expected, discard it entirely** and re-pull smaller. Never mine the
   summary for figures and never quote it. Non-negotiable 1 applies: nothing in it was retrieved.
 
+**Retention is sized by its own rule.** At `quarter` grain one call takes up to eight starting quarters
+(about 60 rows, each starting quarter followed through the latest closed quarter). At `month` grain one
+call takes **one starting month only**: a longer window comes back as a summary with a cut-down table.
+The by-generation variants return every generation in one call: about 70 rows for one starting month a year back,
+about 25 rows per starting quarter, so eight starting quarters need **one generation per call**, through
+the `generation` filter (about 45 rows).
+
 Carbon Arc puts the practical limit at roughly **50 pages of output**; batching to about 100 rows stays well
 inside it. Past the cap the prose is unreliable and the tables it does emit sometimes lose their labels
 entirely. *Observed Sep 2026:* a pull of eleven entities x 56 months x a two-value component split (about

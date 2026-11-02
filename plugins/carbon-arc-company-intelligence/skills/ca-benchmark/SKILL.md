@@ -3,7 +3,7 @@ name: ca-benchmark
 description: "Use this skill when someone wants to know whether a consumer brand's move is its own or the whole category's: who is winning or losing share, how it compares with named rivals, and whether it is selling less or selling cheaper, even if they only ask why their numbers are down. It reads the brand's demand against named competitors, split into transactions and average ticket. For what drove one fiscal quarter of a listed company, use equity-quarter. When the category itself is the subject, or the business does not appear in the data by name, use ca-category. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Benchmark — is this us or the category?
@@ -24,8 +24,11 @@ gate, the six evidence gates, the client-facing voice. The method for this modul
 
 - **Have the setup.** Entities and representations, tiers and peer set, spine measure, volume floor,
   fiscal note — `ca-core` §2 and `references/setup-brand.md`. Not established yet → establish it here before pulling.
-- **Assert the demand route.** Own-merchant only. Retailer-mediated → stop with the client-facing scope line
-  in `ca-core/references/setup-brand.md`; card sees the retailer, not the brand.
+- **Read the sales row of the data map** (`setup-brand.md`, "The data map"). The run order below is
+  written for card (626 / 627). On any other sales basis, ask the same three questions of it: steps 2
+  and 3 pull that dataset's value and count (for a marketplace, revenue and items sold, per
+  `ca-core/references/instruments/marketplace.md`), volume or price is count × price with price derived
+  as value ÷ count, and step 4 takes dated distribution changes where unit growth does not apply.
 - **Re-survey live.** `get_insights_from_entity` at `limit=250` on every representation. Any instrument
   verdict you were handed is a dated prior.
 - **Phase 1a has run.** Unit count and unit growth for every peer are in hand — this module cannot rank
@@ -92,8 +95,8 @@ headline is *it is the category*, not a brand story.
 
 It may be the first thing that has run, so it cannot assume the orchestrator's setup happened.
 
-- **Demand route unset** → run the gate here: a probe on **626** against the resolved entity, before
-  designing anything. Retailer-mediated ends the run with the client-facing scope line.
+- **No data map yet** → build it here first: the sales probe in `setup-brand.md`, "The data map", before
+  designing anything. Where the map cuts this tab's question, say so in one line and name what is read.
 - **Phase 1a not done** → **run it now, and only it**: fiscal calendar, unit count and unit growth for
   every peer, candidate events as names and rough dates. Nothing else — the disclosed figures come later,
   against a claim.

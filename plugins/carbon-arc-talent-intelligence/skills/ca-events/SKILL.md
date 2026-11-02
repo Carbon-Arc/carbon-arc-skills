@@ -3,7 +3,7 @@ name: ca-events
 description: "Use this skill when someone asks what a dated event actually did to demand: a price change, launch, promotion, loyalty relaunch or partnership; a competitor's incident; a celebrity endorsement or talent partnership, measured on the partner brand; a calendar effect; or a shift in the economy. It measures the effect against a control group, says whether it was positive, negative or absent, and says plainly when it is too small to detect. Use it even when they only ask whether something worked."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Events — what did this event actually do?
@@ -59,8 +59,10 @@ the person. The fee is invisible; the effect on the brand is not.
    always unverified.
 2. **Resolve the brand on every representation.** A brand often resolves as company, service and app,
    and the app is usually the most measurable.
-3. **Pick the instrument by brand type**: an app → daily app downloads (775, weekly, `us`, `sum`); a brand
-   its customers pay directly by card → card spend (the demand-route gate applies); a DTC brand → web visits.
+3. **Pick the instrument by brand type**: an app → daily app downloads (775, weekly, `us`, `sum`); a
+   brand → the sales row of the data map (`setup-brand.md`): card spend where it qualifies, otherwise
+   whatever attached series counts its sales, such as its weekly marketplace sales against peers on the
+   same marketplace; a DTC brand with no sales row → web visits.
    State the platform coverage (an app panel may be one mobile platform only).
 4. **Controls in the same category that did not run a campaign**, then the three checks in `gating.md`
    §10 (parallel pre-trends, calendar confounds, control coherence) **before** quoting any number.
@@ -110,9 +112,8 @@ year-over-year still runs negative.
 
 It may be the first thing that has run, so it cannot assume the orchestrator's setup happened.
 
-- **Demand route unset, and card is the instrument** → run the gate here: a probe on **626** against the
-  resolved entity, before designing anything. Retailer-mediated ends the run with the client-facing scope
-  line.
+- **No data map yet, and the event is measured on sales** → build it here first: the sales probe in
+  `setup-brand.md`, "The data map". The sales row it picks is this module's weekly measure.
 - **Phase 1a not done** → **run it now, and only it**: fiscal calendar, unit count and unit growth for
   every peer, candidate events as names and rough dates. Nothing else — the disclosed figures come later,
   against a claim.

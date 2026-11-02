@@ -3,7 +3,7 @@ name: talent-starter-report
 description: "Use this skill when someone wants a broad read on a musician or actor: how they are doing against their peers, what the data says about them, or a first brief, even if they only name the artist. It builds one brief covering every talent read the data supports for them: peer set, momentum, audience, brand partnerships, resale demand and, for actors, their titles. Use it for 'build a brief' or 'build a report' on an artist. For a single read, such as only the peer set, use the matching skill. Not for a company or brand."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Talent starter report
@@ -15,7 +15,7 @@ Invoke **`ca-core`** first and follow it throughout; the subject setup is
 
 **Modules this brief runs:** `talent-peer-set` · `talent-momentum` · `talent-the-work` · `talent-audience` · `talent-commercial` · `talent-live-demand` · `ca-events`. Invoke no other module in this run, even one installed alongside: a module not on this list belongs to a different analysis type, and its method does not fit this brief.
 
-**Tabs:** Summary · one tab per module that found something publishable · Sources & method. Three to
+**Tabs:** Summary · one tab per module that found something publishable · Sources & method, plus any subject-angle tab Gate 1 approves (`ca-core` §9). Three to
 five charts per tab, eight the ceiling. **Four honest tabs beat seven padded ones.**
 
 **The order of work.** This skill resolves, researches and runs Gate 1. It writes **no pull rows itself**:
@@ -43,7 +43,9 @@ produced tabs that rendered, passed the build checks, and were each missing thei
 
 Per `setup-talent.md`: career stage, release history or filmography, touring pattern and venue scale,
 the published US tour dates for a musician who tours, existing partnerships, and candidate events as
-names and rough dates. Web-verified with source URLs;
+names and rough dates. Beside them, **an idea past the base case, only if one stands out** (`ca-core` §9): what this artist or
+actor has that the peer band does not (a catalog title outrunning the new release, a market where
+streaming and resale disagree, for example), each tied to an insight the survey found attached. Web-verified with source URLs;
 nothing from training data, including for household names.
 
 **Public research is woven in, never appended.** Each retrieved event becomes a short ◆ callout inside
@@ -100,6 +102,10 @@ drops its chart forms and floors, and the drop looks exactly like a finished tab
 
 **A module that finds nothing publishable is cut**, and the tab count drops. Failed pulls are reported in
 conversation and never appear in the brief.
+
+**Subject angles approved at Gate 1** write their rows as their own group after the module groups
+(`ca-core` §9); one that deepens a module lands in that module's tab, one that asks a new question gets
+a tab after the module tabs. Each is cut on the same terms as a module.
 
 ### Before each tab's copy
 

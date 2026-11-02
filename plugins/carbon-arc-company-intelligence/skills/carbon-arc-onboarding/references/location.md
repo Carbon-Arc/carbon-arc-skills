@@ -26,74 +26,67 @@ Ask nothing else to decide it.
 
 ---
 
+Each report below gives the four pieces `carbon-arc-onboarding` §4 and §5 say, in order. Say them as
+written; nothing more.
+
 ## Place
 
-**The framing that matters most, said out loud:**
+**Framing:**
 
-> You know your place better than any panel will, and you already hold its official figures: lodging tax,
-> sales tax, jobs, permits. Nothing here replaces them. What this adds is what they can't show you: how
-> your place moves against places like it, month by month, and what a dated shock actually did.
+> You know your place better than any panel, and you already hold its official figures. What this adds is
+> how your place moves against places like it, month by month, and what a dated shock actually did. The
+> place report answers four questions:
 
-### What the report answers
+**Questions:**
 
-> 1. **How are the people who live here spending?** Against comparable metro areas and against their own
->    history.
-> 2. **What are they spending more and less on?** Groceries, dining out, home improvement and more.
-> 3. **Are people coming to the places here?** Visits to places such as hotels, restaurants and
->    stores, and how long a slump lasted.
-> 4. **How much is being built or repaired, and is it more than usual?** From permits filed.
+> 1. How are the people who live here spending?
+> 2. What are they spending more and less on?
+> 3. Are people coming to the places here?
+> 4. How much is being built or repaired, and is it more than usual?
 
-### The two sides, said once
+**On what the data is:**
 
-> A place is read from two sides, and every figure says which. **Residents**: what the people who live
-> here spend, wherever they spend it. **Places**: what happens at the locations here, visitors included.
-> The two often disagree, and when they do, that is usually the finding.
+> **On what the data is:** these are panels — large samples of real behavior, not a census, read from two
+> sides: what residents spend, wherever they spend it, and what happens at the locations here, visitors
+> included. Card data sees where a cardholder lives, so what visitors spend here is out of reach; where
+> that matters, I use published figures.
 
-### What it cannot see, said once
+**Start line:**
 
-> Card data sees where a cardholder lives, not where they shop, so **what visitors spend here is out of
-> reach**, and so are visitor counts. So are hotel occupancy, unemployment, population and home prices at
-> metro-area level; where those matter, I use the published figures. Every figure is read against
-> comparable metro areas, which I choose from public records and show you before anything is measured,
-> and I set the panel beside your published figures to check it.
-
-### Start line
-
-*"The best place to start is one report on [the place] covering all four questions. It shows you which
-of them are worth coming back to. Heads up: a full report takes about 30–40 minutes to build."*
+> The best place to start is a single report on [the place] covering all four questions. It takes one
+> run, and it shows you which of them are worth coming back to. Heads up: a full report takes about
+> 30–40 minutes to build.
 
 ---
 
 ## Venue
 
-**The framing that matters most, said out loud:**
+**Framing:**
 
-> You hold your own box office: every ticket you sold, attendance, your gross. Nothing here competes with
-> that. What this adds is everything outside it: the resale market at your venue against similar venues,
-> the shows and games that drive it, the blocks around you on event days, and who your crowds also buy
-> tickets for.
+> You hold your own box office. What this adds is everything outside it: the resale market at your venue
+> against similar venues, the shows and games that drive it, and the blocks around you on event days. The
+> venue report answers five questions:
 
-### What the report answers
+**Questions:**
 
-> 1. **How is our ticket market doing against similar venues?** Elsewhere, and in the same market.
-> 2. **Which shows and games drive it?** Each compared like for like: games against the same league's
->    games, acts against their own other shows.
-> 3. **Do our events show up in the blocks around us?** Foot traffic in the venue's ZIP code on event days.
-> 4. **How are the people who live nearby spending?**
-> 5. **Who do our crowds also buy tickets for?** Through the teams and acts that play here.
+> 1. How is our ticket market doing against similar venues?
+> 2. Which shows and games drive it?
+> 3. Do our events show up in the blocks around us?
+> 4. How are the people who live nearby spending?
+> 5. Who do our crowds also buy tickets for?
 
-### What it cannot see, said once
+**On what the data is:**
 
-> **Every ticket figure is resale.** Nothing here sees attendance, primary sales, face value or whether a
-> show sold out. Card data sees where a cardholder lives, so it shows what nearby residents spend, never
-> spending inside the venue or by visitors around it. Foot traffic covers chain locations, not independent
-> businesses. Some venues and shows are too thin in the resale data to read; I check that on the first
-> pull and cut a section rather than pad it.
+> **On what the data is:** every ticket figure is resale. Nothing here sees attendance, primary sales or
+> whether a show sold out, and card data shows what nearby residents spend, never spending inside the
+> venue. Some venues and shows are too thin to read; I check that first and cut a section rather than pad
+> it.
 
-### Start line
+**Start line:**
 
-*"The best place to start is one report on [the venue] covering the questions the data supports. Heads
-up: a full report takes about 30–40 minutes to build."*
+> The best place to start is a single report on [the venue] covering the questions the data supports. It
+> takes one run, and it shows you which of them are worth coming back to. Heads up: a full report takes
+> about 30–40 minutes to build.
 
 ---
 

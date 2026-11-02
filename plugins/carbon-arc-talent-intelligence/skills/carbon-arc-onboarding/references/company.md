@@ -10,7 +10,7 @@ shipments", learns something true about the range.
 
 | They are asking about | Report | Say |
 |---|---|---|
-| Their competitive position: who is winning share, where customers also spend, which customers they are losing, what an event did | **`company-insights-report`** | Position |
+| Their competitive position: who is winning share, where customers also spend, which customers they are losing, whether customers come back, what an event did | **`company-insights-report`** | Position |
 | A listed company's quarter: what it is tracking at, what it will report, how the quarter is shaping up before the print | **`company-earnings-preview`** | Quarter |
 | How their category and the markets around them are doing, for a small or regional business (a store, dealer, contractor or local chain) that does not appear in the data by name | **`smb-category-report`** | Category |
 
@@ -39,130 +39,105 @@ manager, a franchisee) gets Category, and never the quarter.
 
 ---
 
+Each report below gives the four pieces `carbon-arc-onboarding` §4 and §5 say, in order. Say them as
+written; nothing more.
+
 ## Position
 
-**The framing that matters most, and it should be said out loud:**
+**Framing:**
 
-> You already have better data about yourself than any panel will ever have. You have every transaction.
-> Nothing here competes with that. What this adds is everything you cannot see: your competitors, the
-> category, the customers you share, and the events you did not run.
+> You already know your own business better than any panel. What this adds is what you can't see: your
+> competitors, your category and the customers you share. The insights report answers six questions:
 
-### What the five workflows answer
+**Questions:**
 
-If they want the full set, give it as questions rather than as features:
+> 1. Where else do our customers spend?
+> 2. Is this us or the category?
+> 3. Which customers are we losing?
+> 4. Are we keeping the customers we win?
+> 5. What did an event actually do?
+> 6. Who is winning, and why?
 
-> 1. **Where else do our customers spend?** The brands that share your customer, ranked — including the
->    ones you are not tracking.
-> 2. **Is this us or the category?** Your demand against named competitors, split into visits and
->    average spend, so you can see whether you are selling less or selling cheaper.
-> 3. **Which customers are we losing?** How your generation mix is moving, against a competitor's.
-> 4. **What did an event actually do?** A price move, a launch, a campaign, a competitor's incident,
->    a shift in the market — measured against a control, with an honest statement of what is too small
->    to detect.
-> 5. **Who is winning, and what is behind it?** Attention, advertising and distribution for whoever
->    leads, whether that is you or a competitor.
+**On what the data is:**
 
-Each produces a report they can send on.
+> **On what the data is:** these are panels — large samples of real behavior, not a census. They read
+> *direction and relative position* well. They are not a restatement of anyone's reported sales,
+> including yours, and I'll never present them as one.
 
-If they ask why not just query the data directly: the workflows carry the method — matched time windows,
-control groups, sample-size floors, and checks against what companies have publicly reported — so the
-answers hold up when someone pushes back on them.
+**Start line:**
 
-### One thing to say about what the data is
+> The best place to start is a single report covering all six questions for [company]. It takes one
+> run, and it shows you which of them are worth coming back to. Heads up: a full report takes about
+> 30–40 minutes to build.
 
-Once, plainly, without dwelling:
-
-> These are panels: large samples of real behavior, not a census. They read **direction and relative
-> position** well. They are not a restatement of anyone's reported sales, including yours, and I will
-> never present them as one.
-
-### Set expectations honestly, once
-
-Do not bury this and do not belabor it:
-
-> Two things I will tell you early rather than late. Some questions the data cannot answer — I will say
-> so plainly and tell you what it can answer instead. And some brands are more visible than others: if
-> you sell through other people's stores rather than your own, card sees the retailer, not your product,
-> and the report becomes a channel and attention read rather than a demand read. **I will check that
-> before promising anything**, on the first pull of your first report.
-
-### Start line
-
-*"The best place to start is a single report covering all five questions for your company. It takes one
-run, and it shows you which of them are worth coming back to. Heads up: a full report takes about 30–40
-minutes to build."*
+If they ask why not query the data directly: the workflows carry the method (matched time windows,
+control groups, sample-size floors, checks against what companies have publicly reported), so the
+answers hold up when someone pushes back. Which data a company is read on (card spend, marketplace sales,
+receipts and so on) is decided by what is attached to it, in the report's first pulls; do not promise
+any of it here.
 
 ---
 
 ## Quarter
 
-> **A preview has two halves.** First, what the quarter is tracking at: card spend, corrected by how the
-> panel has tracked this company's own reported history, with the error band that track record earned.
-> Second, everything else the data says: traffic versus ticket, the company against its peers and category,
-> whether its customers are shopping elsewhere, and whether foot traffic, web, app, advertising and hiring
-> agree with the spend read.
+**Framing:**
 
-**The framing that matters most, said out loud:**
+> Every estimate is scored against the company's own reported numbers before you see it; if the panel
+> hasn't tracked this company, you won't get a number, and I'll show you why. The earnings preview
+> answers five questions:
 
-> Every estimate is scored against the company's own reported numbers before you see it. If the panel
-> hasn't tracked this company, you won't get a number, and I'll show you why. There's no comparison with
-> consensus: the backtest is the credibility. And everything here is about the data, never about the
-> stock.
+**Questions:**
 
-### What the data can and cannot see
+> 1. What is the quarter tracking at?
+> 2. What drove it?
+> 3. Is it the company or the category?
+> 4. Do other datasets agree?
+> 5. Is the trend a one-off?
 
-> Card spend sees US consumers paying the company directly. It works well for businesses such as retailers, company-operated
-> restaurants, e-commerce and consumer subscriptions. It struggles with franchisors, companies selling
-> through other retailers, and B2B, and I'll check that before promising anything. International revenue,
-> franchise royalties and cash sales are outside what it sees, and I'll size them against the reported
-> number rather than wave at them.
+**On what the data is:**
 
-### What I'll ask you first
+> **On what the data is:** card spend sees US consumers paying the company directly, so it reads
+> businesses such as retailers, company-operated restaurants, e-commerce and subscriptions best. International revenue,
+> franchise royalties and cash sales are outside it, and I'll size them against the reported number.
+> There's no comparison with consensus, and nothing here is about the stock.
 
-> Two things before I start: which reported metric you want estimated (I'll show you what the company
-> discloses), and whether to score the panel against public filings, which is the default and fully
-> auditable, or a spreadsheet of reported figures you supply.
+**Start line:**
 
-### Start line
+> The best place to start is a single preview for [ticker] covering all five questions. Heads up: a
+> full preview takes about 30–40 minutes to build.
 
-*"Next step is the preview for [ticker]. Heads up: a full preview takes about 30–40 minutes to build."*
+The preview itself asks which reported metric to estimate and whether to score against public filings or
+a spreadsheet of reported figures; the onboarding does not.
 
 ---
 
 ## Category
 
-**The framing that matters most, said out loud:**
+**Framing:**
 
-> You know your own sales, customers and costs better than any panel ever will. Nothing here competes
-> with that. What this adds is everything outside your doors: businesses like yours across the country,
-> your category, the market around you, and what the same months did where you are not.
+> You know your own sales, customers and costs better than any panel ever will. What this adds is
+> everything outside your doors: businesses like yours across the country, your category and the market
+> around you. The category report answers five questions:
 
-### What the report answers
+**Questions:**
 
-> 1. **Is it everyone, or just me?** How businesses like yours are doing nationally, whether it is fewer
->    customers or smaller tickets, and whether it is getting better or worse.
-> 2. **Is the customer behind my category getting stronger or weaker?** By age group, and whether bigger
->    purchases are being put off.
-> 3. **How is the market around me doing?** What people living in your area spend in your category, and
->    which nearby markets are coming back first.
-> 4. **Is my cost pressure local, or everywhere?** What businesses in your industry pay in your metro
->    area against the state and the country, and how your main input prices are moving.
-> 5. **What did a promotion or event do?** Measured against comparable demand that was not affected, with
->    an honest statement of what is too small to detect.
+> 1. Is it everyone, or just me?
+> 2. Is the customer behind my category getting stronger or weaker?
+> 3. How is the market around me doing?
+> 4. Is my cost pressure local, or everywhere?
+> 5. What did a promotion or event do?
 
-### What the data is, and what it cannot see, said once
+**On what the data is:**
 
-> These are large samples of real activity, not a census, and I will never present them as anyone's
-> sales, including yours. **Most businesses your size don't appear in the data by name**; if yours
-> doesn't, the report reads businesses like yours, your category and your markets, which is what an "is
-> it just me?" question needs first. And **not every sale touches a card**: where yours are paid another
-> way, I'll use the data that does see them, and say where nothing does. I check all of this before
-> promising anything.
+> **On what the data is:** these are large samples of real activity, not a census, and I'll never present
+> them as anyone's sales, including yours. Most businesses your size don't appear in the data by name;
+> if yours doesn't, the report reads businesses like yours, your category and your markets.
 
-### Start line
+**Start line:**
 
-*"The best place to start is one report on your category and the markets around you. Heads up: it takes
-about 30 to 40 minutes to build."*
+> The best place to start is a single report covering all five questions for your category and the
+> markets around you. It takes one run, and it shows you which of them are worth coming back to. Heads
+> up: a full report takes about 30–40 minutes to build.
 
 ---
 

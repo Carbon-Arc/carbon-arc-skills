@@ -106,5 +106,5 @@ Where no region is more exposed than another, leave the split out.
 
 **Check the holiday calendar before reading any weekly year-over-year.** Labor Day fell in the week
 ending 5 Sep in 2025 and 11 Sep in 2026, which put a holiday week against a non-holiday week twice and
-swung the series 12pp in a fortnight. Cut the series where the calendar stops aligning and say so. The
-same applies to Easter, Thanksgiving and 4 July.
+swung the series 12pp in a fortnight. Mark the pair on the chart with the shift and read the two weeks
+together (`ca-core` §4 rule 15). The same applies to Easter, Memorial Day, Thanksgiving and 4 July.

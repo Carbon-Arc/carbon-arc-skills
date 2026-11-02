@@ -14,6 +14,8 @@
   const IDX = { s1: 0, s2: 1, s3: 2, s4: 3, b1: 0, b2: 2, b3: 1, b4: 3 };
   const col = k => T.s[IDX[k] != null ? IDX[k] : 0];
   let uid = 0;
+  /* Reduced motion: the template turns animations off, so nothing may start hidden waiting for one. */
+  const RM = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
 
   function E(t, a, kids) {
     const e = document.createElementNS(NS, t);
@@ -84,11 +86,14 @@
 
     (cfg.markers || []).forEach(m => {
       const mx = x(m.i), endSide = mx > (W - mR - 100);
-      svg.appendChild(E("line", { x1: mx, x2: mx, y1: mT, y2: H - mB, stroke: T.hair2, "stroke-width": 1.2, "stroke-dasharray": "3 4" }));
-      const bw = (m.label.length * 5.4) + 20, bx = endSide ? mx - bw - 3 : mx + 3;
-      svg.appendChild(E("rect", { x: bx, y: mT - 8, width: bw, height: 17, rx: 8.5, fill: "#662D0F" }));
-      svg.appendChild(E("circle", { cx: bx + 9, cy: mT + .5, r: 2.6, fill: T.s[0] }));
-      svg.appendChild(txt(m.label, { x: bx + 15, y: mT + 4, "font-size": "9.5px", "font-weight": 700, fill: "#FFC6A8" }));
+      // m.to spans a period (e.g. the two weeks a moved holiday touches) as a band instead of a rule
+      if (m.to != null) svg.appendChild(E("rect", { x: Math.min(mx, x(m.to)), y: mT, width: Math.abs(x(m.to) - mx), height: H - mB - mT, fill: "#662D0F", opacity: .45 }));
+      else svg.appendChild(E("line", { x1: mx, x2: mx, y1: mT, y2: H - mB, stroke: T.hair2, "stroke-width": 1.2, "stroke-dasharray": "3 4" }));
+      // a band's pill sits one row down so it never lands on a point event's pill
+      const bw = (m.label.length * 5.4) + 20, bx = endSide ? mx - bw - 3 : mx + 3, dy = m.to != null ? 20 : 0;
+      svg.appendChild(E("rect", { x: bx, y: mT - 8 + dy, width: bw, height: 17, rx: 8.5, fill: "#662D0F" }));
+      svg.appendChild(E("circle", { cx: bx + 9, cy: mT + .5 + dy, r: 2.6, fill: T.s[0] }));
+      svg.appendChild(txt(m.label, { x: bx + 15, y: mT + 4 + dy, "font-size": "9.5px", "font-weight": 700, fill: "#FFC6A8" }));
     });
 
     // area under focus series
@@ -96,7 +101,7 @@
       let d = "", st = false, first = null, last = null;
       focus.values.forEach((v, i) => { if (v == null) return; if (first == null) first = i; last = i; d += (st ? "L" : "M") + x(i) + " " + y(v) + " "; st = true; });
       const area = E("path", { d: d + `L${x(last)} ${y(lo)} L${x(first)} ${y(lo)} Z`, fill: `url(#${gid})`, stroke: "none" });
-      area.style.opacity = 0; area.style.animation = "ca-fade .7s cubic-bezier(.4,0,.2,1) .25s forwards";
+      if (!RM) { area.style.opacity = 0; area.style.animation = "ca-fade .7s cubic-bezier(.4,0,.2,1) .25s forwards"; }
       svg.appendChild(area);
     }
 
@@ -105,8 +110,10 @@
       let d = "", st = false;
       s.values.forEach((v, i) => { if (v == null) return; d += (st ? "L" : "M") + x(i) + " " + y(v) + " "; st = true; });
       const p = E("path", { d, fill: "none", stroke: c, "stroke-width": si == 0 ? 2.6 : 1.6, "stroke-linejoin": "round", "stroke-linecap": "round", opacity: si == 0 ? 1 : (s.muted ? .48 : .8) });
-      p.style.strokeDasharray = "2400"; p.style.strokeDashoffset = "2400";
-      p.style.animation = `ca-dash 1.05s cubic-bezier(.4,0,.2,1) ${si * .07}s forwards`;
+      if (!RM) {
+        p.style.strokeDasharray = "2400"; p.style.strokeDashoffset = "2400";
+        p.style.animation = `ca-dash 1.05s cubic-bezier(.4,0,.2,1) ${si * .07}s forwards`;
+      }
       svg.appendChild(p);
       let li = s.values.length - 1; while (li >= 0 && s.values[li] == null) li--;
       if (li >= 0) {
@@ -208,7 +215,55 @@
     mount.innerHTML = ""; mount.appendChild(svg);
   }
 
+  /* Retention triangle: one row per starting period, one column per period since the start.
+     cfg = { cols: ["+1Q", ...], nLabel: "Customers", floor: 300,
+             rows: [{ label: "Jul-Sep 2024", n: 6362, values: [34.6, 24.2, ..., "pending"], tags: ["Oct-Dec", null, ...] }] }
+     A value is a percent, null (not reached yet) or "pending" (the dropped latest period).
+     One colour scale per table. A row with n under floor is drawn without values. */
+  function triangle(mount, cfg) {
+    const C = cfg.cols, nc = C.length, mL = 118, nW = 84, cw = 64, ch = 40, gap = 4, mT = 30;
+    const W = mL + nW + nc * cw + 8, H = mT + cfg.rows.length * ch + 4;
+    const live = r => cfg.floor == null || r.n == null || r.n >= cfg.floor;
+    const vals = []; cfg.rows.forEach(r => live(r) && r.values.forEach(v => typeof v == "number" && vals.push(v)));
+    const lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
+    const mix = (a, b, t) => "#" + [0, 2, 4].map(k => Math.round(parseInt(a.substr(k + 1, 2), 16) * (1 - t) + parseInt(b.substr(k + 1, 2), 16) * t).toString(16).padStart(2, "0")).join("");
+    const fill = v => { const t = (v - lo) / span; return t < .5 ? mix("#3A2C24", "#7A3E1E", t * 2) : mix("#7A3E1E", "#E8682A", (t - .5) * 2); };
+    const svg = svgEl(W, H, W + 40);
+    svg.appendChild(txt((cfg.rowLabel || "Shopped in").toUpperCase(), { x: 4, y: 16, "font-size": "10px", "letter-spacing": ".08em" }));
+    svg.appendChild(txt((cfg.nLabel || "Customers").toUpperCase(), { x: mL + nW - 12, y: 16, "text-anchor": "end", "font-size": "10px", "letter-spacing": ".08em" }));
+    C.forEach((c, j) => svg.appendChild(txt(c, { x: mL + nW + j * cw + cw / 2, y: 16, "text-anchor": "middle", "font-size": "10.5px" })));
+    svg.appendChild(E("line", { x1: 0, x2: W - 8, y1: mT - 6, y2: mT - 6, stroke: T.hair, "stroke-width": 1 }));
+    const tip = tipEl();
+    cfg.rows.forEach((r, i) => {
+      const cy = mT + i * ch, ok = live(r);
+      svg.appendChild(E("text", { x: 4, y: cy + ch / 2 + 4, "font-family": sans, "font-size": "12.5px", "font-weight": 600, fill: ok ? T.ink : T.muted }, r.label));
+      if (r.n != null) svg.appendChild(txt(Math.round(r.n).toLocaleString("en-US"), { x: mL + nW - 12, y: cy + ch / 2 + 4, "text-anchor": "end", "font-size": "11.5px", fill: ok ? T.ink2 : T.muted }));
+      r.values.forEach((v, j) => {
+        if (v == null) return;
+        const x = mL + nW + j * cw + gap / 2, y = cy + gap / 2, w = cw - gap, h = ch - gap;
+        if (v === "pending" || !ok) {
+          svg.appendChild(E("rect", { x: x + .5, y: y + .5, width: w - 1, height: h - 1, rx: 5, fill: "none", stroke: T.hair2, "stroke-width": 1, "stroke-dasharray": "3 3" }));
+          svg.appendChild(txt(v === "pending" ? "pending" : "too few", { x: x + w / 2, y: y + h / 2 + 3.5, "text-anchor": "middle", "font-size": "9.5px", fill: T.muted }));
+          return;
+        }
+        const tag = r.tags && r.tags[j], f = fill(v), dark = (v - lo) / span > .72;
+        const cell = E("rect", { x, y, width: w, height: h, rx: 5, fill: f });
+        svg.appendChild(cell);
+        svg.appendChild(txt(v.toFixed(1) + "%", { x: x + w / 2, y: y + (tag ? h / 2 : h / 2 + 4), "text-anchor": "middle", "font-size": "11.5px", "font-weight": 600, fill: dark ? "#151515" : T.ink }));
+        if (tag) svg.appendChild(txt(String(tag).toUpperCase(), { x: x + w / 2, y: y + h / 2 + 12, "text-anchor": "middle", "font-size": "8.5px", "letter-spacing": ".06em", fill: dark ? "#151515" : T.ink2 }));
+        cell.addEventListener("mousemove", ev => {
+          tip.innerHTML = `<div style="font-family:${mono};font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:${T.muted};margin-bottom:6px">${r.label} · ${C[j]}${tag ? " · " + tag : ""}</div><div style="font-family:${mono};font-weight:600">${v.toFixed(1)}% ${cfg.unit || "came back"}</div>`;
+          tip.style.opacity = 1;
+          let tx = ev.clientX + 16; if (tx > innerWidth - 200) tx = ev.clientX - 190;
+          tip.style.left = tx + "px"; tip.style.top = (ev.clientY - 12) + "px";
+        });
+        cell.addEventListener("mouseleave", () => { tip.style.opacity = 0; });
+      });
+    });
+    mountSvg(mount, svg);
+  }
+
   const fmtPct = v => (v > 0 ? "+" : "") + v.toFixed(1) + "%";
   const fmt$ = v => "$" + Math.round(v).toLocaleString("en-US");
-  window.CA_CHARTS = { lineChart, hbars, stackBar, spark, T, col, fmtPct, fmt$ };
+  window.CA_CHARTS = { lineChart, hbars, stackBar, spark, triangle, T, col, fmtPct, fmt$, RM };
 })();

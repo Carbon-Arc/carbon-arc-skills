@@ -11,44 +11,40 @@ one from far outside their world (card spend, say, or healthcare claims).
 
 ## The talent brief
 
-**The framing that matters most, said out loud:**
+The four pieces `carbon-arc-onboarding` §4 and §5 say, in order. Say them as written; nothing more.
 
-> You know your artist's own numbers better than any panel ever will: the statements, the settlements,
-> the deals. Nothing here competes with that, and none of it sees income. What this adds is everything
-> relative: whether a flat quarter is your artist or the whole lane, who is pulling away, who the
-> audience really is, and which partnerships are distinctively yours.
+**Framing:**
 
-### What the workflows answer
+> You know your artist's own numbers better than any panel: the statements, the settlements, the deals.
+> What this adds is everything relative: who you really compete with, whether your audience is growing
+> against them, and who that audience is. The brief answers five questions:
 
-As questions, not features:
+**Questions:**
 
-> 1. **Who am I actually competing with?** The artists who share your audience, derived from playlists,
->    not picked by hand.
-> 2. **Is my audience growing, and is anyone pulling away?** Streaming and social reach on more than one
->    platform, against those peers.
-> 3. **Who is my audience?** Age, gender and background, against the peers.
-> 4. **Which partnerships can I actually win?** The brands your audience over-indexes on compared with
->    your peers, not the list everyone in your lane shares.
-> 5. **What will the resale market pay, and which shows and markets drive it?** Tour by tour and show
->    by show, where the data is thick enough.
-> 6. **For actors: which titles carry you, and which hold?**
-> 7. **What did a partnership or release actually do?** Measured against a control.
+> 1. Who am I actually competing with?
+> 2. Is my audience growing, and is anyone pulling away?
+> 3. Who is my audience?
+> 4. Which brand partnerships are distinctively mine?
+> 5. What does the resale market pay to see me, and where?
 
-Each produces a brief they can send on. If they ask why not query the data directly: the workflows carry
-the method (derived peers, two-platform checks, volume floors, checks against published figures), so the
-answers hold up when someone pushes back.
+For an actor, say "six questions" and add a sixth: *Which titles carry you, and which hold?* For a
+musician, leave it out.
 
-### Set expectations honestly, once
+**On what the data is:**
 
-> Three things I'll tell you early. **The data sees audience, not income**, and I'll never present a
-> stream count as money. **Some tabs need enough data to be honest**: below arena scale the ticket data
-> is usually too thin, and I'll cut a tab rather than pad it. **Nothing here measures whether a show
-> sold**; the ticket data is resale.
+> **On what the data is:** these are panels — large samples of real behavior, not a census. They see
+> audience, not income, and I'll never present a stream count as money. The ticket data is resale:
+> nothing here measures whether a show sold, and below arena scale it's usually too thin to read.
 
-### Start line
+**Start line:**
 
-*"The best place to start is one brief on your artist covering everything the data supports. It shows
-you which parts are worth coming back to. Heads up: a full brief takes about 30–40 minutes to build."*
+> The best place to start is a single brief on [artist] covering everything the data supports. It takes
+> one run, and it shows you which parts are worth coming back to. Heads up: a full brief takes about
+> 30–40 minutes to build.
+
+If they ask why not query the data directly: the workflows carry the method (peers derived from shared
+audience, two-platform checks, volume floors, checks against published figures), so the answers hold up
+when someone pushes back.
 
 ---
 

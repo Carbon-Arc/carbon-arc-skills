@@ -1,21 +1,22 @@
 ---
 name: company-insights-report
-description: "Use this skill when someone wants to know where a company stands against its competitors: who is winning share, where its customers also spend, which customers it is losing, what an event did, and who is winning and why. It builds one report covering all five, for the company's own strategy or analytics team, including a private or regional company that appears in the data by name. Use it for 'build a report', 'starter report' or 'what does the data say about us' on a company, even if they don't mention competitors, and when handed over from carbon-arc-onboarding. Not for what a listed company's quarter is tracking at or will report: that is company-earnings-preview. Not for how the category and local markets around a small or regional business are doing: that is smb-category-report."
+description: "Use this skill when someone wants to know where a company stands against its competitors: who is winning share, where its customers also spend, which customers it is losing, whether it keeps the customers it wins, what an event did, and who is winning and why. It builds one report covering all six, for the company's own strategy or analytics team, including a private or regional company that appears in the data by name. Use it for 'build a report', 'starter report' or 'what does the data say about us' on a company, even if they don't mention competitors, and when handed over from carbon-arc-onboarding. Not for what a listed company's quarter is tracking at or will report: that is company-earnings-preview. Not for how the category and local markets around a small or regional business are doing: that is smb-category-report."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Starter report
 
-The orchestrator. Runs the five workflows once each at one-tab depth and assembles them into a single
+The orchestrator. Runs the six workflows once each at one-tab depth and assembles them into a single
 report. Invoke **`ca-core`** first and follow it throughout; **the reader is `corporate`**: record
 `reader: corporate` and read **`ca-core/references/readers/corporate.md`** (ca-core §1).
 
-**Modules this report runs:** `ca-competitive-set` · `ca-benchmark` · `ca-audience` · `ca-events` · `ca-execution`. Invoke no other module in this run, even one installed alongside: a module not on this list belongs to a different analysis type, and its method does not fit this report.
+**Modules this report runs:** `ca-competitive-set` · `ca-benchmark` · `ca-audience` · `ca-retention` · `ca-events` · `ca-execution`. Invoke no other module in this run, even one installed alongside: a module not on this list belongs to a different analysis type, and its method does not fit this report.
 
-**Seven tabs:** Summary · five module tabs · Sources & method. Three to five charts per tab, eight the
-ceiling. If a tab needs more, it is two tabs or it is over-built.
+**Eight tabs:** Summary · six module tabs · Sources & method, plus any subject-angle tab Gate 1
+approves (`ca-core` §9). Three to five charts per tab, eight the ceiling. If a tab needs more,
+it is two tabs or it is over-built.
 
 **The order of work, and the one way it goes wrong.** This skill resolves, probes and runs Gate 1. It
 writes **no pull rows itself**: every row in the Gate 2 pull list comes from a module, written after that
@@ -38,7 +39,7 @@ the question below.
 This package builds three reports, for three different readers, and the choice fixes the reader
 for the whole run. **This report** reads where the company stands against its competitors, for the company's own strategy or analytics team. **`company-earnings-preview`** reads what a listed company's quarter is tracking at before it reports, for an analyst covering it. **`smb-category-report`** reads how the category and markets around a small or regional business are doing, for that business's leadership.
 
-- The request is about competitive position: share, shared customers, which customers are leaving, what an event did, who is winning → continue to Phase 0.
+- The request is about competitive position: share, shared customers, which customers are leaving, whether customers come back, what an event did, who is winning → continue to Phase 0.
 - The request is about a quarter: what it is tracking at, what the company will report, the print, an estimate or guidance → hand off to **`company-earnings-preview`** with the company and the question verbatim. Run
   nothing here first.
 - No business is named and the asker runs a local or regional business ("I own a furniture store"), or
@@ -53,14 +54,18 @@ for the whole run. **This report** reads where the company stands against its co
   > Do you want to see **where [company] stands against its competitors**, or **what its current quarter
   > is tracking at before it reports**?
 
-  Ask it as written, with no recommendation between the options. Route on the answer. Ask nothing else to decide it, and do not ask who they are.
+  Ask it as written, as the whole message: no preamble about routing, rules or skills, and no recommendation
+  between the options. Route on the answer. Ask nothing else to decide it, and do not ask who they are.
+  A request that also names a competitor, asks where the company stands, or says the asker is the
+  company's own team ("we're on X's strategy team") is more than that phrase: it is about competitive
+  position, so continue to Phase 0 without asking.
 
 **The visibility check.** One free `search_entities` lookup on the business's name (`carbonarc-mcp`
 Part A), and nothing else: no other call, no `ca-core`, no reader file. It is the only call routing may
 make. The business that counts is **the one asking**: a franchisee, licensee or dealer of a brand is not
 that brand, so it skips the check and gets `smb-category-report`, with the brand as a comparable.
 
-A question about the company's local markets or its local costs is outside this report's five tabs: say so
+A question about the company's local markets or its local costs is outside this report's six tabs: say so
 once, in the Gate 1 scope line, and keep the rest of the run.
 
 Once the report is chosen it is not revisited in the run. A user who wants two reports gets two runs.
@@ -75,37 +80,39 @@ This is where the run can end, so do it before promising anything.
    of them is a superset — an instrument you need may sit only on a node you did not survey. Record
    every node and what each serves.
 2. **Survey live.** `get_insights_from_entity` at `limit=250` on **each** representation.
-3. **THE DEMAND-ROUTE GATE — the first pull of the run.** A probe on **626** against the resolved entity.
-   This is the **feasibility probe**, and it is the one billed call `carbonarc-mcp` permits before Gate 1
-   — named there as the exception, not a violation of it. One call, in the fixed shape its probe rule
-   gives, binary outcome.
-   These verdict labels (own-merchant, retailer-mediated, coverage gap, demand route) go in the setup
-   record only, never in a message to the reader: say what they mean ("card spend sees your sales
-   directly").
-   - Rows → **own-merchant**. The brand is where the card is swiped. Proceed.
-   - No rows, and the brand sells through other companies' stores → **retailer-mediated**. Stop the
-     standard report. Say it in client voice: *"Card sees the store, not your product in the basket, so
-     total demand is not observable here. What is observable is channel and attention."* Offer that
-     narrower read and hand to a human.
-   - No rows, but the brand is where the card is swiped → a **coverage gap**. Probe other live card
-     panels only, then proceed on one that returns rows or stop: no live panel, no report
-     (`setup-brand.md`, demand route). If the business is **not listed**, end that stop with one question
-     offering a read of its category and the markets around it (`smb-category-report`) as a new run; the
-     reader changes with the report, so it is never continued in this one.
+3. **THE DATA MAP — the first pulls of the run.** Read the survey for what is attached, then probe the
+   **sales** candidates in order, card spend (626) first, one call each in the probe rule's fixed shape,
+   subject and peers together, in the same turn and without asking (a candidate with no notes file
+   included), until one returns rows for the whole set and measures this subject's sales
+   (`setup-brand.md`, "The data map"). The user sees and can change the choice at Gate 1. This is `carbonarc-mcp`'s **feasibility
+   probe** and its named exception: the only billed calls before Gate 1. Then fill the map's other rows
+   from the survey; their series probes come at Gate 2.
+   The map's names for things (data map, sales row, qualify) stay in the setup record; to the reader, say
+   what it means ("this reads you on your Amazon and TikTok Shop sales").
+   - A sales candidate qualifies → proceed on it. Gate 1's scope line says what the report reads, from the
+     map, and which questions were cut because nothing attached answers them. Nothing in the conversation
+     calls the report narrower or separate from the standard one.
+   - None qualifies → the tabs whose rows qualified go to the user at Gate 1 as the report; stop only if
+     they decline. If the business is **not listed** and nothing names it at all, end that stop with one
+     question offering a read of its category and the markets around it (`smb-category-report`) as a new
+     run; the reader changes with the report, so it is never continued in this one.
 
-   Running this first is the point. The alternative is a company several tabs in before hearing what
-   card cannot see.
-4. **Record the setup** per `ca-core` §2 — entities, demand route, tiers with unit growth, basis, disclosure,
+   Running this first is the point: it fixes which data every tab is built on before any tab is
+   designed.
+4. **Record the setup** per `ca-core` §2 — entities, the data map, tiers with unit growth, basis, disclosure,
    instrument verdicts. In the conversation, not a file. Every later phase reads it from there.
 
 ## Phase 1a — research, before any pull
 
-Three things, and only these:
+Four things, and only these:
 
 1. the subject's **fiscal calendar**
-2. **unit count and unit growth for every peer**, not just the subject
+2. **unit count and unit growth for every peer**, not just the subject (or dated distribution changes,
+   when the sales basis is not spend at the brand's own locations: `setup-brand.md`)
 3. **candidate events at low resolution** — name and rough date, across the **five families** (macro /
    corporate / calendar / industry / company). No sourcing pass yet.
+4. **an idea past the base case, only if one stands out** (`ca-core` §9): what this company has that its peers do not, which
+   the six tabs would not ask about, each tied to an insight the survey found attached.
 
 Everything web-verified with source URLs; nothing from training data, including for famous brands.
 
@@ -135,8 +142,9 @@ In dependency order, each contributing **one tab**:
 | 1 | `ca-competitive-set` | Where else do our customers spend? |
 | 2 | `ca-benchmark` | Is this us or the category? |
 | 3 | `ca-audience` | Which customers are we losing? |
-| 4 | `ca-events` | What did *[the event]* actually do? |
-| 5 | `ca-execution` | What is behind *[the winner]*'s growth? (The winner may be the subject: then *What is behind our lead?*) |
+| 4 | `ca-retention` | Are we keeping the customers we win? |
+| 5 | `ca-events` | What did *[the event]* actually do? |
+| 6 | `ca-execution` | What is behind *[the winner]*'s growth? (The winner may be the subject: then *What is behind our lead?*) |
 
 Competitive-set runs first so surfaced peers can join the benchmark. Execution runs last because it needs
 a winner. There is no macro tab in this report; do not offer one.
@@ -159,8 +167,12 @@ list with its own Gate 2.
 **At build, before each tab, re-read that module's "The evidence" section**: the chart forms, floors and
 denominators there are what a tab built from memory drops, and the drop looks exactly like a finished tab.
 
-**A module that finds nothing publishable is cut, and the tab count drops.** Five tabs is a default, not
+**A module that finds nothing publishable is cut, and the tab count drops.** Six tabs is a default, not
 a quota. Failed pulls are reported in conversation and never appear in the deliverable.
+
+**Subject angles approved at Gate 1** write their rows after the six module groups, as their own group
+(`ca-core` §9), after `ca-execution`'s second list when they need the winner. One that deepens a module
+lands in that module's tab; one that asks a new question gets a tab after the module tabs.
 
 ### Phase 1b lands here — inside each module, after its findings, before its copy
 
@@ -174,8 +186,8 @@ checkpoint, not a second one.
 
 ## Phase 4 — the Summary, written last
 
-One block per module: the claim, two sentences, one or two headline figures, and the single chart that
-proves it. Not a recap — the one thing an executive must leave with.
+One block per module, and one for each subject-angle tab that shipped: the claim, two sentences, one or two
+headline figures, and the single chart that proves it. Not a recap — the one thing an executive must leave with.
 
 **It duplicates every tab's claim.** Any later edit to a tab has two places to change, and the Summary is
 the one that gets forgotten. Grep the retired wording before calling an edit done.

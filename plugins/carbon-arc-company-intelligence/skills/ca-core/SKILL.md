@@ -3,7 +3,7 @@ name: ca-core
 description: "Use this skill only when another skill in this package says to invoke it. It holds the rules every Carbon Arc run shares: the run setup checklist, the reader, the evidence gates, the client-facing voice and the subject setups. Never start a user's request with it: for a report or a single read, use this package's onboarding, a report skill or the matching module."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # ca-core
@@ -15,6 +15,28 @@ it runs Gate 1 once, then invokes each module, and each module writes its own Ga
 
 **The user of this library is the client, not a Carbon Arc analyst.** They see the whole
 conversation. That governs everything below.
+
+**The modules are the base case.** They hold what every subject of this type needs, not everything this
+one deserves. When you see a way to make the analysis richer for the name in front of you, a deeper cut
+on a module's question or a question no module asks, you are free to pursue it; §9 says how it reaches the
+page. This is room, not a quota: most runs need nothing past the base case, and none is a fine outcome.
+
+**Three kinds of rule, and only one of them is fixed.**
+
+- **Hard rules hold on every run, every tab and every subject angle:** the gates and the probe rule
+  (`carbonarc-mcp` Part 0) and its non-negotiables; the run setup (§2); never a fact from memory and the
+  contradiction veto (§3); the evidence gates (§4); the voice and language rules (§5); and each entry
+  skill's routing (which report a request belongs to, which modules it may invoke). Nothing below, and
+  nothing the subject suggests, relaxes them.
+- **Defaults are the best known starting point:** an entry skill's tabs and their order, a module's run
+  order, its chart forms, windows and grains. Depart from one when this subject gives a reason, and say
+  what changed and why in one line at the gate where it shows, and again in Sources & method.
+- **Priors are what was true for an earlier subject:** reference files, instrument verdicts, worked
+  examples and pilot observations (§6). Check them live; they are never an inventory or a ban.
+
+A rule that does not say which kind it is: if it protects a number's integrity or the reader's trust, it
+is hard; if it is about what to build, it is a default. Going beyond the base case adds to the run; it
+never quietly skips a step to make room.
 
 ---
 
@@ -28,14 +50,18 @@ treated for this reader, and the vocabulary level the language gate is judged ag
 is the same for every reader; the reader file is what differs.
 
 **Never read a second reader file in the same run**, not to compare and not to be thorough.
-Instructions written for another reader get followed once they are in context.
+Instructions written for another reader get followed once they are in context. **Open the one file by
+name with the Read tool** (`references/readers/<name>.md`). Never print the folder to choose: a glob, a
+`cat` of several files or a `head` of them reads every reader at once. The file names (`corporate.md`
+and so on) are enough to list.
 
 If no entry skill named a reader (the user asked for one module directly): when `references/readers/`
 holds one file, that is the reader. When it holds more than one and the request itself makes the reader
 obvious ("we're Dutch Bros" is the company's own team; "ahead of their print" or "my position in" is an
 investor), take that reader, say in one line which one you are writing for so the user can correct it,
 and read only that file. Otherwise ask the user one question before Phase 0, which of them the work is
-for, using each file's "Who the reader is" line, and read only that file.
+for, using each file's "Who the reader is" line (search for that line alone, never open the whole
+files), and read only that file.
 
 Where this file says "the reader" or "the reader file", it means that one file.
 
@@ -48,7 +74,7 @@ the conversation so every later module can use them.
 
 **Version notice, once per conversation; it never blocks the run.** Fetch
 `https://raw.githubusercontent.com/Carbon-Arc/carbon-arc-skills/main/latest.json`. If
-`latest.json["carbon-arc-company-intelligence"].version` is newer than 0.3.0, the installed version, tell the user
+`latest.json["carbon-arc-company-intelligence"].version` is newer than 0.4.0, the installed version, tell the user
 in one line: "Carbon Arc Company Intelligence vX.Y.Z is available: <zip url>. Installed from the marketplace? It updates
 on its own." If the fetch fails or the version is not newer, say nothing and continue.
 
@@ -104,11 +130,14 @@ pull. Pass 1b runs once the findings exist and before a word of narrative is wri
 ### 1a — only what changes the pull design
 
 The setup file lists what this subject needs (for a brand: fiscal calendar and peer unit growth; for
-talent: release and tour history, and for an actor the filmography). Beyond that, one thing only:
+talent: release and tour history, and for an actor the filmography). Beyond that, one thing, and a
+second only if it comes up:
 
 - **candidate events at low resolution** — a name and a rough date, across the five families (macro /
   corporate / calendar / industry / company). No sourcing pass, no transcript. Most candidates will not
   be chosen, and the one that is gets sourced in 1b.
+- **an idea past the base case, if one stands out** — something about this subject the modules will not
+  ask on their own (§9). Do not go looking for one to fill a slot.
 
 **Every candidate that could drive a pull carries a predicted observable**: *if this is real, what should
 the data show?* A candidate with no statable observable is labelled context; it may earn a retrieved
@@ -141,7 +170,8 @@ that was actually chosen, now that it is known.
 
 **A finding the candidate list did not predict gets its own sweep.** 1a searched before the data was in,
 so a move that surfaced only in the data (one region, cohort, channel or asset out of line with the rest)
-has had no search behind it. Before it is written:
+has had no search behind it. A turn on a chart you will publish is such a move too, and what the sweep
+finds goes on the chart (§4 rule 14). Before it is written:
 
 1. **Date its onset** at the finest grain the panel resolves, and name **where it is strongest**.
 2. **Search, never recall, from the onset forward and over the same weeks a year earlier**, scoped to
@@ -226,6 +256,23 @@ Rules below; the recipes that compute them are in `references/gating.md`. Six ga
     months, beside every local one, and compare like windows only (the same months in every period, never
     a full year against a year to date). *(Oct 2026, on a category pilot: a "this city leans EV" claim
     compared full-year counts with a partial year; on matching months the state's ratio was the same.)*
+14. **A turn on a chart gets a marker for what happened then, not a claim about why.** A peak, a step,
+    a change of slope or a sign change the eye goes to gets the §3 1b sweep. A dated event the sweep finds
+    in that window (a tournament, a launch, a price change, a rival's closure) goes on the chart as a
+    marker at its date, sourced ◆ in Method. The marker says when it happened and lets the reader draw
+    the line: its label names the event and date only ("World Cup opens Jun 11"), never a cause, and the
+    caption and text do not credit the move to it. Saying it caused the move is a separate claim that
+    needs a control (`ca-events`). With nothing found, leave the chart unmarked and say in Method what was
+    searched. *(Oct 2026: a footwear chart showed one brand climbing to +38% through the 2026 World Cup
+    with no marker on it.)*
+15. **A calendar shift is marked on the weeks it touches.** Before reading any weekly year-over-year, on
+    any instrument, check the moving holidays (Easter, Memorial Day, Labor Day, Thanksgiving, and the
+    weekday 4 July falls on) and the 53rd week. A holiday that lands in a different panel week from the
+    year before swings two adjacent weeks in opposite directions: mark the pair on the chart with the
+    shift ("Labor Day: a week later than 2025") and read the pair together. Cut the weeks only where a
+    marker would still mislead, such as a rolling average the shift is smeared across, and say so.
+    *(Oct 2026: a home-furnishings weekly chart put a Labor Day shift in its subtitle; the reader saw a
+    +70% spike with nothing on the chart to explain it.)*
 
 ---
 
@@ -238,7 +285,7 @@ The conversation is in front of a paying customer. Failed pulls and dead ends ap
 |---|---|
 | "Zero rows returned for insight 48288." | "That pair is too thin in the panel to rank — here is the set that does." |
 | "Fails the thickness gate." | "Not enough observations to trust a number that fine. At quarterly grain it holds." |
-| "Card cannot see retailer-mediated brands." | "Card sees the store, not the item in the basket. Total demand isn't observable — channel and attention are." |
+| "Card cannot see retailer-mediated brands." | "This reads [brand] on [the data that names it, in plain words, e.g. its sales on Amazon and TikTok Shop and who else its shoppers look at]. It does not see [what none of it covers]." Then the report, not an offer of a smaller one. |
 | "B4 requires debiasing." | "The panel skews older, so we normalize against the national panel before reading cohorts." |
 | "The insight is parked / uninterpretable." | "We can answer who shares your customer. Who *took* your customer needs a measure we don't have." |
 
@@ -390,7 +437,7 @@ What differs by subject lives in one file per subject type, in `references/`:
 
 | Subject | File | What it adds |
 |---|---|---|
-| A company or brand | `setup-brand.md` | the demand-route gate, peers in tiers with unit growth, fiscal calendar, card and browsing instrument notes |
+| A company or brand | `setup-brand.md` | the data map (which attached dataset answers each question), peers in tiers with unit growth, fiscal calendar, card and browsing instrument notes |
 | A musician or actor | `setup-talent.md` | the musician / actor branch, the representation to prefer, the peer band, the thickness test, the talent instrument map |
 | A listed company, previewed against its reported figures | `setup-equity.md` (with `setup-brand.md`) | the scope check, what the panel can and cannot see, the ticker roll-up, fiscal-quarter grain, the reported-figures source and the end-date join |
 | A consumer category and its markets | `setup-category.md` (with `setup-brand.md`) | resolving the category neighborhood, how visible the merchant is, channels card under-sees, resident-demand geography, the category instrument map |
@@ -414,10 +461,11 @@ for it.
 Deliverable is a single-file HTML Artifact on `carbon-arc-report-v2`, in one of two formats, fixed by
 the run (`carbon-arc-report-v2`, "Pick the format first"):
 - **Full report** (an entry skill ran several modules) = the **Report**: Summary (written last) + one tab
-  per module that found something publishable + Sources & Method, which ends with the AI
-  disclaimer (`carbon-arc-report-v2`, "Appendix").
+  per module that found something publishable + any subject-angle tab Gate 1 approved (§9) + Sources & Method,
+  which ends with the AI disclaimer (`carbon-arc-report-v2`, "Appendix").
 - **A module run on its own** = a **Brief**: one scrolling page that answers its one question, with the
-  Method content in its collapsible Sources & method section. Never a one-tab report shell.
+  Method content in its collapsible Sources & method section. Never a one-tab report shell. An approved
+  subject angle is a section after the module's answer.
 
 Two failures that are silent and must be checked, not assumed:
 - A single-file Artifact must **base64 every font and SVG**. A build linking `./assets/` falls back to
@@ -434,3 +482,66 @@ python3 "$CA/verify_build.py" <report>.html      # $CA resolved in §5
 
 Peer tiers cap at **three** — the v2 palette's fourth series color is also the loss color, so a fourth
 tier reads as "this tier is falling."
+
+---
+
+## 9. The subject angle: going past the base case
+
+The modules ask the questions every subject of this type shares. The most useful page in a run is often
+the one only this subject could have produced: something about its business, its audience, its place or
+its data that the shared method does not look for. When something like that stands out, you are free to
+propose it; when nothing does, the base case is the report and you say nothing about ideas at all. A weak
+idea added to fill space costs the reader more than it gives. This section is only how an idea gets
+approved and built under the same rules as everything else.
+
+**Most ideas start in the data Carbon Arc has tied to this subject.** The Phase 0 survey (§6, every
+representation at `limit=250`) lists everything attached to it, and the modules use only part of that list.
+Read the rest for what stands out: a dataset its peers lack, a cut that is unusually thick for it, or a
+representation (an app, a website, a ticker, a venue, a title) that carries something no module reads. Then
+ask why it would matter for this name, from what Phase 1a retrieved about how the subject works: how its
+customers pay, what it recently bought, opened or closed, what it sells or does that its peers do not. An
+attached dataset plus a reason it matters for this subject is the strongest idea. Less often an idea starts
+elsewhere (the user's question, a Phase 1a search, a finding mid-run) and then needs attached data to answer
+it. *(Examples of the range, not a menu: an app-usage series attached to a brand whose peers have none, read
+against its card ticket; a chain whose franchisees set their own prices, read in ticket spread across
+states; an artist whose streams and resale demand peak in different cities; a venue whose second tenant
+draws a different crowd.)*
+
+**Two tests before an idea goes on the list.**
+- **Is it this subject's, or any subject's?** A module's question with the subject's name on it is not an
+  idea past the base case ("do loyalty members come back?" is the retention tab; "which generations?" is
+  the audience tab). It qualifies when the data or the reason behind it is particular to this subject.
+- **Can the data tell the thing apart?** The data must separate what the question is about. A card panel
+  cannot tell a loyalty member from any other shopper, so "do members spend more?" fails; "did spend shift
+  in the months the program changed?" may pass. Say which series and what in it would show the answer.
+
+It can land in two places:
+- **Inside a module's tab**, when it deepens that module's question (a finer split, a second comparison,
+  a longer look at one finding). The tab stays that module's tab.
+- **As its own tab** (a section in a Brief), when it asks a question no module asks. Its label is a
+  question in the reader's words, never "Angle" or "Bonus"; it gets a Summary block and its method goes in
+  Sources & method beside the modules'. One is usual; add another only when it earns the reader's time as
+  much as a module's tab does.
+
+**How it runs.**
+
+- **Phase 1a, or whenever it occurs to you:** state the question in the reader's words, the attached
+  insight that answers it, why it matters for this subject (with a source for any company fact), and what
+  the data should show if it is real (as for a candidate event, §3). An idea you cannot tie to an attached insight is not yet answerable;
+  say so rather than propose pulls for it.
+- **Gate 1:** when there is one, show it in a short list headed **"Worth a look for <subject>"**, after
+  the candidate events; with none, leave the list out. The user approves, cuts or adds. Under `gates: waived`, take the ones you would defend, say so
+  in one line, and continue. An idea that surfaces after Gate 1 goes on a short second pull list, as
+  for a module that needs another's findings.
+- **Gate 2:** its rows form their own group with **Method from** `subject angle · ca-core §9` plus the
+  reference file and section each pull follows (`gating.md` §9, an instrument file, a module step it
+  borrows). It is never "discovery only": that label means no method shaped the pull, and here one did.
+- **Gates 3 and 4, §3 1b and §4** apply to its rows exactly as to a module's.
+
+**Cut it when it finds nothing publishable**, as a module's tab is cut, and say so in chat with what was
+found. A null result the reader would value ("your renewal months move with the category, not with your
+sign-ups") is publishable; an empty pull is not.
+
+**The limits are the hard rules, and two more.** A question another report or package owns is routed
+(the entry skill's routing, §7), never rebuilt here. A finding that contradicts a module's tab is resolved
+in 1b before either is written, never published as two stories.

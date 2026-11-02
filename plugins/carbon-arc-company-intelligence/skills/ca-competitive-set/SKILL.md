@@ -3,7 +3,7 @@ name: ca-competitive-set
 description: "Use this skill when someone wants to know who a company really competes with for its customers: where else its customers shop or eat, which brands share its customer base (including ones it isn't tracking), and whether a named rival actually shares a customer. It ranks the brands its customers also spend at. For how the company's demand moves against those rivals, use ca-benchmark; for a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Competitive set — where else do our customers spend?
@@ -24,7 +24,9 @@ on the tab, because readers hear "cross-shop" and infer substitution.
 
 ## Before anything
 
-Entities resolved, demand route asserted, live re-survey, Phase 1a done — as `ca-core` §2.
+Entities resolved, data map built, live re-survey, Phase 1a done — as `ca-core` §2. Read the
+shared-customers row: where card overlap does not qualify for the set, start at step 3 (browsing
+overlap), and the tab reads who shoppers look at, never where they spend.
 
 ## Run order
 
@@ -81,8 +83,8 @@ a rate re-inherits the partner-size bias.
 
 It may be the first thing that has run, so it cannot assume the orchestrator's setup happened.
 
-- **Demand route unset** → run the gate here: a probe on **626** against the resolved entity, before
-  designing anything. Retailer-mediated ends the run with the client-facing scope line.
+- **No data map yet** → build it here first: the sales probe in `setup-brand.md`, "The data map", before
+  designing anything. Where the map cuts this tab's question, say so in one line and name what is read.
 - **Phase 1a not done** → **run it now, and only it**: fiscal calendar, unit count and unit growth for
   every peer, candidate events as names and rough dates. Nothing else — the disclosed figures come later,
   against a claim.

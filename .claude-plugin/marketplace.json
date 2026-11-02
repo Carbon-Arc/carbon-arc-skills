@@ -10,7 +10,7 @@
       "name": "carbon-arc-company-intelligence",
       "displayName": "Carbon Arc Company Intelligence",
       "source": "./plugins/carbon-arc-company-intelligence",
-      "description": "Three reports, using Carbon Arc data. An insights report for a company's strategy team: where its customers also spend, whether a move is the company or the category, which customers it is losing, what an event did, and who is winning. A pre-print earnings preview of a listed consumer company's quarter, validated against its reported history. And a category and market report for a small or regional business.",
+      "description": "Analyze companies and brands with Carbon Arc data. Built to keep you in control: iterate and explore as you normally would, or ask it to run straight through. Three reports: competitive insights for strategy teams, an earnings preview for investors, and a category report for small businesses. Try: \"Build a competitive insights report on [company].\" \"Put together an earnings preview for [ticker].\" \"Where else do [company]'s customers spend?\" \"Measure the impact of [event] on [company].\"",
       "skills": "./skills",
       "author": {
         "name": "Carbon Arc"
@@ -21,7 +21,7 @@
       "name": "carbon-arc-talent-intelligence",
       "displayName": "Carbon Arc Talent Intelligence",
       "source": "./plugins/carbon-arc-talent-intelligence",
-      "description": "Audience intelligence for talent management, agencies and labels: who an artist really competes with, whether their audience is growing against those peers, who the audience is, which brand partnerships are distinctively theirs, resale demand, and for actors the work itself.",
+      "description": "Analyze talent (musicians and actors) with Carbon Arc data. Built to keep you in control: iterate and explore as you normally would, or ask it to run straight through. One report: an audience intelligence brief for talent management, agencies and labels. Try: \"Build a brief on [artist or actor].\" \"Who are [artist]'s real peers?\" \"Which cities pay the most to see [artist] live?\"",
       "skills": "./skills",
       "author": {
         "name": "Carbon Arc"
@@ -32,7 +32,7 @@
       "name": "carbon-arc-location-intelligence",
       "displayName": "Carbon Arc Location Intelligence",
       "source": "./plugins/carbon-arc-location-intelligence",
-      "description": "Two reports, using Carbon Arc data. A place report: how a metro area's economy is doing against comparable metro areas, or what a dated shock such as a storm or a plant closure did to it, read from two sides: what the people who live there spend and on what, and what happens at its locations. And a venue report: how an arena, stadium or theater's ticket market is doing against comparable venues, which shows and games drive it, and what its events do to the blocks around it.",
+      "description": "Analyze venues and metro areas with Carbon Arc data. Built to keep you in control: iterate and explore as you normally would, or ask it to run straight through. Two reports: a venue report for those who run or book arenas, stadiums and theaters, and a place report comparing a metro area with its peers, for market researchers. Try: \"Build a venue report on [venue].\" \"Which shows drive resale prices at [venue]?\" \"What did [event] do to [city]'s economy?\"",
       "skills": "./skills",
       "author": {
         "name": "Carbon Arc"

@@ -62,6 +62,11 @@ hand and goes stale; never prefer it to the tearsheet, and never to the fill.
 | Advertising | ~1 week |
 | Point of sale | weekly or longer |
 
+**A derived table can lag its own panel.** Retention, built on the card panel, can return its latest
+closed month a third to two thirds low while 626 for the same month is complete. Test the latest month of
+any derived table against the same month-over-month change a year earlier before using it;
+drop it when the two disagree.
+
 ## The validation gate
 
 Run on every pulled series **before** it reaches a data module. A failing series is flagged in the output or dropped — never silently included (non-negotiables rule 3). Results are presented at Gate 3.

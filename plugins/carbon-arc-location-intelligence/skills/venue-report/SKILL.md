@@ -3,7 +3,7 @@ name: venue-report
 description: "Use this skill when someone wants a report on a venue: how an arena, stadium, theater or convention center's ticket market is doing against comparable venues, which shows and games drive it, what its events do to the blocks around it, and who its crowds also buy tickets for. It reads resale tickets at the venue, and foot traffic and residents' spending in its ZIP code. Not for a metro area's economy: that is location-report. Not for a musician's or actor's own fans: that is Carbon Arc Talent Intelligence."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Venue report
@@ -21,7 +21,7 @@ team that runs it or books it.
 
 **Modules this report runs:** `loc-venue` · `loc-places` · `loc-residents`. Invoke no other module in this run, even one installed alongside: a module not on this list belongs to a different analysis type, and its method does not fit this report.
 
-**Tabs:** Summary · one tab per question below that found something publishable · Sources & method. Three
+**Tabs:** Summary · one tab per question below that found something publishable · Sources & method, plus any subject-angle tab Gate 1 approves (`ca-core` §9). Three
 to five charts per tab, eight the ceiling. **Three honest tabs beat six padded ones.**
 
 **The order of work.** This skill resolves the venue, chooses the comparable venues, probes and runs
@@ -67,6 +67,9 @@ Only these, every one web-verified with a source URL, nothing from training data
    played and which were scheduled but not played.
 5. **Candidate events across the five families** (`ca-core` §3), each with a predicted observable: a
    residency starting or ending, a playoff run, a renovation, a change in how people reach the area.
+6. **an idea past the base case, only if one stands out** (`ca-core` §9): what this venue has that its comparable venues do not
+   (a second tenant with a different crowd, a residency, a district built around it, for example), each
+   tied to an insight the survey found attached.
 
 **Phase 0 to Gate 1 is one stretch, with no stop in between** once the frame is in hand. "Approve each
 step" means `gates: on`: the four gates, and nothing more.
@@ -130,6 +133,10 @@ Check every row for:
 - **Every date that carries a claim is checked against a public schedule**: a scheduled game that was not
   played (an if-necessary playoff date) or a canceled show can still carry resale sales and an event count.
   Drop both.
+
+**Subject angles approved at Gate 1** write their rows as their own group after the module groups
+(`ca-core` §9); one that deepens a module lands in that module's tab, one that asks a new question gets
+a tab after the module tabs. Each is cut on the same terms as a module.
 
 ## Phase 4: the Summary, written last
 

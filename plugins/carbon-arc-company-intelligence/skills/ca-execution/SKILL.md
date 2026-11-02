@@ -3,7 +3,7 @@ name: ca-execution
 description: "Use this skill when someone wants to know what is behind a winner's growth, whether the winner is the company itself or a competitor: its attention, advertising and distribution against the rest of the set, whether it is outspending or being outspent, and whether its lead is holding. It reads whoever leads the benchmark. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.3.0'
+  version: '0.4.0'
 ---
 
 # Execution — who is winning, and what is behind it?
@@ -25,7 +25,7 @@ shape.
 | **The subject leads** | *What is behind our lead, and is it holding?* The winner is the subject; the nearest challenger is the comparison. Still share of the set throughout, so it points outward as the reader file requires. |
 | **Nobody is growing** | Say so plainly: that is the benchmark's finding. Ask the user whether to read the brand declining least, or cut the tab. Do not substitute a "least bad" brand without asking. |
 
-Entities resolved, demand route asserted, live re-survey, Phase 1a done — as `ca-core` §2.
+Entities resolved, data map built, live re-survey, Phase 1a done — as `ca-core` §2.
 
 **Read `ca-core/references/instruments/cross-signal.md` before pulling attention, foot traffic or
 advertising.** It carries the subject-count rule, the store-count denominator for foot traffic, and how
@@ -34,7 +34,7 @@ to treat a modality that disagrees with card.
 ## Run order
 
 1. **Re-run the benchmark decomposition on the winner** and on the comparison — `spend = transactions x
-   ticket`. Volume or price is the first thing to know about anyone who has broken away.
+   ticket` on card, or value = count x price on whatever sales basis the data map chose. Volume or price is the first thing to know about anyone who has broken away.
 2. **Attention: insight 8928** (Consistent User), `location_resolution: "us"` · `date_resolution:
    "quarter"` · `aggregate: "sum"`, one pull for the whole set.
    **Share of a defined set only, never absolute growth** —
@@ -80,8 +80,8 @@ absence proves the opposite. Anything about expansion from foot traffic alone.
 
 It may be the first thing that has run, so it cannot assume the orchestrator's setup happened.
 
-- **Demand route unset** → run the gate here: a probe on **626** against the resolved entity, before
-  designing anything. Retailer-mediated ends the run with the client-facing scope line.
+- **No data map yet** → build it here first: the sales probe in `setup-brand.md`, "The data map", before
+  designing anything. Where the map cuts this tab's question, say so in one line and name what is read.
 - **Phase 1a not done** → **run it now, and only it**: fiscal calendar, unit count and unit growth for
   every peer, candidate events as names and rough dates. Nothing else — the disclosed figures come later,
   against a claim.

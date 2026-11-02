@@ -77,18 +77,22 @@
     v.forEach((val, i) => {
       const y0 = y(0), y1 = y(val), top = Math.min(y0, y1), h = Math.max(Math.abs(y1 - y0), 1.5);
       const r = E("rect", { x: x(i) + 2, y: top, width: bw - 4, height: h, rx: 3, fill: T.s[0], opacity: i < cfg.eventIdx ? .45 : 1 });
-      r.style.opacity = 0; r.style.animation = `ca-fade .5s cubic-bezier(.4,0,.2,1) ${i * .02}s forwards`;
-      const fin = i < cfg.eventIdx ? .45 : 1; r.addEventListener("animationend", () => { r.style.opacity = fin; r.style.animation = "none"; });
+      const fin = i < cfg.eventIdx ? .45 : 1;
+      if (CA_CHARTS.RM) r.style.opacity = fin;
+      else { r.style.opacity = 0; r.style.animation = `ca-fade .5s cubic-bezier(.4,0,.2,1) ${i * .02}s forwards`; r.addEventListener("animationend", () => { r.style.opacity = fin; r.style.animation = "none"; }); }
       svg.appendChild(r);
     });
     cfg.labels.forEach((lb, i) => { if (i % 5 == 0 || i == N - 1) svg.appendChild(E("text", { x: x(i) + bw / 2, y: H - mB + 18, "text-anchor": "middle", "font-family": mono, "font-size": "10.5px", fill: T.muted }, [lb])); });
     (cfg.markers || []).forEach(m => {
       const mx = x(m.i) + bw / 2;
-      svg.appendChild(E("line", { x1: mx, x2: mx, y1: mT + 12, y2: H - mB, stroke: T.hair2, "stroke-width": 1.2, "stroke-dasharray": "3 4" }));
-      const w = m.label.length * 5.4 + 20, bx = m.right ? mx - w - 3 : mx + 3;
-      svg.appendChild(E("rect", { x: bx, y: mT - 14, width: w, height: 17, rx: 8.5, fill: "#662D0F" }));
-      svg.appendChild(E("circle", { cx: bx + 9, cy: mT - 5.5, r: 2.6, fill: T.s[0] }));
-      svg.appendChild(E("text", { x: bx + 15, y: mT - 2, "font-family": mono, "font-size": "9.5px", "font-weight": 500, fill: "#FFC6A8" }, [m.label]));
+      // m.to spans a period (e.g. the two weeks a moved holiday touches) as a band instead of a rule
+      if (m.to != null) svg.appendChild(E("rect", { x: x(Math.min(m.i, m.to)), y: mT + 12, width: x(Math.max(m.i, m.to)) - x(Math.min(m.i, m.to)) + bw, height: H - mB - mT - 12, fill: "#662D0F", opacity: .45 }));
+      else svg.appendChild(E("line", { x1: mx, x2: mx, y1: mT + 12, y2: H - mB, stroke: T.hair2, "stroke-width": 1.2, "stroke-dasharray": "3 4" }));
+      // a band's pill sits one row down so it never lands on a point event's pill
+      const w = m.label.length * 5.4 + 20, bx = m.right ? mx - w - 3 : mx + 3, dy = m.to != null ? 20 : 0;
+      svg.appendChild(E("rect", { x: bx, y: mT - 14 + dy, width: w, height: 17, rx: 8.5, fill: "#662D0F" }));
+      svg.appendChild(E("circle", { cx: bx + 9, cy: mT - 5.5 + dy, r: 2.6, fill: T.s[0] }));
+      svg.appendChild(E("text", { x: bx + 15, y: mT - 2 + dy, "font-family": mono, "font-size": "9.5px", "font-weight": 500, fill: "#FFC6A8" }, [m.label]));
     });
     (cfg.notes || []).forEach(n => svg.appendChild(E("text", { x: n.x, y: y(n.y), "font-family": sans, "font-size": "11.5px", "font-weight": 600, fill: n.c || T.ink2, "text-anchor": n.a || "start" }, [n.t])));
     const wrap = document.createElement("div"); wrap.style.width = "100%"; wrap.appendChild(svg);
@@ -107,7 +111,7 @@
     const c1 = D.c1;
     lineChart($("#ch-weekly"), {
       labels: c1.labels, unit: "YoY %", yMin: -36, yMax: 12, refY: 0,
-      markers: [{ i: 6, label: "Health notice Jul 14" }, { i: 14, label: "Labor Day" }],
+      markers: [{ i: 6, label: "Health notice Jul 14" }, { i: 13, to: 14, label: "Labor Day, a week later", right: true }],
       series: [
         { cls: "s1", name: "Brand A", values: c1.tb, dy: 4 },
         { cls: "s2", name: "QSR ex Brand A", values: c1.qx, muted: 1, dy: -3 },
