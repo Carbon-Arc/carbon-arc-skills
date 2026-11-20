@@ -3,7 +3,7 @@ name: ca-retention
 description: "Use this skill when someone wants to know whether a brand keeps the customers it wins: how many new customers come back, whether existing customers are coming back less often, how that compares with a competitor, which generations come back, and whether the customers who return spend more or less, even if they only ask about loyalty, repeat customers, churn or cohorts. It reads card-panel retention for new and existing customers against a peer, as retention curves and retention triangles. Not for where lost customers went, which card data cannot show; for who shares the brand's customers, use ca-competitive-set, and for how its spend splits across age groups, use ca-audience. For a full report, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Retention — are we keeping the customers we win?

@@ -3,7 +3,7 @@ name: loc-venue
 description: "Use this skill when someone wants to know how a venue's own ticket market is doing: resale price per ticket, tickets and events at an arena, stadium or theater against comparable venues, which shows and games drive it, whether event days show up in visits to the blocks around it, and who its tenants' ticket buyers also buy for. Every ticket figure is resale; it never measures attendance or sell-outs. For a full report on a venue, use this package's venue report."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Venue: how is its ticket market doing, and what drives it?

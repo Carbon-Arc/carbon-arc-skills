@@ -133,10 +133,22 @@
 <script src="./charts.js"></script>
 <script src="./render.js"></script>
 <script>
-/* Hash routing: show one section, style the active nav item, build charts on
-   first visit. Do not change — extend by adding sections + nav anchors. */
-function caRoute() {
-  const r = (location.hash || "#/").replace("#", "") || "/";
+/* Tab routing: show one section, style the active nav item, build charts on
+   first visit. A click on any "#/..." link switches the tab inside the page and
+   is never followed: viewers that show the file in an embedded frame (srcdoc)
+   read "#/x" against their own address, so a followed link leaves the report
+   for a blank page. Opened on its own, each click adds a history entry, so Back
+   steps through tabs; inside a frame the entry is replaced, so the viewer's
+   own Back button is not filled with report tabs. A tab address opened
+   directly still lands on that tab. Keep this routing as is; extend by adding
+   sections + nav anchors.
+   ca-inpage-nav tabs v1: verify_build.py (inpage_links) looks for this marker. */
+const caFramed = (() => { try { return window.self !== window.top; } catch (_) { return true; } })();
+function caRoute(r) {
+  r = r || (location.hash || "#/").replace("#", "") || "/";
+  if (!document.querySelector('section[data-tab="' + r + '"]')) r = "/";
+  if (r === caRoute.cur) return;
+  caRoute.cur = r;
   document.querySelectorAll("section[data-tab]").forEach(s => {
     const on = s.dataset.tab === r;
     s.style.display = on ? "block" : "none";
@@ -155,7 +167,18 @@ function caRoute() {
   if (window.CA_RENDER) window.CA_RENDER.build(r);
   window.scrollTo(0, 0);
 }
-addEventListener("hashchange", caRoute);
+document.addEventListener("click", e => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = e.target.closest && e.target.closest('a[href^="#/"]');
+  if (!a) return;
+  e.preventDefault();
+  const r = a.getAttribute("href").slice(1) || "/";
+  if (r === caRoute.cur) return;
+  try { history[caFramed ? "replaceState" : "pushState"](null, "", location.href.split("#")[0] + "#" + r); } catch (_) {}
+  caRoute(r);
+});
+addEventListener("hashchange", () => caRoute());
+addEventListener("popstate", () => caRoute());
 caRoute();
 </script>
 </body>

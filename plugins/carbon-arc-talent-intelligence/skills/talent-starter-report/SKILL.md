@@ -3,7 +3,7 @@ name: talent-starter-report
 description: "Use this skill when someone wants a broad read on a musician or actor: how they are doing against their peers, what the data says about them, or a first brief, even if they only name the artist. It builds one brief covering every talent read the data supports for them: peer set, momentum, audience, brand partnerships, resale demand and, for actors, their titles. Use it for 'build a brief' or 'build a report' on an artist. For a single read, such as only the peer set, use the matching skill. Not for a company or brand."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Talent starter report

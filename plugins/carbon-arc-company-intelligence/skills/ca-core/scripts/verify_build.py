@@ -18,6 +18,11 @@ Checks
                      datasets.txt, not a nickname such as "Card panel"
   ai_disclaimer      the AI disclaimer appears word for word, after the last "Sources & method"
                      heading (carbon-arc-report-v2/carbon-arc-report.md, Appendix)
+  inpage_links       tab links ("#/x") and jump links ("#id") keep the template's click handler
+                     (marker "ca-inpage-nav tabs" / "ca-inpage-nav jumps"), without which a
+                     viewer that shows the file in a srcdoc frame goes blank on the first click;
+                     and every such link has a section or element to land on. It reads the code,
+                     it does not click: the frame test in ca-core/references/build-notes.md does
 
 Usage: verify_build.py <report.html> [--allow RRGGBB,RRGGBB] [--dataset="Name"] [--quiet]
 Exit 1 if anything fails.
@@ -108,6 +113,36 @@ def chart_sources(doc, datasets):
                       "(e.g. \"■ Credit Card – US Complete Panel · …\"), or pass --dataset if it is new."))
     note = f"chart_sources     {len(mounts)} charts, {len(chips)} chips, all named" if not fails else None
     return fails, note
+
+
+def inpage_links(doc):
+    """Tab and jump links must keep the template's click handler and point at something."""
+    fails, notes = [], []
+    code = re.sub(r"data:[a-z/+-]+;base64,[A-Za-z0-9+/=]+", " ", doc)
+    hrefs = re.findall(r"""href=\\?(['"])#([^'"\\]*)\\?\1""", code)
+    tabs = set(re.findall(r"""data-tab=\\?['"]([^'"\\]+)""", code))
+    # A "#x" link that names a tab (a hand-edited router without the slash) is a tab link.
+    routes = sorted({h for _, h in hrefs if h.startswith("/") or h in tabs})
+    jumps = sorted({h for _, h in hrefs if h and h not in routes and "${" not in h})
+    handler = re.search(r"""addEventListener\(\s*['"]click['"]""", code) and "preventDefault" in code
+    for kind, links, marker, src in (
+            ("tab", routes, "ca-inpage-nav tabs", "template.html"),
+            ("jump", jumps, "ca-inpage-nav jumps", "brief/brief.example.html")):
+        if links and not (marker in code and handler):
+            fails.append(("inpage_links",
+                          f"{len(links)} {kind} link(s) but no in-page click handler (marker \"{marker}\"). "
+                          f"In a viewer's embedded frame the first click goes blank. Restore the script "
+                          f"from carbon-arc-report-v2/{src} unchanged."))
+    dead = [r for r in routes if "${" not in r and r not in tabs]
+    ids = set(re.findall(r"""\bid=\\?['"]([^'"\\]+)""", code))
+    dead += ["#" + j for j in jumps if j not in ids]
+    if dead:
+        fails.append(("inpage_links",
+                      f"{len(dead)} link(s) with nothing to land on: {', '.join(dead[:6])}. "
+                      "Each tab link needs a section with that data-tab, each jump link an element with that id."))
+    if not fails and (routes or jumps):
+        notes.append(f"inpage_links      {len(routes)} tab and {len(jumps)} jump link(s), handler present, all land")
+    return fails, notes
 
 
 def checks(path, allow, datasets=()):
@@ -205,6 +240,11 @@ def checks(path, allow, datasets=()):
                       "present, but not inside Sources & method. It goes at the end of that section."))
     else:
         notes.append("ai_disclaimer     present in Sources & method")
+
+    # --- inpage_links -------------------------------------------------------
+    f3, n3 = inpage_links(doc)
+    fails += f3
+    notes += n3
 
     return fails, notes
 

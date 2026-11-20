@@ -128,9 +128,19 @@ assert len(html.encode()) / 1024 > 75      # the three faces alone embed to ~65K
 ## Verifying in the preview pane
 
 The pane serves a local file as a `data:` URL, so relative `<script src>` and `./assets/` do **not**
-resolve and `location.hash` does **not** persist. Verify the **single-file** build, drive
-`CA_RENDER.build(route)` directly instead of setting hashes, and re-set the viewport after every
-`navigate` — it resets, and at 800px the 1560px layout overlaps badly.
+resolve. Verify the **single-file** build, and re-set the viewport after every `navigate` — it resets,
+and at 800px the 1560px layout overlaps badly. `CA_RENDER.build(route)` checks that a tab's charts draw;
+it does **not** check the tabs themselves, because it skips the links.
+
+**Click the links inside an embedded frame.** Many viewers show the file inside an `<iframe srcdoc>`.
+There a link like `#/benchmark` or `#f1` is read against the viewer's own address, so a followed link
+loads the viewer's page into the frame and the report goes blank. The template's click handlers stop
+that; a page whose tabs only wait for the address to change fails. If you can drive a browser, load the
+single-file build into a `srcdoc` frame on any `https` page and click every nav item and one Summary link
+to a tab (for a Brief, every jump link): each click must show the right section with its charts, and
+the frame must still hold the report. `verify_build.py` (`inpage_links`) checks that the click handler
+is still there and that every link lands, but it reads the code and does not click. If you cannot drive
+a browser, rely on that check and say in your reply that the frame test was not run.
 
 ## Editing a finished report
 

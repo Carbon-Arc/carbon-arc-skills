@@ -3,7 +3,7 @@ name: loc-building
 description: "Use this skill when someone wants to know how much is being built or repaired in a metro area and whether it is more than usual: building permits by type (re-roofing, demolition, new construction and others) against the place's own history, how large a rebuild after a shock was and how long it lasted. It reads permit records, which count filings, not homes. For residents' spending at home-improvement stores, use loc-residents. For a full report on a place, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Building: how much is being built or repaired, against usual?

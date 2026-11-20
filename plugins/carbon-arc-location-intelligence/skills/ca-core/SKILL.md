@@ -3,7 +3,7 @@ name: ca-core
 description: "Use this skill only when another skill in this package says to invoke it. It holds the rules every Carbon Arc run shares: the run setup checklist, the reader, the evidence gates, the client-facing voice and the subject setups. Never start a user's request with it: for a report or a single read, use this package's onboarding, a report skill or the matching module."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # ca-core
@@ -74,7 +74,7 @@ the conversation so every later module can use them.
 
 **Version notice, once per conversation; it never blocks the run.** Fetch
 `https://raw.githubusercontent.com/Carbon-Arc/carbon-arc-skills/main/latest.json`. If
-`latest.json["carbon-arc-location-intelligence"].version` is newer than 0.4.0, the installed version, tell the user
+`latest.json["carbon-arc-location-intelligence"].version` is newer than 0.4.1, the installed version, tell the user
 in one line: "Carbon Arc Location Intelligence vX.Y.Z is available: <zip url>. Installed from the marketplace? It updates
 on its own." If the fetch fails or the version is not newer, say nothing and continue.
 

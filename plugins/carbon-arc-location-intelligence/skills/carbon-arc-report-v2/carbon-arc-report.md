@@ -81,7 +81,8 @@ not size.**
   hairline: wordmark → orange mono eyebrow → report title → subject pill →
   numbered nav (`01`–`0n`) → provenance key pinned to the bottom.
 - Main column 48px top / 56px side padding, shell max 1560px.
-- One tab per section, hash-routed; only the active section displays, entering
+- One tab per section, switched inside the page by the template's click handler
+  (never by following the link); only the active section displays, entering
   with a 400ms 6px rise.
 - Section rhythm: eyebrow → headline → lede → KPI strip → chart cards →
   "what this means". Space by the t-shirt scale: 24px between cards, 32px
@@ -162,7 +163,8 @@ instead of the rail-and-tabs report. A full report keeps the rail and tabs.
 - **Nav:** floating pill, sticky 20px from top — `rgba(0,0,0,0.45)`, 11.644px
   blur, 0.5px `rgba(255,255,255,0.5)` inner stroke. Wordmark · hairline · brief
   title · mono jump links (`01`–`0n`, `METHOD`) that fill Orange 500 with
-  black type as each finding scrolls into view.
+  black type as each finding scrolls into view. A click scrolls inside the page;
+  the link is never followed.
 - **Answer block:** status pill (Orange 500, black 700 mono label) + mono scope
   line → the question at 26px Gray 300 → the answer as a 56px claim with the
   turn in orange → 18px lede, max 68ch.

@@ -1,8 +1,11 @@
 # Carbon Arc Skills
 
-Claude plugins that turn [Carbon Arc](https://carbonarc.co) data into finished reports. Each plugin is a
-set of skills: Markdown instructions that tell Claude which Carbon Arc data to pull, which checks the
-numbers must pass before they are shown, and how to build a report you can send on.
+Plugins that turn [Carbon Arc](https://carbonarc.co) data into finished reports. Available for use
+in Claude, ChatGPT and Perplexity.
+
+Each plugin is a set of skills: Markdown instructions that tell your AI assistant which Carbon Arc data
+to pull, which checks the numbers must pass before they are shown, and how to build a report you can
+send on.
 
 | Plugin | For | What it builds |
 |---|---|---|

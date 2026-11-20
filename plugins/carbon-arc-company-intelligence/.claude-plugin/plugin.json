@@ -1,6 +1,6 @@
 {
   "name": "carbon-arc-company-intelligence",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Analyze companies and brands with Carbon Arc data. Built to keep you in control: iterate and explore as you normally would, or ask it to run straight through. Three reports: competitive insights for strategy teams, an earnings preview for investors, and a category report for small businesses. Try: \"Build a competitive insights report on [company].\" \"Put together an earnings preview for [ticker].\" \"Where else do [company]'s customers spend?\" \"Measure the impact of [event] on [company].\"",
   "author": {
     "name": "Carbon Arc"

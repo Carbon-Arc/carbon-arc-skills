@@ -3,7 +3,7 @@ name: venue-report
 description: "Use this skill when someone wants a report on a venue: how an arena, stadium, theater or convention center's ticket market is doing against comparable venues, which shows and games drive it, what its events do to the blocks around it, and who its crowds also buy tickets for. It reads resale tickets at the venue, and foot traffic and residents' spending in its ZIP code. Not for a metro area's economy: that is location-report. Not for a musician's or actor's own fans: that is Carbon Arc Talent Intelligence."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Venue report

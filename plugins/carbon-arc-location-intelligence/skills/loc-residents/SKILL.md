@@ -3,7 +3,7 @@ name: loc-residents
 description: "Use this skill when someone wants to know how the people who live in a metro area are spending: whether their spending fell, held or grew against comparable metro areas, whether they bought less often or spent more each time, whether growth came from more people spending or each spending more, and how a dated shock such as a storm or a plant closure hit them week by week. It reads card spending by residents, wherever they spend it. For what residents spend more and less on, category by category, use loc-spending-mix; for visits to the area's hotels, restaurants and stores, use loc-places. For a full report on a metro area, use location-report; on a venue, venue-report."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Residents: how are the people who live here spending?

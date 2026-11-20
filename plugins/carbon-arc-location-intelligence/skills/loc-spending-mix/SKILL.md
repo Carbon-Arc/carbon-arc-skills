@@ -3,7 +3,7 @@ name: loc-spending-mix
 description: "Use this skill when someone wants to know what the people who live in a metro area are spending more and less on: which categories (grocery, home improvement, general merchandise, dining out and others) moved beyond their normal range against comparable metro areas, and which way, after a dated shock or as the place grows. It reads residents' card spending by category, wherever they spend it, and rebuilds a category from brands when the category's data breaks. For residents' total spending and its pace, use loc-residents. For a full report on a place, use this package's report skill."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Spending mix: what are residents spending more and less on?

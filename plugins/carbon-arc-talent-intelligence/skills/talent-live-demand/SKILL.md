@@ -3,7 +3,7 @@ name: talent-live-demand
 description: "Use this skill when someone wants to know about a touring musician's live demand: what fans pay on the resale market, which shows, venues and markets drive it, how each tour compares with the last, and how their live draw compares with their peers, even if they only ask where to tour. It reads resale prices and volumes tour by tour and show by show where the data is deep enough, and says plainly that no available data shows how many tickets a show sold. Not for a venue's own ticket market (which shows drive an arena's or amphitheater's resale): that is Carbon Arc Location Intelligence. For a full brief, use this package's brief."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Live demand: what will the market pay, and which shows and markets drive it?

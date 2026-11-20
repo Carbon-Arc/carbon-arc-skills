@@ -3,7 +3,7 @@ name: carbon-arc-onboarding
 description: "Use this skill when someone is new to Carbon Arc and wants to understand it or get started on a company, an artist, a place or a venue: 'get started', 'what can this do', 'show me around', or their first session, even if they only say they just signed up or just got access. It explains what Carbon Arc and its skills are, which of the three Carbon Arc plugins fits their question, and what the data covers and cannot see for that subject, then starts the right report. Runs no queries."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Onboarding

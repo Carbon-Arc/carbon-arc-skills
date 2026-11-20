@@ -19,7 +19,7 @@ design system wins.
 
 | The run | Format | Start from |
 |---|---|---|
-| A full report: an entry skill runs several modules, one tab each | **Report** (left rail, hash-routed tabs, Summary tab written last) | `template.html` |
+| A full report: an entry skill runs several modules, one tab each | **Report** (left rail, tabs that switch inside the page, Summary tab written last) | `template.html` |
 | A single module run on its own, answering one question | **Brief** (one scrolling page, no rail, no tabs) | `brief/brief.example.html` |
 
 The run decides the format, not the amount of material: a module invoked on its own always builds a

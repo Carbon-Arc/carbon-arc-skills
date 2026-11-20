@@ -1,6 +1,6 @@
 {
   "name": "carbon-arc-talent-intelligence",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Analyze talent (musicians and actors) with Carbon Arc data. Built to keep you in control: iterate and explore as you normally would, or ask it to run straight through. One report: an audience intelligence brief for talent management, agencies and labels. Try: \"Build a brief on [artist or actor].\" \"Who are [artist]'s real peers?\" \"Which cities pay the most to see [artist] live?\"",
   "author": {
     "name": "Carbon Arc"

@@ -1,6 +1,6 @@
 {
   "name": "carbon-arc-location-intelligence",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Analyze venues and metro areas with Carbon Arc data. Built to keep you in control: iterate and explore as you normally would, or ask it to run straight through. Two reports: a venue report for those who run or book arenas, stadiums and theaters, and a place report comparing a metro area with its peers, for market researchers. Try: \"Build a venue report on [venue].\" \"Which shows drive resale prices at [venue]?\" \"What did [event] do to [city]'s economy?\"",
   "author": {
     "name": "Carbon Arc"

@@ -232,6 +232,35 @@ CA_RENDER.build("/"); CA_RENDER.build("/method");
     });
   }
   addEventListener("scroll", spy, { passive: true }); spy();
+  /* Jump links scroll inside the page and are never followed: viewers that show
+     the file in an embedded frame (srcdoc) read "#f1" against their own address,
+     so a followed link leaves the brief for a blank page. Opened on its own, a
+     jump adds a history entry, so Back returns to where the reader was; inside
+     a frame the entry is replaced. Keep this as is.
+     ca-inpage-nav jumps v1: verify_build.py (inpage_links) looks for this marker. */
+  const framed = (() => { try { return window.self !== window.top; } catch (_) { return true; } })();
+  function jumpTo(id) {
+    const t = id && document.getElementById(id);
+    if (!t) { if (!id) window.scrollTo(0, 0); return false; }
+    if (t.tagName === "DETAILS") t.open = true;
+    t.scrollIntoView({ block: "start" });
+    if (!t.hasAttribute("tabindex")) { t.setAttribute("tabindex", "-1"); t.style.outline = "none"; }
+    t.focus({ preventScroll: true });
+    return true;
+  }
+  document.addEventListener("click", e => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute("href").slice(1);
+    if (!id || !document.getElementById(id)) return;
+    e.preventDefault();
+    if (location.hash !== "#" + id) {
+      try { history[framed ? "replaceState" : "pushState"](null, "", location.href.split("#")[0] + "#" + id); } catch (_) {}
+    }
+    jumpTo(id);
+  });
+  addEventListener("popstate", () => jumpTo(location.hash.slice(1)));
 })();
 </script>
 </body>

@@ -3,7 +3,7 @@ name: location-report
 description: "Use this skill when someone wants a report on a place: how a metro area's economy is doing against comparable metro areas, or what a dated shock such as a hurricane, a plant closure or a major opening (a new arena, a factory) did to it, even when they name a city or town rather than the metro area. It reads the place from two sides: what the people who live there spend and on what, and what happens at its locations (visits to its hotels, restaurants and stores, and building and repair permits). Use it for economic development, tourism, chamber or market research questions about a metro area, even if they only ask how their city is doing. Not for a company or brand's own performance: that is Carbon Arc Company Intelligence. Not for a venue's own ticket market or the blocks right around it: that is venue-report."
 metadata:
   author: Carbon Arc
-  version: '0.4.0'
+  version: '0.4.1'
 ---
 
 # Place report
